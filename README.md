@@ -106,3 +106,106 @@ A plataforma também permite gerenciar contas de usuários e permissões, gerenc
 ## 5. Utilidades
 
   * Taglibs. Sumário e documentação: [https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
+
+---
+---
+
+#Yeshua
+---
+
+## Temas
+
+Temas são pacotes construidos para customizar o layout geral da pagina, como _header_ e _footer_, o menu de navegação, posicionamento dos _portlets_ entre outros.
+
+O _Liferay Theme Generator_ pode ajudar com o inicio de um novo tema e tambem com outros detalhes relacionado ao mesmo, como layouts e esquemas de cores entre outros.
+
+### Criando um novo tema
+
+Na pasta `themes/` do projeto, utilize o comando:
+
+```bash
+$ yo liferay-theme
+```
+
+Logo após as definições das configurações, o yeoman criará uma estrutura inicial para o tema (talvez ele precise de privilegios de administrador como `sudo`), e logo em seguida ira rodar o `npm install` para instalar e as dependencias necesárias.
+
+Ao entrar na pasta, será encontrado a seguinte estrutura:
+
+```
+my-theme
+|- node_modules                                     // Pasta com as dependencias instaladas
+|- src                                              // Principais arquivos do tema
+|   |
+|   |- css                                          // Pasta com o CSS
+|   |- WEB_INF                                      // Arquivos para o sistema da Liferay
+|       |
+|       |- liferay-look-and-feel.xml                // Arquivo com as configurações de visualização
+|       |- liferay-plugin-package.properties        // Arquivo com detalhes para visualização, como nome e descrição
+|
+|- gulpfile.js                                      // Arquivo com as tasks do gulp
+|- liferay-theme.json                               // Detalhes do tema, como ID, URL para deploy, entre outros
+|- package.json                                     // Detalhes das dependencias
+```
+
+
+## ADTs
+
+_Application Display Templates_ ou ADTs, são templates que permitem a customização dos _portlets_, são templates em _Freemarker_(.ftl), com classes e estrutura personalizada. 
+
+O CSS vem do tema a partir de classes, ou um estilo inline que pode ser colocado no _portlet_ pelo portal.
+
+Os _portlets_ que suportam ADTs são:
+    - Asset Categories Navigation;
+    - Asset Publisher;
+    - Asset Tags Navigation;
+    - Blogs;
+    - Media Gallery;
+    - RSS;
+    - Breadcrumb;
+    - Language;
+    - Navigation Menu;
+    - SiteMap;
+    - e Wiki.
+
+Cada _portlet_ tem um ADT especifico, com algumas predefinições e chamadas prontas para facilitar a customização do mesmo.
+
+## Web Content Templates & Asset Displays
+
+## Componentes Liferay UI
+
+OS ADTs (Application Display Templates) e os Templates do Web Content em Freemarker(.ftl)tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
+```html
+<@liferay_ui['propriedade']
+    param="valor-do-parametro"
+/>
+```
+
+Por exemplo: Se voce quiser criar um _User Display_, você só precisa de
+```html
+<@liferay_ui["user-display"]
+    markupView="lexicon"
+    showUserDetails=false
+    showUserName=true
+    userId=userId
+    userName=userName
+/>
+```
+
+Tambem é possivel utilizar outros elementos como os icones do Lexicon:
+```html
+<@liferay_ui["icon"] 
+    icon="name-of-the-icon"
+    markupView="lexicon"
+    message="An message popup"
+    cssClass="classe-adicional"
+/>
+```
+
+>Você pode trocar os tipos dos icones, substituindo o `markupView` por Glyphicon, ou Font-Awesome
+>
+>Para uma referencia completa dos icones, acesse o link [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/)
+
+Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte link:
+[https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
+
+## Definindo Opções para o Portlet
