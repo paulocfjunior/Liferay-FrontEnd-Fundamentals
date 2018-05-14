@@ -2,18 +2,32 @@
 
 ## Sumário
 
-1. [Preparação de Ambiente](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#1-prepara%C3%A7%C3%A3o-de-ambiente)
-    1. [Java JDK](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#11-java-jdk)
-    2. [MySQL 5.6](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#12--mysql-56)
-    3. [Node.JS e NPM](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#13-nodejs-e-npm)
-    4. [Yeoman](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#14-yeoman)
-    5. [Gulp](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#15-gulp)
-    6. [Gerador de código](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#16-gerador-de-c%C3%B3digo)
-    7. [Liferay + Tomcat Bundle](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#17-liferay--tomcat-bundle)
-2. [Fundamentos](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#2-fundamentos)
-3. [Ferramentas](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#3-ferramentas)
-4. [Componentes do Front End](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#4-componentes-do-front-end)
-5. [Utilidades](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals#5-utilidades)
+1. [Preparação de Ambiente](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#1-preparação-de-ambiente)
+    1. [Java JDK](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#11-java-jdk)
+    2. [MySQL 5.6](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#12--mysql-56)
+    3. [Node.JS e NPM](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#13-nodejs-e-npm)
+    4. [Yeoman](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#14-yeoman)
+    5. [Gulp](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#15-gulp)
+    6. [Gerador de código](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#16-gerador-de-c%C3%B3digo)
+    7. [Liferay + Tomcat Bundle](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#17-liferay--tomcat-bundle)
+2. [Fundamentos](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#2-fundamentos)
+3. [Ferramentas](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#3-ferramentas)
+    1. [Blade CLI](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#31-blade-cli)
+    2. [Liferay Theme Generator](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#32-liferay-theme-generator)
+        1. [Criando um novo tema](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#321-criando-um-novo-tema)
+        2. [Alterando a estrutura da página](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#322-alterando-a-estrutura-da-p%C3%A1gina)
+        3. [Criando novos layouts para o portal](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#323-criando-novos-layouts-para-o-portal)
+        4. [Outros comandos do Liferay Theme Generator](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#324-outros-comandos-do-liferay-theme-generator)
+4. [Componentes do Front End](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#4-componentes-do-front-end)
+    1. [ADTs](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#41-adts)
+    2. [Web Content Structures & Templates](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#42-web-content-structures--templates)
+    3. [Componentes Liferay UI](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#43-componentes-liferay-ui)
+5. [Utilidades](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#5-utilidades)
+6. [Certificação](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#6-certifica%C3%A7%C3%A3o)
+    1. [Liferay 6.2 Certified Professional Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#61-liferay-62-certified-professional-developer)
+    2. [Liferay DXP Certified Professional Front-End Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#62-liferay-dxp-certified-professional-front-end-developer)
+    3. [Liferay DXP Certified Professional Back-End Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#63-liferay-dxp-certified-professional-back-end-developer)
+7. [Code snippets](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#7-code-snippets)
 
 ------------
 
@@ -320,7 +334,7 @@ Isso irá gerar a estrutura de pastas do build e ficará assim:
 Para editar qualquer arquivo do build, pode-se criar (ou copiar) o arquivo da pasta `/build` para a pasta `/src`, com o mesmo nome, em um diretório correspondente, assim, quando for executado novamente o `blade deploy`, os arquivos da pasta `/src` substiruirão os arquivos da pasta `/build` correspondentes.
 **Editar partes desses arquivos afetará o funcionamento do portal como um todo, incluindo funções nativas do portal, portanto isso deve ser levado em consideração em todas as customizações.**
 
-A estrutura de pastas do `build` é similar à estrutura quando criada pelo Yeoman, a maioria dos arquivos consiste em SCSS modularizado em múltiplas pastas e arquivos. Existe um arquivo JavaScript na pasta `build/buildTheme/js`, que até o momento está vazio, mas pode ser duplicado em `src/main/webapp/js` e assim substituirá o arquivo do `/build` com as funcionalidades JavaScript implementadas em `src/main/webapp/js/main.js`.
+>A estrutura de pastas do `build` é similar à estrutura quando criada pelo Yeoman, a maioria dos arquivos consiste em SCSS modularizado em múltiplas pastas e arquivos. Existe um arquivo JavaScript na pasta `build/buildTheme/js`, que até o momento está vazio, mas pode ser duplicado em `src/main/webapp/js` e assim substituirá o arquivo do `/build` com as funcionalidades JavaScript implementadas em `src/main/webapp/js/main.js`.
 
 ### 3.2 Liferay Theme Generator
 
@@ -380,7 +394,7 @@ Copie e cole o componente que voce quer alterar na sua pasta `src` e assim o gul
 #### 3.2.3 Criando novos layouts para o portal
 
 Ao criar um site ou uma página no portal Liferay, você precisa definir um layout para o posicionamento dos portlets
-[/images/3-2-3-layout-default.png]
+![Layouts padrões](./images/3-2-3-layout-default.png)
 
 Mas é possivel criar um novo layout caso necessário, com o _Liferay Theme Generator_ e o comando
 
@@ -611,7 +625,7 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 
 ---
 
-### Code snippets
+## 7. Code snippets
 
 Retornar as tags de um post/web content
 ```
