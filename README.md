@@ -337,20 +337,20 @@ $ yo liferay-theme
 Logo após as definições das configurações, o yeoman criará uma estrutura inicial para o tema (talvez ele precise de privilegios de administrador como `sudo`), e logo em seguida ira rodar o `npm install` para instalar e as dependencias necesárias, criando a seguinte estrutura:
 ```
 my-theme
-|- node_modules                                     // Pasta com as dependencias instaladas
-|- build                                            // Build do tema (pasta criada somente após o primeiro build)
-|- src                                              // Principais arquivos do tema
-|   |
-|   |- css                                          // Custom CSS
-|   |- js                                           // Custom JS
-|   |- WEB_INF                                      // Arquivos para o sistema da Liferay
-|       |
-|       |- liferay-look-and-feel.xml                // Arquivo com as configurações de visualização
-|       |- liferay-plugin-package.properties        // Arquivo com detalhes para visualização, como nome e descrição
-|
-|- gulpfile.js                                      // Arquivo com as tasks do gulp
-|- liferay-theme.json                               // Detalhes do tema, como ID, URL para deploy, entre outros
-|- package.json                                     // Detalhes das dependencias
+├── node_modules                                     // Pasta com as dependencias instaladas
+├── build                                            // Build do tema (pasta criada somente após o primeiro build)
+├── src                                              // Principais arquivos do tema
+│   │
+│   ├── css                                          // Custom CSS
+│   ├── js                                           // Custom JS
+│   └── WEB_INF                                      // Arquivos para o sistema da Liferay
+│       │
+│       ├── liferay-look-and-feel.xml                // Arquivo com as configurações de visualização
+│       └── liferay-plugin-package.properties        // Arquivo com detalhes para visualização, como nome e descrição
+│
+├── gulpfile.js                                      // Arquivo com as tasks do gulp
+├── liferay-theme.json                               // Detalhes do tema, como ID, URL para deploy, entre outros
+└── package.json                                     // Detalhes das dependencias
 ```
 
 Os comandos de _deploy_ e _build_ do tema, são feitos atravez do _gulp_
@@ -365,12 +365,12 @@ $ gulp watch        //Faz o deploy e continua rodando aplicando alterações enc
 Aṕos criar um tema, faça o primeiro build com o gulp. Assim será criada a pasta `build` dentro do seu tema. Dentro dela voce encontrará a pasta `templates`  dentro dela voce encontra a estrutura base do Tema.
 ```
 templates
-|- init.ftl                     // Configurações iniciais das variaveis do FTL (não recomendado alterar esse arquivo)
-|- init_custom.ftl              // Utilizado para alterar as configurações iniciais do init.ftl
-|- navigation.ftl               // Template do menu de navegação do portal
-|- portal_normal.ftl            // Estrutura inicial do portal
-|- portal_pop_up.ftl            // Template das popups do portal
-|- portlet.ftl                  // Template da estrutura que envolve os portlets
+├── init.ftl                     // Configurações iniciais das variaveis do FTL (não recomendado alterar esse arquivo)
+├── init_custom.ftl              // Utilizado para alterar as configurações iniciais do init.ftl
+├── navigation.ftl               // Template do menu de navegação do portal
+├── portal_normal.ftl            // Estrutura inicial do portal
+├── portal_pop_up.ftl            // Template das popups do portal
+└── portlet.ftl                  // Template da estrutura que envolve os portlets
 ```
 
 Copie e cole o componente que voce quer alterar na sua pasta `src` e assim o gulp substituira o arquivo ao executar o _build_.
@@ -457,7 +457,9 @@ Você pode ver uma lista completa com todas as tags disponiveis e seus parametro
 
 ## 5. Utilidades
 
-  * Taglibs. Sumário e documentação: [https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
+  * [Documentação Liferay](https://dev.liferay.com/pt/develop/tutorials).
+  * [Taglibs. Sumário e documentação](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
+  * [Certificação Liferay](https://www.liferay.com/pt/services/certification).
 
 ## 6. Certificação
 A Liferay possui um [serviço de certificação](https://www.liferay.com/pt/services/certification) que é uma prova com 50 questões, variando entre questões de verdadeiro ou falso e multipla escolha, com duração de 90 minutos e custo de USD 200,00. Esta prova permite obter um reconhecimento oficial da habilidade e experiência com o ambiente Liferay. No momento, existem 3 certificações disponíveis atualmente, uma para o Liferay 6.2 e outras 2 para o Liferay DXP, separando os conteúdos Front-End e Back-End.
