@@ -318,7 +318,9 @@ Isso irá gerar a estrutura de pastas do build e ficará assim:
 ```
 
 Para editar qualquer arquivo do build, pode-se criar (ou copiar) o arquivo da pasta `/build` para a pasta `/src`, com o mesmo nome, em um diretório correspondente, assim, quando for executado novamente o `blade deploy`, os arquivos da pasta `/src` substiruirão os arquivos da pasta `/build` correspondentes.
-**Editar partes desses arquivos poderá afetar o funcionamento do portal como um todo.**
+**Editar partes desses arquivos afetará o funcionamento do portal como um todo, incluindo funções nativas do portal, portanto isso deve ser levado em consideração em todas as customizações.**
+
+A estrutura de pastas do `build` é similar à estrutura quando criada pelo Yeoman, a maioria dos arquivos consiste em SCSS modularizado em múltiplas pastas e arquivos. Existe um arquivo JavaScript na pasta `build/buildTheme/js`, que até o momento está vazio, mas pode ser duplicado em `src/main/webapp/js` e assim substituirá o arquivo do `/build` com as funcionalidades JavaScript implementadas em `src/main/webapp/js/main.js`.
 
 ### 3.2 Liferay Theme Generator
 
@@ -399,6 +401,7 @@ Com o próximo deploy, o layout aparecerá como uma opção entre os outros ao c
 ???
 
 ## 4. Componentes do Front End
+Abaixo serão apresentados alguns componentes que auxiliam no desenvolvimento do Front-End, suas características principais e funcionalidades.
 
 ### 4.1 ADTs
 
