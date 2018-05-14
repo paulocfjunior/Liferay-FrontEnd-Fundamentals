@@ -119,7 +119,7 @@ A plataforma também permite gerenciar contas de usuários e permissões, gerenc
 ## 3. Ferramentas
 
 ### 3.1 Blade CLI
-Para facilitar a criação de módulos, serviços ou qualquer outra estrutura do Liferay 7.0, pode ser utilizado o Blade CLI, que é uma ferramenta de linha de comando baseado em um ambiente Gradle. Ele possui subcomandos que auxiliam na criação e deploy de módulos em uma instância do Liferay. Esta ferramenta está embutida no Workspace da Liferay, e pode ser instalado seguindo as instruções da [Documentação oficial da Liferay - Instalando Blade CLI](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/installing-blade-cli). Para listar os comandos do Blade CLI com as suas respectivas funções, basta executar o comando `blade help`, serão listados os seguintes comandos:
+Para facilitar a criação de módulos, serviços ou qualquer outra estrutura do Liferay 7.0, bem como deploy, gerenciamento de servidor local e outras tarefas relacionadas à plataforma, pode ser utilizado o Blade CLI, que é uma ferramenta de linha de comando baseado em um ambiente Gradle. Ele possui subcomandos que auxiliam na criação e deploy de módulos em uma instância do Liferay. Esta ferramenta está embutida no Workspace da Liferay, e pode ser instalado seguindo as instruções da [Documentação oficial da Liferay - Instalando Blade CLI](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/installing-blade-cli). Para listar os comandos do Blade CLI com as suas respectivas funções, basta executar o comando `blade help`, serão listados os seguintes comandos:
 
 ```
     create          Creates a new Liferay module project from several available
@@ -181,11 +181,144 @@ O Blade se baseia em templates para criar os módulos, existem vários templates
     war-mvc-portlet                    Creates a Liferay WAR-style MVC portlet project.
 ```
 
-Using Blade CLI gives you the flexibility to choose how you want to create your application. You can do so in your own standalone environment, or within a Liferay Workspace. You can also create a project using either the Gradle or Maven build tool. Creating Liferay modules in a workspace using Blade CLI is very similar to creating them in a standalone environment.
+É possível criar um ambiente funcional do Liferay utilizando Blade CLI, a partir da sequência de comandos:
 
-When creating projects in a workspace, you should navigate to the appropriate folder corresponding to that type of project (e.g., the /modules folder for a module project). You can also provide further directory nesting into that folder, if preferred. For example, the Gradle workspace, by default, sets the directory where your modules should be stored by setting the following property in the workspace’s gradle.properties file:
+```bash
+blade init [WORKSPACE_NAME]
+cd [WORKSPACE_NAME]
+./gradlew initBundle
+blade server start -b
+```
 
-Ao criar projetos em um workspace Liferay, você deve criá-los na pasta apropriada dentro da estrutura, por exemplo, se for criar um tema com o comando `blade create -t theme meu-novo-tema`, deve ficar dentro da pasta `/themes`.
+O parametro `-b` inicia o servidor em segundo plano. Alternativamente, pode ser usado o parametro `-d` para utilizar o modo de depuração.
+Após a execução desses comandos, o servidor entrará em processo de inicialização, para acompanhar os logs em tempo real, pode-se observar o arquivo `/bundles/tomcat-[versao]/logs/catalina.out`, com o seguinte comando:
+
+```bash
+tail -f bundles/tomcat-[versao]/logs/catalina.out
+```
+
+Isso irá observar todas as inserções no arquivo `catalina.out` que é onde os logs são registrados. Se erros ocorrerem, também serão mostrados nesse arquivo.
+
+Para interromper a execução do serviço e parar o servidor, utiliza-se o comando:
+
+```bash
+blade server stop
+```
+
+Para criar um Tema do Liferay utilizando o Blade CLI, usa-se o comando, na raiz do workspace `/[WORKSPACE_NAME]`:
+
+```bash
+blade create -t theme [THEME_NAME]
+```
+
+Este comando irá criar a `/[WORKSPACE_NAME]/wars/[THEME_NAME]`, com a estrutura de pastas:
+
+```
+[THEME_NAME]
+└── src
+    └── main
+        ├── resources
+        │   └── resources-importer
+        └── webapp
+            ├── css
+            └── WEB-INF
+```
+
+Para fazer o build do projeto, basta ir até a pasta raiz do `[THEME_NAME]` usar o comando do Blade:
+
+```bash
+blade deploy
+```
+
+Isso irá gerar a estrutura de pastas do build e ficará assim:
+
+```
+[THEME_NAME]
+├── build
+│   ├── buildTheme
+│   │   ├── css
+│   │   │   ├── application
+│   │   │   ├── aui
+│   │   │   │   └── lexicon
+│   │   │   │       ├── atlas-theme
+│   │   │   │       │   └── variables
+│   │   │   │       ├── bootstrap
+│   │   │   │       │   └── mixins
+│   │   │   │       ├── fonts
+│   │   │   │       │   └── alloy-font-awesome
+│   │   │   │       │       ├── font
+│   │   │   │       │       └── scss
+│   │   │   │       └── lexicon-base
+│   │   │   │           ├── mixins
+│   │   │   │           └── variables
+│   │   │   ├── base
+│   │   │   ├── layout
+│   │   │   ├── navigation
+│   │   │   ├── portal
+│   │   │   ├── portlet
+│   │   │   └── taglib
+│   │   ├── images
+│   │   │   ├── add_content
+│   │   │   ├── api
+│   │   │   ├── application
+│   │   │   ├── arrows
+│   │   │   ├── aui
+│   │   │   │   ├── common
+│   │   │   │   ├── menu
+│   │   │   │   └── panel
+│   │   │   ├── blogs
+│   │   │   ├── bookmarks
+│   │   │   ├── calendar
+│   │   │   ├── common
+│   │   │   ├── control_panel
+│   │   │   ├── diff
+│   │   │   ├── dockbar
+│   │   │   ├── document_library
+│   │   │   ├── emoticons
+│   │   │   ├── file_system
+│   │   │   │   ├── large
+│   │   │   │   └── small
+│   │   │   ├── forms
+│   │   │   ├── image_gallery_display
+│   │   │   ├── journal
+│   │   │   ├── language
+│   │   │   ├── lexicon
+│   │   │   ├── login
+│   │   │   ├── mail
+│   │   │   ├── message_boards
+│   │   │   ├── messages
+│   │   │   ├── navigation
+│   │   │   ├── portlet
+│   │   │   ├── progress_bar
+│   │   │   ├── ratings
+│   │   │   ├── shadow
+│   │   │   ├── shopping
+│   │   │   ├── social
+│   │   │   ├── social_bookmarks
+│   │   │   ├── staging_bar
+│   │   │   ├── trees
+│   │   │   ├── users_admin
+│   │   │   └── wiki
+│   │   ├── js
+│   │   ├── templates
+│   │   └── WEB-INF
+│   ├── libs
+│   ├── resources
+│   │   └── main
+│   │       └── resources-importer
+│   └── tmp
+│       └── war
+└── src
+    └── main
+        ├── resources
+        │   └── resources-importer
+        └── webapp
+            ├── css
+            └── WEB-INF
+```
+
+Para editar qualquer arquivo do build, pode-se criar (ou copiar) o arquivo da pasta `/build` para a pasta `/src`, com o mesmo nome, em um diretório correspondente, assim, quando for executado novamente o `blade deploy`, os arquivos da pasta `/src` substiruirão os arquivos da pasta `/build` correspondentes.
+**Editar partes desses arquivos poderá afetar o funcionamento do portal como um todo.**
 
 ### 3.2 Liferay Theme Generator
 
@@ -208,7 +341,7 @@ my-theme
 |- build                                            // Build do tema (pasta criada somente após o primeiro build)
 |- src                                              // Principais arquivos do tema
 |   |
-|   |- css                                          // Custom CSS 
+|   |- css                                          // Custom CSS
 |   |- js                                           // Custom JS
 |   |- WEB_INF                                      // Arquivos para o sistema da Liferay
 |       |
@@ -263,7 +396,7 @@ Ao terminar de definir as opções, o sistema criara um arquivo `.tpl` com a est
 
 ### 4.1 ADTs
 
-_Application Display Templates_ ou ADTs, são templates que permitem a customização dos _portlets_, são templates em _Freemarker_(.ftl), com classes e estrutura personalizada. 
+_Application Display Templates_ ou ADTs, são templates que permitem a customização dos _portlets_, são templates em _Freemarker_(.ftl), com classes e estrutura personalizada.
 
 O CSS vem do tema a partir de classes, ou um estilo inline que pode ser colocado no _portlet_ pelo portal.
 
@@ -306,7 +439,7 @@ Por exemplo: Se voce quiser criar um _User Display_, você só precisa de
 
 Tambem é possivel utilizar outros elementos como os icones do Lexicon:
 ```html
-<@liferay_ui["icon"] 
+<@liferay_ui["icon"]
     icon="name-of-the-icon"
     markupView="lexicon"
     message="An message popup"
@@ -325,3 +458,138 @@ Você pode ver uma lista completa com todas as tags disponiveis e seus parametro
 ## 5. Utilidades
 
   * Taglibs. Sumário e documentação: [https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
+
+## 6. Certificação
+A Liferay possui um [serviço de certificação](https://www.liferay.com/pt/services/certification) que é uma prova com 50 questões, variando entre questões de verdadeiro ou falso e multipla escolha, com duração de 90 minutos e custo de USD 200,00. Esta prova permite obter um reconhecimento oficial da habilidade e experiência com o ambiente Liferay. No momento, existem 3 certificações disponíveis atualmente, uma para o Liferay 6.2 e outras 2 para o Liferay DXP, separando os conteúdos Front-End e Back-End.
+
+### 6.1 Liferay 6.2 Certified Professional Developer
+A certificação de Desenvolvedor Profissional para o Liferay 6.2 compreende os seguintes itens:
+
++ Liferay Development Best Practices (10%)
+    * Development Environment Setup
+    * Understanding Liferay Plugins
+
++ Liferay Architecture and APIs (25%)
+    * Understanding Liferay Architecture
+    * Service Builder
+    * Liferay Utilities
+    * User Management and Group APIs
+    * AlloyUI
+    * Expando API
+    * Application Display Templates
+
++ Liferay Portlet Plugin Development (20%)
+    * Portlet API
+    * Configuration
+    * IPC
+    * Liferay MVCPortlet
+    * JSP and UI Technologies
+    * Permissions
+
++ Liferay Hook Plugin Development (25%)
+    * Best Practices
+    * Configuration Hook
+    * JSP Hook
+    * Language Hook
+    * Indexer Post Processor Hook
+    * Service Wrapper Hook
+    * Struts Action Hook
+    * Servlet Filter Hook
+
++ Liferay Theme Plugin Development (5%)
+    * Understanding Liferay Theme Development
+    * Color Schemes and Theme Settings
+    * Embedded Portlets
+
++ Liferay Layout Template Plugin Development (5%)
+    * Understanding Liferay Layout Template Development
+
++ Liferay Advanced Customization (10%)
+    * Understanding EXT Plugins
+    * Modifying Portal Configuration
+    * Customizing Core Portlets
+
+[+ Mais detalhes](https://www.liferay.com/pt/services/certification/professional-developer/6.2)
+
+### 6.2 Liferay DXP Certified Professional Front-End Developer
+A certificação de Front-End para o Liferay DXP compreende os seguintes itens:
+
++ Front-End State-of-the-Art (10%)
+    * Bootstrap
+    * NodeJS
+    * NPM
+    * Yeoman
+    * Gulp
+    * Soy Templates
+
++ Liferay Technologies (15%)
+    * Lexicon
+    * Metal.js
+    * AlloyUi
+    * Senna
+    * AlloyEditor
+    * Liferay AMD Module Loader
+    * Themes SDK
+
++ Building Layout Templates (20%)
+    * Layout Templates with Liferay Themes Generator
+    * Embedding Portlets in Layouts Templates
+
++ Building Themes (45%)
+    * Liferay Themes Generator
+    * Themelets
+    * Theme Contributors
+    * Context Contributors
+    * Portlet Decorators
+    * LayoutSet
+    * Resources Importer
+    * Embedding Portlets in Themes
+
++ Customizing with Templates (5%)
+    * Web Content Templates
+    * Workflow Templates
+    * Application Display Templates
++ Taglibs (5%)
+    * aui
+    * liferay-ui
+
+[+ Mais detalhes](https://www.liferay.com/pt/services/certification/dxp/front-end-developer)
+
+### 6.3 Liferay DXP Certified Professional Back-End Developer
+A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
+
++ Liferay Digital Experience Platform: Basic Concepts (25%)
+    * OSGi
+    * Liferay Modules (Bundles)
+    * JSR-286 specification
+    * Portlet Lifecycle
+    * Gogo Shell
+
++ Liferay Digital Experience Platform: Portlet Modules (20%)
+    * Portlet Components
+    * Attributes
+    * MVC
+    * Declarative Services
+
++ Liferay Digital Experience Platform: Liferay Services (25%)
+    * Users
+    * Blogs
+    * Web Content Articles
+    * Message Board Posts
+    * Pages
+
+
++ Liferay Digital Experience Platform: Liferay Frameworks (25%)
+    * Asset
+    * Search and Indexing
+    * Liferay Utilities
+    * Feedback Validation
+    * Persistence Layer
+    * Messaging
+    * Authentication
+
++ Liferay Digital Experience Platform: Upgrade Process (5%)
+    * Know how to make upgrades from Liferay 6.X to Liferay DXP
+    * Development Strategy
+
+[+ Mais detalhes](https://www.liferay.com/pt/services/certification/dxp/back-end-developer)
