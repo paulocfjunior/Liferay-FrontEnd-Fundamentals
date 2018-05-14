@@ -87,6 +87,8 @@ Para geração dos códigos do Liferay é utilizado um plugin instalado via npm,
 npm install -g generator-liferay-theme@7.2.0
 ```
 
+Para mais detalhes sobre, confira a sessão [referente](#32-theme-generator)
+
 ### 1.7 Liferay + Tomcat Bundle
 A plataforma Liferay pode ser executada localmente através do bundle disponibilizado pela Liferay neste [endereço](https://www.liferay.com/downloads?_ga=2.140026997.754221885.1523906791-1737328940.1521481680) (Liferay Portal CE bundled with Tomcat). Ela já possui um servidor Tomcat embutido, basta baixar e descompactar em algum local conhecido, o manual sugere separar os bundles dentro da pasta `~/liferay/bundles/`.
 Para iniciar o servidor Tomcat executando o portal do Liferay, abra o local onde foi descompactado o bundle, dentro da pasta Tomcat (acrescido da versão), dentro da pasta bin, e executar o comando:
@@ -185,28 +187,13 @@ When creating projects in a workspace, you should navigate to the appropriate fo
 
 Ao criar projetos em um workspace Liferay, você deve criá-los na pasta apropriada dentro da estrutura, por exemplo, se for criar um tema com o comando `blade create -t theme meu-novo-tema`, deve ficar dentro da pasta `/themes`.
 
-### 3.2 Liferay IDE
-
-## 4. Componentes do Front End
-
-
-## 5. Utilidades
-
-  * Taglibs. Sumário e documentação: [https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
-
----
----
-
-#Yeshua
----
-
-## Temas
-
-Temas são pacotes construidos para customizar o layout geral da pagina, como _header_ e _footer_, o menu de navegação, posicionamento dos _portlets_ entre outros.
+### 3.2 Liferay Theme Generator
 
 O _Liferay Theme Generator_ pode ajudar com o inicio de um novo tema e tambem com outros detalhes relacionado ao mesmo, como layouts e esquemas de cores entre outros.
 
-### Criando um novo tema
+Temas são pacotes construidos para customizar o layout geral da pagina, como _header_ e _footer_, o menu de navegação, posicionamento dos _portlets_ entre outros.
+
+#### 3.2.1 Criando um novo Tema
 
 Na pasta `themes/` do projeto, utilize o comando:
 
@@ -214,16 +201,15 @@ Na pasta `themes/` do projeto, utilize o comando:
 $ yo liferay-theme
 ```
 
-Logo após as definições das configurações, o yeoman criará uma estrutura inicial para o tema (talvez ele precise de privilegios de administrador como `sudo`), e logo em seguida ira rodar o `npm install` para instalar e as dependencias necesárias.
-
-Ao entrar na pasta, será encontrado a seguinte estrutura:
-
+Logo após as definições das configurações, o yeoman criará uma estrutura inicial para o tema (talvez ele precise de privilegios de administrador como `sudo`), e logo em seguida ira rodar o `npm install` para instalar e as dependencias necesárias, criando a seguinte estrutura:
 ```
 my-theme
 |- node_modules                                     // Pasta com as dependencias instaladas
+|- build                                            // Build do tema (pasta criada somente após o primeiro build)
 |- src                                              // Principais arquivos do tema
 |   |
-|   |- css                                          // Pasta com o CSS
+|   |- css                                          // Custom CSS 
+|   |- js                                           // Custom JS
 |   |- WEB_INF                                      // Arquivos para o sistema da Liferay
 |       |
 |       |- liferay-look-and-feel.xml                // Arquivo com as configurações de visualização
@@ -234,8 +220,48 @@ my-theme
 |- package.json                                     // Detalhes das dependencias
 ```
 
+Os comandos de _deploy_ e _build_ do tema, são feitos atravez do _gulp_
+```bash
+$ gulp build        //Faz o build do tema e cria os componentes na pasta my-theme/build
+$ gulp deploy       //Faz o build e o deploy do tema para o servidor
+$ gulp watch        //Faz o deploy e continua rodando aplicando alterações encontradas diretamente
+```
 
-## ADTs
+#### 3.2.2 Alterando a estrutura da página
+
+Aṕos criar um tema, faça o primeiro build com o gulp. Assim será criada a pasta `build` dentro do seu tema. Dentro dela voce encontrará a pasta `templates`  dentro dela voce encontra a estrutura base do Tema.
+```
+templates
+|- init.ftl                     // Configurações iniciais das variaveis do FTL (não recomendado alterar esse arquivo)
+|- init_custom.ftl              // Utilizado para alterar as configurações iniciais do init.ftl
+|- navigation.ftl               // Template do menu de navegação do portal
+|- portal_normal.ftl            // Estrutura inicial do portal
+|- portal_pop_up.ftl            // Template das popups do portal
+|- portlet.ftl                  // Template da estrutura que envolve os portlets
+```
+
+Copie e cole o componente que voce quer alterar na sua pasta `src` e assim o gulp substituira o arquivo ao executar o _build_.
+
+#### 3.2.3 Criando novos layouts para o portal
+
+Ao criar um site ou uma página no portal Liferay, você precisa definir um layout para o posicionamento dos portlets
+[/images/3-2-3-layout-default.png]
+
+Mas é possivel criar um novo layout caso necessário, com o _Liferay Theme Generator_ e o comando
+
+```bash
+$ yo liferay-theme:layout
+```
+
+E seguir as instruções do gerador, como o escolha de nome, id e quantas colunas e linhas o layout vai ter.
+>Lembrando que é utilizado o sistema do bootstrap de 12 colunas.
+
+Ao terminar de definir as opções, o sistema criara um arquivo `.tpl` com a estrutura do seu layout, e uma imagem de mesmo nome para usar como icone
+>Se o gerador for usado em uma pasta com um tema criado pelo mesmo, ele criará os arquivos na pasta `src/layouttpl`
+
+## 4. Componentes do Front End
+
+### 4.1 ADTs
 
 _Application Display Templates_ ou ADTs, são templates que permitem a customização dos _portlets_, são templates em _Freemarker_(.ftl), com classes e estrutura personalizada. 
 
@@ -256,9 +282,9 @@ Os _portlets_ que suportam ADTs são:
 
 Cada _portlet_ tem um ADT especifico, com algumas predefinições e chamadas prontas para facilitar a customização do mesmo.
 
-## Web Content Templates & Asset Displays
+### 4.2 Web Content Templates
 
-## Componentes Liferay UI
+### 4.3 Componentes Liferay UI
 
 OS ADTs (Application Display Templates) e os Templates do Web Content em Freemarker(.ftl)tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
 ```html
@@ -295,4 +321,7 @@ Tambem é possivel utilizar outros elementos como os icones do Lexicon:
 Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte link:
 [https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
 
-## Definindo Opções para o Portlet
+
+## 5. Utilidades
+
+  * Taglibs. Sumário e documentação: [https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
