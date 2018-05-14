@@ -256,8 +256,14 @@ $ yo liferay-theme:layout
 E seguir as instruções do gerador, como o escolha de nome, id e quantas colunas e linhas o layout vai ter.
 >Lembrando que é utilizado o sistema do bootstrap de 12 colunas.
 
-Ao terminar de definir as opções, o sistema criara um arquivo `.tpl` com a estrutura do seu layout, e uma imagem de mesmo nome para usar como icone
+Ao terminar de definir as opções, o sistema criara um arquivo `.tpl` com a estrutura do seu layout, e uma imagem de mesmo nome para usar como ícone
 >Se o gerador for usado em uma pasta com um tema criado pelo mesmo, ele criará os arquivos na pasta `src/layouttpl`
+
+Com o próximo deploy, o layout aparecerá como uma opção entre os outros ao criar ou editar uma página.
+
+#### 3.2.4 Outros comandos do Liferay Theme Generator
+
+???
 
 ## 4. Componentes do Front End
 
@@ -268,21 +274,23 @@ _Application Display Templates_ ou ADTs, são templates que permitem a customiza
 O CSS vem do tema a partir de classes, ou um estilo inline que pode ser colocado no _portlet_ pelo portal.
 
 Os _portlets_ que suportam ADTs são:
-    - Asset Categories Navigation;
-    - Asset Publisher;
-    - Asset Tags Navigation;
-    - Blogs;
-    - Media Gallery;
-    - RSS;
-    - Breadcrumb;
-    - Language;
-    - Navigation Menu;
-    - SiteMap;
-    - e Wiki.
+- Asset Categories Navigation;
+- Asset Publisher;
+- Asset Tags Navigation;
+- Blogs;
+- Media Gallery;
+- RSS;
+- Breadcrumb;
+- Language;
+- Navigation Menu;
+- SiteMap;
+- e Wiki.
 
 Cada _portlet_ tem um ADT especifico, com algumas predefinições e chamadas prontas para facilitar a customização do mesmo.
 
-### 4.2 Web Content Templates
+### 4.2 Web Content Structures & Templates
+
+???
 
 ### 4.3 Componentes Liferay UI
 
@@ -304,7 +312,7 @@ Por exemplo: Se voce quiser criar um _User Display_, você só precisa de
 />
 ```
 
-Tambem é possivel utilizar outros elementos como os icones do Lexicon:
+Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
 ```html
 <@liferay_ui["icon"] 
     icon="name-of-the-icon"
@@ -315,7 +323,7 @@ Tambem é possivel utilizar outros elementos como os icones do Lexicon:
 ```
 
 >Você pode trocar os tipos dos icones, substituindo o `markupView` por Glyphicon, ou Font-Awesome
->
+
 >Para uma referencia completa dos icones, acesse o link [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/)
 
 Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte link:
@@ -324,4 +332,43 @@ Você pode ver uma lista completa com todas as tags disponiveis e seus parametro
 
 ## 5. Utilidades
 
+  * Freemarker. Documentação: [https://freemarker.apache.org/docs/index.html](https://freemarker.apache.org/docs/index.html)
+
   * Taglibs. Sumário e documentação: [https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
+
+---
+
+### Code snippets
+
+Retornar as tags de um post/web content
+```
+<#assign AssetTagLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetTagLocalService")>
+<#assign entryTags = AssetTagLocalService.getEntryTags(entry.entryId)>
+```
+
+Retornar as categoras de um post
+```
+<#assign AssetCategoryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
+<#assign entryCategories = AssetCategoryLocalService.getCategories(entry.classNameId, entry.classPK)>
+```
+
+Variaveis restritas do Web Content
+```
+.vars['reserved-article-asset-tag-names'].data
+.vars['reserved-article-author-comments'].data
+.vars['reserved-article-author-email-address'].data
+.vars['reserved-article-author-id'].data
+.vars['reserved-article-author-job-title'].data
+.vars['reserved-article-author-name'].data
+.vars['reserved-article-create-date'].data
+.vars['reserved-article-description'].data
+.vars['reserved-article-display-date'].data
+.vars['reserved-article-id'].data
+.vars['reserved-article-modified-date'].data
+.vars['reserved-article-small-image-url'].data
+.vars['reserved-article-title'].data
+.vars['reserved-article-type'].data
+.vars['reserved-article-url-title'].data
+.vars['reserved-article-version'].data
+```
+
