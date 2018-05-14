@@ -375,6 +375,29 @@ templates
 
 Copie e cole o componente que voce quer alterar na sua pasta `src` e assim o gulp substituira o arquivo ao executar o _build_.
 
+Os templates permitem que você mude completamente a estrutura ta pagina, como as tags HTML, e até fixar alguns portles, fazendo com que eles não possam ser removidos
+
+É possivel chamar os portlets com a seguinte tag
+```
+<@liferay_portlet["runtime"]
+    instanceId="INSTANCE_ID"
+    portletName="PORTLET_NAME"
+/>
+```
+
+Onde o `portletName` é o nome do pacote do portlet, trocando os . por _
+EX: com.liferay.portal.search.web.portlet.SearchPortlet = com_liferay_portal_search_web_portlet_SearchPortlet
+>O `instanceId` precisa ser chamado caso o portlet pode ser usado multiplas vezes
+
+Por exemplo, para retornar o portlet para busca na página, coloque no seu código:
+```
+<@liferay_portlet["runtime"]
+    portletName="com_liferay_portal_search_web_portlet_SearchPortlet"
+/>
+```
+
+Mais [detalhes](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/embedding-portlets-in-themes-and-layout-templates)
+
 #### 3.2.3 Criando novos layouts para o portal
 
 Ao criar um site ou uma página no portal Liferay, você precisa definir um layout para o posicionamento dos portlets
@@ -398,9 +421,73 @@ Com o próximo deploy, o layout aparecerá como uma opção entre os outros ao c
 
 ???
 
-## 4. Componentes do Front End
+## 4. Ferramentas do Front End
 
-### 4.1 ADTs
+### 4.1 Linguagens utilizadas
+
+#### 4.1.1 HTML & Estrutura
+
+Para a estrutura HTML da página e dos portlets é utilizado o _Freemarker_ que é uma linguagem que mistura Java e HTML.
+
+Para construir elementos utilizando HTML normalmente:
+```
+<ul>
+    <li>Exemplo</li>
+</ul>
+```
+
+Mas também podemos ter a ajuda de variaveis:
+```
+<#assign variable = "Exemplo" />
+
+<ul>
+    <li>${variable}</li>
+</ul>
+```
+
+E tambem podemos ter loops:
+```
+<#assign objectList = ["Exemplo 1","Exemplo 2", "Exemplo 3" />
+
+<ul>
+    <#list object in objectList>
+        <li>${object}</li>
+    </# list>
+</ul>
+```
+
+[Mais detalhes](https://freemarker.apache.org/docs/)
+
+#### 4.1.2 CSS
+
+Para o CSS é utilizado SCSS, o CSS com funções como Variaveis, Nesting, Mixins entre outros
+
+```SCSS
+div .text {
+    color: blue;
+
+    &.red {
+        color: red;
+    }
+}
+```
+
+Compilado:
+```CSS
+div .text {
+    color: blue;
+}
+div .text.red {
+    color: red;
+}
+```
+
+#### 4.1.3 Javascript
+
+Para o Javascript, a preferencia é para o ES6, porem é possivel utilizar outras bibliotecas, como o Jquery, que ja vem incluso no pacote.
+É possivel tambem adicionar mais bibliotecas via `NPM`, ou adicionar na pasta JS do seu tema, e adicionar no `head` do seu template
+
+### 4.2 ADTs
 
 _Application Display Templates_ ou ADTs, são templates que permitem a customização dos _portlets_, são templates em _Freemarker_(.ftl), com classes e estrutura personalizada.
 
@@ -421,11 +508,11 @@ Os _portlets_ que suportam ADTs são:
 
 Cada _portlet_ tem um ADT especifico, com algumas predefinições e chamadas prontas para facilitar a customização do mesmo.
 
-### 4.2 Web Content Structures & Templates
+### 4.3 Web Content Structures & Templates
 
 ???
 
-### 4.3 Componentes Liferay UI
+### 4.4 Componentes Liferay UI
 
 OS ADTs (Application Display Templates) e os Templates do Web Content em Freemarker(.ftl)tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
 ```html
@@ -610,19 +697,19 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 
 ### Code snippets
 
-Retornar as tags de um post/web content
+Retornar as tags de um post/web content (.ftl)
 ```
 <#assign AssetTagLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetTagLocalService")>
 <#assign entryTags = AssetTagLocalService.getEntryTags(entry.entryId)>
 ```
 
-Retornar as categoras de um post
+Retornar as categoras de um post (.ftl)
 ```
 <#assign AssetCategoryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
 <#assign entryCategories = AssetCategoryLocalService.getCategories(entry.classNameId, entry.classPK)>
 ```
 
-Variaveis restritas do Web Content
+Variaveis restritas do Web Content (.ftl)
 ```
 .vars['reserved-article-asset-tag-names'].data
 .vars['reserved-article-author-comments'].data
