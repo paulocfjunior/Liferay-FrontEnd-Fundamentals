@@ -2,43 +2,49 @@
 
 ## Sumário
 
-1. [Preparação de Ambiente](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#1-preparação-de-ambiente)
-    1. [Java JDK](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#11-java-jdk)
-    2. [MySQL 5.6](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#12--mysql-56)
-    3. [Node.JS e NPM](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#13-nodejs-e-npm)
-    4. [Yeoman](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#14-yeoman)
-    5. [Gulp](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#15-gulp)
-    6. [Gerador de código](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#16-gerador-de-c%C3%B3digo)
-    7. [Liferay + Tomcat Bundle](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#17-liferay--tomcat-bundle)
-2. [Fundamentos](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#2-fundamentos)
-3. [Ferramentas](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#3-ferramentas)
-    1. [Blade CLI](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#31-blade-cli)
-    2. [Liferay Theme Generator](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#32-liferay-theme-generator)
-        1. [Criando um novo tema](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#321-criando-um-novo-tema)
-        2. [Alterando a estrutura da página](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#322-alterando-a-estrutura-da-p%C3%A1gina)
-        3. [Criando novos layouts para o portal](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#323-criando-novos-layouts-para-o-portal)
-        4. [Themelets](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#324-themelets)
-4. [Componentes do Front End](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#4-componentes-do-front-end)
-    1. [Linguagens utilizadas](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#41-linguagens-utilizadas)
-        1. [HTML & Estrutura](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#411-html--estrutura)
-        2. [CSS](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#412-css)
-        3. [JavaScript](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#413-javascript)
-    2. [ADTs](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#42-adts)
-    3. [Web Content Structures & Templates](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#43-web-content-structures--templates)
-    4. [Componentes Liferay UI](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#44-componentes-liferay-ui)
-    5. [Gulp Tasks](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#45-gulp-tasks)
-        1. [Gulp build](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#451-gulp-build)
-        2. [Gulp deploy](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#452-gulp-deploy)
-        3. [Gulp watch](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#453-gulp-watch)
-        4. [Gulp init](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#454-gulp-init)
-        5. [Gulp extend](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#455-gulp-extend)
-        6. [Gulp status](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#456-gulp-status)
-5. [Utilidades](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#5-utilidades)
-6. [Certificação Liferay](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#6-certifica%C3%A7%C3%A3o-liferay)
-    1. [Liferay 6.2 Certified Professional Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#61-liferay-62-certified-professional-developer)
-    2. [Liferay DXP Certified Professional Front-End Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#62-liferay-dxp-certified-professional-front-end-developer)
-    3. [Liferay DXP Certified Professional Back-End Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#63-liferay-dxp-certified-professional-back-end-developer)
-7. [Code snippets](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#7-code-snippets)
+1. [Preparação de Ambiente]()
+    1. [Java JDK]()
+    2. [MySQL 5.6]()
+    3. [Node.JS e NPM]()
+    4. [Yeoman]()
+    5. [Gulp]()
+    6. [Gerador de código]()
+    7. [Liferay + Tomcat Bundle]()
+2. [Fundamentos]()
+3. [Ferramentas]()
+    1. [Blade CLI]()
+    2. [Liferay Theme Generator]()
+        1. [Criando um novo Tema]()
+        2. [Alterando a estrutura da página]()
+        3. [Criando novos layouts para o portal]()
+        4. [Criando Themelets]()
+        5. [Importando um tema]()
+4. [Componentes do Front End]()
+    1. [Linguagens utilizadas]()
+        1. [HTML & Estrutura]()
+            - [FreeMarker]()
+            - [Soy Templates (Google Closure)]()
+        2. [CSS]()
+        3. [JavaScript]()
+    2. [ADTs]()
+    3. [Web Content Structures & Templates]()
+        1. [Web Content Structures]()
+        2. [Web Content Templates]()
+    4. [Componentes Liferay UI]()
+    5. [Gulp Tasks]()
+        1. [Gulp build]()
+        2. [Gulp deploy]()
+        3. [Gulp watch]()
+        4. [Gulp init]()
+        5. [Gulp extend]()
+        6. [Gulp status]()
+5. [Utilidades]()
+6. [Certificação Liferay]()
+    1. [Liferay 6.2 Certified Professional Developer]()
+    2. [Liferay DXP Certified Professional Front-End Developer]()
+    3. [Liferay DXP Certified Professional Back-End Developer]()
+7. [Code snippets]()
+    - [Blog / Web content]()
 
 -----
 
@@ -58,7 +64,7 @@ export JDK_HOME=$JAVA_HOME
 export PATH="$JDK_HOME/bin:$PATH"
 ```
 
-### 1.2  MySQL 5.6
+### 1.2 MySQL 5.6
 É preciso também fazer a instalação do MySQL 5.6, embora a Plataforma do Liferay utilize por padrão o HSQL (Hyper SQL), eles não o recomendam para ambiente de produção.
 A instalação pode ser feita através desses comandos.
 
@@ -391,7 +397,7 @@ $ gulp watch        //Faz o deploy e continua rodando aplicando alterações enc
 
 #### 3.2.2 Alterando a estrutura da página
 
-Após criar um tema, faça o primeiro build com o gulp. Assim será criada a pasta `build` dentro do seu tema. Dentro dela voce encontrará a pasta `templates`  dentro dela voce encontra a estrutura base do Tema.
+Após criar um tema, faça o primeiro build com o gulp. Assim será criada a pasta `build` dentro do seu tema. Dentro dela voce encontrará a pasta `templates` dentro dela voce encontra a estrutura base do Tema.
 
 ```
 templates
@@ -405,7 +411,7 @@ templates
 
 Copie e cole o componente que voce quer alterar na sua pasta `src` e assim o gulp substituira o arquivo ao executar o _build_.
 
-Os templates permitem que você mude completamente a estrutura ta pagina, como as tags HTML, e até fixar alguns portles, fazendo com que eles não possam ser removidos
+Os templates permitem que você mude completamente a estrutura ta pagina, como as tags HTML, e até fixar alguns portles, fazendo com que eles não possam ser removidos.
 
 É possivel chamar os portlets com a seguinte tag:
 
@@ -444,12 +450,12 @@ $ yo liferay-theme:layout
 E seguir as instruções do gerador, como o escolha de nome, id e quantas colunas e linhas o layout vai ter.
 >Lembrando que é utilizado o sistema do bootstrap de 12 colunas.
 
-Ao terminar de definir as opções, o sistema criará um arquivo de extensão `tpl` com a estrutura do seu layout, e uma imagem de mesmo nome para usar como ícone
->Se o gerador for usado em uma pasta com um tema criado pelo mesmo, ele criará os arquivos na pasta `src/layouttpl`
+Ao terminar de definir as opções, o sistema criará um arquivo de extensão `tpl` com a estrutura do seu layout, e uma imagem de mesmo nome para usar como ícone.
+>Se o gerador for usado em uma pasta com um tema criado pelo mesmo, ele criará os arquivos na pasta `src/layouttpl`.
 
 Com o próximo deploy, o layout aparecerá como uma opção entre os outros ao criar ou editar uma página.
 
-#### 3.2.4 Themelets
+#### 3.2.4 Criando Themelets
 Existe um componente que se chama _themelet_, que é uma extensão para um tema e pode agregar folhas de estilo, imagens, templates e funcionalidades JavaScript à ele. É indicado para pequenas alterações e tem o objetivo de trazer mais modularidade para os temas e evitar repetição de código.
 >No registro do npm existem themelets disponíveis para reutilização.
 
@@ -475,6 +481,15 @@ Para tornar o themelet disponível para utilização, pode-se utilizar dois mét
 - `npm link`: cria um symlink do diretório do themelet na pasta global do node_modules, dessa forma qualquer alteração no themelet ficará disponível instantaneamente para os temas que o extendem.
 - `npm install -g`: este método copia os arquivos do themelet para a pasta node_modules global, mas não mantém o vínculo com a pasta original, dessa forma, quando houverem alterações no themelet será necessário executar o comando novamente.
 
+> Para mais informações sobre themelets, [acesse aqui](https://dev.liferay.com/pta/develop/tutorials/-/knowledge_base/7-0/themelets).
+
+#### 3.2.5 Importando temas
+Esta funcionalidade do `liferay-theme` permite importar outros temas encontrados na pasta para o modelo do _Liferay Theme Generator_.
+
+```bash
+yo liferay-theme:import
+```
+
 ## 4. Componentes do Front End
 
 Abaixo serão apresentados alguns componentes que auxiliam no desenvolvimento do Front-End, suas características principais e funcionalidades.
@@ -483,9 +498,9 @@ Abaixo serão apresentados alguns componentes que auxiliam no desenvolvimento do
 
 #### 4.1.1 HTML & Estrutura
 
-##### Freemarker
+##### FreeMarker
 
-Para a estrutura HTML da página e dos portlets é utilizado o _Freemarker_ que é uma linguagem que mistura Java e HTML.
+Para a estrutura HTML da página e dos portlets é utilizado o _FreeMarker_ que é uma linguagem que mistura Java e HTML.
 
 Para construir elementos utilizando HTML normalmente:
 
@@ -495,7 +510,7 @@ Para construir elementos utilizando HTML normalmente:
 </ul>
 ```
 
-Mas também podemos ter a ajuda de variaveis:
+Mas também podemos ter a ajuda de variaveis e interpolação:
 
 ```FreeMarker
 <#assign variable = "Exemplo" />
@@ -517,12 +532,12 @@ E tambem podemos ter loops:
 </ul>
 ```
 
-[+ Mais detalhes](https://freemarker.apache.org/docs/)
+[+ Mais detalhes](https://freemarker.apache.org/docs/).
 
-###### Soy Templates (Google Closure)
+##### Soy Templates (Google Closure)
 
 Embora não utilizado pelos ADTs e pelos Web Content Displays, o _.soy_ pode ser usado para se construir portlets em conjunto com o _metal.js_.
-Para mais detalhes sobre o soy, [clique aqui](https://developers.google.com/closure/templates/)
+Para mais detalhes sobre o soy, [clique aqui](https://developers.google.com/closure/templates/).
 
 #### 4.1.2 CSS
 
@@ -549,22 +564,22 @@ div .text.red {
 }
 ```
 
-Tambem são utilizadas as bibliotecas Bootstrap e Lexicon/Clay que possuem varios mixins e componentes já estilizados
+Tambem são utilizadas as bibliotecas Bootstrap e Lexicon/Clay que possuem varios mixins e componentes já estilizados.
 
 Para saber mais:
-- [Bootstrap](http://getbootstrap.com/docs/3.3/css/)
-- [Lexicon](https://lexiconcss.wedeploy.io/)
+- [Bootstrap](http://getbootstrap.com/docs/3.3/css/).
+- [Lexicon](https://lexiconcss.wedeploy.io/).
 
->Alguns elementos do Lexicon podem ser chamados com a taglib liferay-ui
+>Alguns elementos do Lexicon podem ser chamados com a taglib liferay-ui.
 
-#### 4.1.3 Javascript
+#### 4.1.3 JavaScript
 
-Para o Javascript, a preferencia é para o ES6, porem é possivel utilizar outras bibliotecas, como o jQuery, que ja vem incluso no pacote.
-É possivel tambem adicionar mais bibliotecas via `NPM`, ou adicionar na pasta JS do seu tema, e adicionar no `head` do seu template.
+Para o JavaScript, a preferencia é para o ES6, porem é possivel utilizar outras bibliotecas, como o jQuery, que ja vem incluso no pacote.
+É possivel tambem adicionar mais bibliotecas via `NPM`, ou adicionar na pasta JS do seu tema, e importar na tag `head` do seu template `portal_normal.ftl`.
 
 ### 4.2 ADTs
 
-_Application Display Templates_ ou ADTs, são templates que permitem a customização dos _portlets_, são templates em _Freemarker_(.ftl), com classes e estrutura personalizada.
+_Application Display Templates_ ou ADTs, são templates que permitem a customização dos _portlets_, são templates em _FreeMarker_ (ftl), com classes e estrutura personalizada.
 
 O CSS vem do tema a partir de classes, ou um estilo inline que pode ser colocado no _portlet_ pelo portal.
 
@@ -587,28 +602,28 @@ Cada _portlet_ tem um ADT especifico, com algumas predefinições e chamadas pro
 
 Web Contents são elementos utilizados para apresentar conteudo seja através do proprio portlet do Web Content, ou de um Asset Display, que pode listar todos os conteudos do portal de forma organizadada, assim como um Blog, porem de forma mais aberta e customizável. Em conjunto com os ADTs, é possivel produzir elementos como galerias, listagem de posts, album de fotos, entre outros. É um dos portlets mais personalizaveis da liferay.
 
-O Web Content se utiliza de uma estrutura que deve ser criada para definir o que podera ser utilizado por um web content, e cada estrutura pode ter vários templates que assim como um ADT, se utilizam do Freemarker para customizar sua exibição.
+O Web Content se utiliza de uma estrutura que deve ser criada para definir o que podera ser utilizado por um web content, e cada estrutura pode ter vários templates que assim como um ADT, se utilizam do FreeMarker para customizar sua exibição.
 
-É possivel encontrar as opções de Estrutura e Templates no sub-menu de Web Content
+É possivel encontrar as opções de Estrutura e Templates no sub-menu de Web Content:
 ![Web Content Submenu](./images/4-3-web-content-strucutures.jpeg)
 
->O Asset Display se utiliza de ADTs para a customização da listagem dos Web Contents, mas o Web Content em si, quando maximizado se utiliza da estrutura do Template
+>O Asset Display se utiliza de ADTs para a customização da listagem dos Web Contents, mas o Web Content em si, quando maximizado se utiliza da estrutura do Template.
 
-[+ Mais Detalhes](https://dev.liferay.com/pt/discover/portal/-/knowledge_base/7-0/creating-web-content)
+[+ Mais Detalhes](https://dev.liferay.com/pt/discover/portal/-/knowledge_base/7-0/creating-web-content).
 
 #### 4.3.1 Web Content Structures
 
-Com as estrutura você pode definir o que um web content irá apresentar, dentre varias opções como publicação de imagens, texto comum, html e select boxes. E definir opções como conteudo obrigatório ou opcional para a publicação do Web Content.
+Com as estruturas você pode definir o que um web content irá apresentar, dentre varias opções como publicação de imagens, texto comum, html e select boxes. E definir opções como conteúdo obrigatório ou opcional para a publicação do Web Content.
 
 #### 4.3.2 Web Content Templates
 
-Com os templates você pode definir como a estrutura será exibida, a partir de um script _.ftl_.
+Com os templates você pode definir como a estrutura será exibida, a partir de um script no formato _ftl_.
 
-Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas para auxiliar na construção do código, junto com as chamadas dos elementos que foram determinados na estrutura, mas também é possivel usar algumas variaveis restritas para acessar outros elemenos do Web Content. ([Ver mais](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#7-code-snippets))
+Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas para auxiliar na construção do código, junto com as chamadas dos elementos que foram determinados na estrutura, mas também é possivel usar algumas variaveis restritas para acessar outros elementos do Web Content. ([Ver mais](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#7-code-snippets)).
 
 ### 4.4 Componentes Liferay UI
 
-Os ADTs (Application Display Templates) e os Templates do Web Content em FreeMarker (.ftl) tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
+Os ADTs (Application Display Templates) e os Templates do Web Content em FreeMarker Template (_ftl_) tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
 
 ```FreeMarker
 <@liferay_ui['propriedade']
@@ -646,7 +661,7 @@ Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
 Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte [link](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
 
 ### 4.5 Gulp Tasks
-O Liferay possui gulp tasks pré definidas para auxiliar no _build_ e _deploy_ dos temas, essas tasks permitem compilar todos os arquivos do tema em um arquivo WAR e fazer o deploy no servidor de aplicação, bem como extender temas com themelets, que permitem fazer pequenas alterações sem que seja necessário criar um tema completo.
+O Liferay possui gulp tasks pré definidas para auxiliar no _build_ e _deploy_ dos temas, essas tasks permitem compilar todos os arquivos do tema em um arquivo WAR e fazer o `deploy` no servidor de aplicação, bem como extender temas com themelets, que permitem fazer pequenas alterações sem que seja necessário criar um tema completo.
 
 #### 4.5.1 Gulp build
 Esta tarefa compila todo o código fonte em um arquivo WAR na pasta `dist` do seu tema.
@@ -671,7 +686,7 @@ Quando se altera a base do tema, existem duas possibilidades: *Styled* ou *Unsty
 - O _Base Theme Styled_ possui todo o estilo, efeitos e funcionalidades nativas do portal (como login, ferramentas de edição e gerenciamento de conteúdo), e todos os arquivos SCSS padrões ficam disponíveis, incluindo Bootstrap, Lexicon e etc, porém os portlets e as páginas não são estilizadas.
 - O _Base Theme Unstyled_, não possui definições de estilo, nem mesmo para o portal e suas funcionalidades, é util quando se deseja recriar toda a estrutura visual do portal.
 
->Ambos os _Base Themes_ estão publicados como pacotes npm no liferay-portal.
+>Ambos os _Base Themes_ estão publicados como pacotes npm, [Styled](https://www.npmjs.com/package/liferay-theme-styled) e [Unstyled](https://www.npmjs.com/package/liferay-theme-unstyled).
 >Também é possível extender o tema a partir de outros temas publicados no `npm` e, de acordo com a documentação, não necessariamente precisam estar instalados.
 
 #### 4.5.6 Gulp status
@@ -679,7 +694,7 @@ Esta tarefa apenas reporta qual o _base theme_ utilizado e quais _themelets_ est
 
 ## 5. Utilidades
 
-  * [Freemarker. Documentação](https://freemarker.apache.org/docs/index.html)
+  * [FreeMarker. Documentação](https://freemarker.apache.org/docs/index.html)
   * [Documentação Liferay](https://dev.liferay.com/pt/develop/tutorials).
   * [Taglibs. Sumário e documentação](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
   * [Certificação Liferay](https://www.liferay.com/pt/services/certification).
@@ -822,21 +837,20 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 ## 7. Code snippets
 
 #### Blog / Web content
-Retornar as tags de um post/web content (.ftl)
+Retornar as tags de um post/web content (ftl)
 ```
 <#assign AssetTagLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetTagLocalService")>
 <#assign entryTags = AssetTagLocalService.getEntryTags(entry.entryId)>
 ```
 
-Retornar as categoras de um post/web content (.ftl)
+Retornar as categoras de um post/web content (ftl)
 ```
 <#assign AssetCategoryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
 <#assign entryCategories = AssetCategoryLocalService.getCategories(entry.classNameId, entry.classPK)>
 ```
->Caso a chamda do serviceLocator esteja dando erro, retirar as variaveis restritas no portal em  Menu > Control Panel > System Settings > Foundation > FreeMarker Engine  e remover a variavel restrita serviceLocator
+>Caso a chamada do serviceLocator falhe, deve-se retirar as variáveis restritas no portal em `Menu > Control Panel > System Settings > Foundation > FreeMarker Engine` e remover a variável restrita serviceLocator.
 
-
-Variaveis restritas do Web Content (.ftl)
+Variaveis restritas do Web Content (ftl)
 ```
 .vars['reserved-article-asset-tag-names'].data
 .vars['reserved-article-author-comments'].data
