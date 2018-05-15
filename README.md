@@ -17,26 +17,37 @@
         1. [Criando um novo tema](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#321-criando-um-novo-tema)
         2. [Alterando a estrutura da página](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#322-alterando-a-estrutura-da-p%C3%A1gina)
         3. [Criando novos layouts para o portal](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#323-criando-novos-layouts-para-o-portal)
-        4. [Outros comandos do Liferay Theme Generator](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#324-outros-comandos-do-liferay-theme-generator)
+        4. [Themelets](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#324-themelets)
 4. [Componentes do Front End](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#4-componentes-do-front-end)
-    1. [ADTs](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#41-adts)
-    2. [Web Content Structures & Templates](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#42-web-content-structures--templates)
-    3. [Componentes Liferay UI](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#43-componentes-liferay-ui)
+    1. [Linguagens utilizadas](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#41-linguagens-utilizadas)
+        1. [HTML & Estrutura](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#411-html--estrutura)
+        2. [CSS](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#412-css)
+        3. [JavaScript](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#413-javascript)
+    2. [ADTs](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#42-adts)
+    3. [Web Content Structures & Templates](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#43-web-content-structures--templates)
+    4. [Componentes Liferay UI](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#44-componentes-liferay-ui)
+    5. [Gulp Tasks](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#45-gulp-tasks)
+        1. [Gulp build](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#451-gulp-build)
+        2. [Gulp deploy](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#452-gulp-deploy)
+        3. [Gulp watch](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#453-gulp-watch)
+        4. [Gulp init](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#454-gulp-init)
+        5. [Gulp extend](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#455-gulp-extend)
+        6. [Gulp status](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#456-gulp-status)
 5. [Utilidades](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#5-utilidades)
-6. [Certificação](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#6-certifica%C3%A7%C3%A3o)
+6. [Certificação Liferay](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#6-certifica%C3%A7%C3%A3o-liferay)
     1. [Liferay 6.2 Certified Professional Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#61-liferay-62-certified-professional-developer)
     2. [Liferay DXP Certified Professional Front-End Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#62-liferay-dxp-certified-professional-front-end-developer)
     3. [Liferay DXP Certified Professional Back-End Developer](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#63-liferay-dxp-certified-professional-back-end-developer)
 7. [Code snippets](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#7-code-snippets)
 
-------------
+-----
 
 ## 1. Preparação de Ambiente
 Será apresentado um tutorial para preparação de ambiente e primeiros passos na plataforma Liferay para Desenvolvedores Front End, com base no treinamento oficial Liferay e mais algumas informações fornecidas pela equipe da Liferay USA.
 Todos os passos foram executados em ambiente Linux, distribuição Ubuntu 16.04.
 
 ### 1.1 Java JDK
-Para a execução do servidor local do Liferay, é preciso instalar a versão 1.8 do Java Development Kit (JDK) e acrescentar o endereço da pasta `/bin` do JDK no início da variável PATH (através do arquivo `~/.bashrc`).
+Para a execução do servidor local do Liferay, é preciso instalar a versão 1.8 do Java Development Kit (JDK) e acrescentar o endereço da pasta `bin` do JDK no início da variável PATH (através do arquivo `~/.bashrc`).
 Também é preciso definir as variáveis de ambiente `JAVA_HOME` e `JDK_HOME`, com o endereço de instalação do JDK, sem a pasta bin.
 
 No final do arquivo .bashrc, foram inseridas as linhas:
@@ -101,27 +112,27 @@ Para geração dos códigos do Liferay é utilizado um plugin instalado via npm,
 npm install -g generator-liferay-theme@7.2.0
 ```
 
-Para mais detalhes sobre, confira a sessão [referente](#32-theme-generator)
+Para mais detalhes sobre, confira a sessão [referente](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#32-liferay-theme-generator)
 
 ### 1.7 Liferay + Tomcat Bundle
-A plataforma Liferay pode ser executada localmente através do bundle disponibilizado pela Liferay neste [endereço](https://www.liferay.com/downloads?_ga=2.140026997.754221885.1523906791-1737328940.1521481680) (Liferay Portal CE bundled with Tomcat). Ela já possui um servidor Tomcat embutido, basta baixar e descompactar em algum local conhecido, o manual sugere separar os bundles dentro da pasta `~/liferay/bundles/`.
-Para iniciar o servidor Tomcat executando o portal do Liferay, abra o local onde foi descompactado o bundle, dentro da pasta Tomcat (acrescido da versão), dentro da pasta bin, e executar o comando:
+A plataforma Liferay pode ser executada localmente através do bundle disponibilizado pela Liferay [neste endereço](https://www.liferay.com/downloads?_ga=2.140026997.754221885.1523906791-1737328940.1521481680) (Liferay Portal CE bundled with Tomcat). Ela já possui um servidor Tomcat embutido, portando só é necessário fazer o download e descompactar em algum local conhecido, o manual sugere separar os bundles dentro de uma pasta como `~/liferay/bundles/`, por exemplo.
+Para iniciar o servidor Tomcat executando o portal do Liferay, basta abrir o local onde foi descompactado o bundle, dentro da pasta `tomcat-[versao]/bin`, e executar o comando:
 
 ```bash
-computador:~/liferay/bundles/ce/tomcat-[versao]/bin$ ./startup.sh
+./startup.sh
 ```
 
-Os logs da plataforma são externados no arquivo `~/liferay-bundle/tomcat-[versao]/logs/catalina.out`, portanto para acompanhar os logs em tempo real, é utilizado o comando:
+Os logs da plataforma são externados no arquivo `tomcat-[versao]/logs/catalina.out`, portanto para acompanhar os logs em tempo real, é utilizado o comando:
 
 ```bash
-computador:~/liferay/bundles/ce/tomcat-[versao]/logs$ tail -f catalina.out
+tail -f catalina.out
 ```
 
 O servidor leva alguns segundos para inicializar, quando conclui o processo de inicialização uma aba do navegador é lançada com o portal da Liferay aberto na página de configuração inicial, onde é possível definir a conta de usuário administrador, o nome do site principal e escolher o banco de dados padrão.
-Para encerrar a execução do servidor Tomcat é executado o seguinte script na pasta bin do Tomcat:
+Para encerrar a execução do servidor Tomcat é executado o seguinte script na pasta `tomcat-[versao]/bin`:
 
 ```bash
-computador:~/liferay/bundles/ce/tomcat-[versao]/bin$ ./shutdown.sh
+./shutdown.sh
 ```
 
 Assim como o startup.sh, o shutdown também leva alguns segundos para ser executado, porém ocorre em segundo plano, então não precisa ser mantido nenhuma janela aberta para que ele seja concluído.
@@ -205,7 +216,7 @@ blade server start -b
 ```
 
 O parametro `-b` inicia o servidor em segundo plano. Alternativamente, pode ser usado o parametro `-d` para utilizar o modo de depuração.
-Após a execução desses comandos, o servidor entrará em processo de inicialização, para acompanhar os logs em tempo real, pode-se observar o arquivo `/bundles/tomcat-[versao]/logs/catalina.out`, com o seguinte comando:
+Após a execução desses comandos, o servidor entrará em processo de inicialização, para acompanhar os logs em tempo real, pode-se observar o arquivo `bundles/tomcat-[versao]/logs/catalina.out`, com o seguinte comando:
 
 ```bash
 tail -f bundles/tomcat-[versao]/logs/catalina.out
@@ -219,13 +230,13 @@ Para interromper a execução do serviço e parar o servidor, utiliza-se o coman
 blade server stop
 ```
 
-Para criar um Tema do Liferay utilizando o Blade CLI, usa-se o comando, na raiz do workspace `/[WORKSPACE_NAME]`:
+Para criar um Tema do Liferay utilizando o Blade CLI, usa-se o comando, na raiz do workspace `[WORKSPACE_NAME]`:
 
 ```bash
 blade create -t theme [THEME_NAME]
 ```
 
-Este comando irá criar a `/[WORKSPACE_NAME]/wars/[THEME_NAME]`, com a estrutura de pastas:
+Este comando irá criar a `[WORKSPACE_NAME]/wars/[THEME_NAME]`, com a estrutura de pastas:
 
 ```
 [THEME_NAME]
@@ -331,10 +342,10 @@ Isso irá gerar a estrutura de pastas do build e ficará assim:
             └── WEB-INF
 ```
 
-Para editar qualquer arquivo do build, pode-se criar (ou copiar) o arquivo da pasta `/build` para a pasta `/src`, com o mesmo nome, em um diretório correspondente, assim, quando for executado novamente o `blade deploy`, os arquivos da pasta `/src` substiruirão os arquivos da pasta `/build` correspondentes.
+Para editar qualquer arquivo do build, pode-se criar (ou copiar) o arquivo da pasta `build` para a pasta `src`, com o mesmo nome, em um diretório correspondente, assim, quando for executado novamente o `blade deploy`, os arquivos da pasta `src` substiruirão os arquivos da pasta `build` correspondentes.
 **Editar partes desses arquivos afetará o funcionamento do portal como um todo, incluindo funções nativas do portal, portanto isso deve ser levado em consideração em todas as customizações.**
 
->A estrutura de pastas do `build` é similar à estrutura quando criada pelo Yeoman, a maioria dos arquivos consiste em SCSS modularizado em múltiplas pastas e arquivos. Existe um arquivo JavaScript na pasta `build/buildTheme/js`, que até o momento está vazio, mas pode ser duplicado em `src/main/webapp/js` e assim substituirá o arquivo do `/build` com as funcionalidades JavaScript implementadas em `src/main/webapp/js/main.js`.
+>A estrutura de pastas do `build` é similar à estrutura quando criada pelo Yeoman, a maioria dos arquivos consiste em SCSS modularizado em múltiplas pastas e arquivos. Existe um arquivo JavaScript na pasta `build/buildTheme/js`, que até o momento está praticamente vazio, mas pode ser duplicado em `src/main/webapp/js` (ainda não criada) e assim substituirá o arquivo do `/build` com as funcionalidades JavaScript implementadas em `src/main/webapp/js/main.js`.
 
 ### 3.2 Liferay Theme Generator
 
@@ -344,13 +355,14 @@ Temas são pacotes construidos para customizar o layout geral da pagina, como _h
 
 #### 3.2.1 Criando um novo Tema
 
-Na pasta `themes/` do projeto, utilize o comando:
+Na pasta `themes` do projeto, utilize o comando:
 
 ```bash
 $ yo liferay-theme
 ```
 
 Logo após as definições das configurações, o yeoman criará uma estrutura inicial para o tema (talvez ele precise de privilegios de administrador como `sudo`), e logo em seguida ira rodar o `npm install` para instalar e as dependencias necesárias, criando a seguinte estrutura:
+
 ```
 my-theme
 ├── node_modules                                     // Pasta com as dependencias instaladas
@@ -369,7 +381,8 @@ my-theme
 └── package.json                                     // Detalhes das dependencias
 ```
 
-Os comandos de _deploy_ e _build_ do tema, são feitos atravez do _gulp_
+Os comandos de _deploy_ e _build_ do tema, são feitos atravez do _gulp_:
+
 ```bash
 $ gulp build        //Faz o build do tema e cria os componentes na pasta my-theme/build
 $ gulp deploy       //Faz o build e o deploy do tema para o servidor
@@ -378,7 +391,8 @@ $ gulp watch        //Faz o deploy e continua rodando aplicando alterações enc
 
 #### 3.2.2 Alterando a estrutura da página
 
-Aṕos criar um tema, faça o primeiro build com o gulp. Assim será criada a pasta `build` dentro do seu tema. Dentro dela voce encontrará a pasta `templates`  dentro dela voce encontra a estrutura base do Tema.
+Após criar um tema, faça o primeiro build com o gulp. Assim será criada a pasta `build` dentro do seu tema. Dentro dela voce encontrará a pasta `templates`  dentro dela voce encontra a estrutura base do Tema.
+
 ```
 templates
 ├── init.ftl                     // Configurações iniciais das variaveis do FTL (não recomendado alterar esse arquivo)
@@ -393,8 +407,9 @@ Copie e cole o componente que voce quer alterar na sua pasta `src` e assim o gul
 
 Os templates permitem que você mude completamente a estrutura ta pagina, como as tags HTML, e até fixar alguns portles, fazendo com que eles não possam ser removidos
 
-É possivel chamar os portlets com a seguinte tag
-```
+É possivel chamar os portlets com a seguinte tag:
+
+```FreeMarker
 <@liferay_portlet["runtime"]
     instanceId="INSTANCE_ID"
     portletName="PORTLET_NAME"
@@ -406,13 +421,14 @@ EX: com.liferay.portal.search.web.portlet.SearchPortlet = com_liferay_portal_sea
 >O `instanceId` precisa ser chamado caso o portlet possa ser usado multiplas vezes
 
 Por exemplo, para retornar o portlet para busca na página, coloque no seu código:
-```
+
+```FreeMarker
 <@liferay_portlet["runtime"]
     portletName="com_liferay_portal_search_web_portlet_SearchPortlet"
 />
 ```
 
-Mais [detalhes](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/embedding-portlets-in-themes-and-layout-templates)
+[+ Mais detalhes](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/embedding-portlets-in-themes-and-layout-templates)
 
 #### 3.2.3 Criando novos layouts para o portal
 
@@ -428,26 +444,36 @@ $ yo liferay-theme:layout
 E seguir as instruções do gerador, como o escolha de nome, id e quantas colunas e linhas o layout vai ter.
 >Lembrando que é utilizado o sistema do bootstrap de 12 colunas.
 
-Ao terminar de definir as opções, o sistema criara um arquivo `.tpl` com a estrutura do seu layout, e uma imagem de mesmo nome para usar como ícone
+Ao terminar de definir as opções, o sistema criará um arquivo de extensão `tpl` com a estrutura do seu layout, e uma imagem de mesmo nome para usar como ícone
 >Se o gerador for usado em uma pasta com um tema criado pelo mesmo, ele criará os arquivos na pasta `src/layouttpl`
 
 Com o próximo deploy, o layout aparecerá como uma opção entre os outros ao criar ou editar uma página.
 
-#### 3.2.4 Outros comandos do Liferay Theme Generator
+#### 3.2.4 Themelets
+Existe um componente que se chama _themelet_, que é uma extensão para um tema e pode agregar folhas de estilo, imagens, templates e funcionalidades JavaScript à ele. É indicado para pequenas alterações e tem o objetivo de trazer mais modularidade para os temas e evitar repetição de código.
+>No registro do npm existem themelets disponíveis para reutilização.
 
-O _Liferay Theme Generator_ tambem tem outros comandos como:
-
-```bash
-$ yo liferay-theme:import
-```
-Que importa outros temas encontrados na pasta para o modelo do _Liferay Theme Generator_
+A criação de _themelets_ é feita a partir do Yeoman, com a tarefa `liferay-theme:themelet`:
 
 ```bash
-$ yo liferay-theme:themelets
+yo liferay-theme:themelet
 ```
-Este instala themelets no seu tema
-> Para mais informações sobre themelets, [acesse aqui](https://dev.liferay.com/pta/develop/tutorials/-/knowledge_base/7-0/themelets)
 
+Após este comando a estrutura de pastas criada é a seguinte:
+
+```
+[THEMELET_ROOT]
+├── package.json
+└── src
+    └── css
+        └── _custom.scss
+```
+
+Dentro da pasta `src`, pode-se criar as pastas `js`, `template` e `images`, seguindo as mesmas nomenclaturas e a estrutura de um tema, para que os arquivos sejam alocados corretamente no momento do build.
+
+Para tornar o themelet disponível para utilização, pode-se utilizar dois métodos do npm:
+- `npm link`: cria um symlink do diretório do themelet na pasta global do node_modules, dessa forma qualquer alteração no themelet ficará disponível instantaneamente para os temas que o extendem.
+- `npm install -g`: este método copia os arquivos do themelet para a pasta node_modules global, mas não mantém o vínculo com a pasta original, dessa forma, quando houverem alterações no themelet será necessário executar o comando novamente.
 
 ## 4. Componentes do Front End
 
@@ -462,14 +488,16 @@ Abaixo serão apresentados alguns componentes que auxiliam no desenvolvimento do
 Para a estrutura HTML da página e dos portlets é utilizado o _Freemarker_ que é uma linguagem que mistura Java e HTML.
 
 Para construir elementos utilizando HTML normalmente:
-```
+
+```HTML
 <ul>
     <li>Exemplo</li>
 </ul>
 ```
 
 Mas também podemos ter a ajuda de variaveis:
-```
+
+```FreeMarker
 <#assign variable = "Exemplo" />
 
 <ul>
@@ -478,8 +506,9 @@ Mas também podemos ter a ajuda de variaveis:
 ```
 
 E tambem podemos ter loops:
-```
-<#assign objectList = ["Exemplo 1","Exemplo 2", "Exemplo 3" />
+
+```FreeMarker
+<#assign objectList = ["Exemplo 1","Exemplo 2", "Exemplo 3"] />
 
 <ul>
     <#list object in objectList>
@@ -488,7 +517,7 @@ E tambem podemos ter loops:
 </ul>
 ```
 
-[Mais detalhes](https://freemarker.apache.org/docs/)
+[+ Mais detalhes](https://freemarker.apache.org/docs/)
 
 ###### Soy Templates (Google Closure)
 
@@ -497,7 +526,7 @@ Para mais detalhes sobre o soy, [clique aqui](https://developers.google.com/clos
 
 #### 4.1.2 CSS
 
-Para o CSS é utilizado SCSS, o CSS com funções como Variaveis, Nesting, Mixins entre outros
+Para o CSS é utilizado SCSS, o CSS com funções como Variaveis, Nesting, Mixins entre outros:
 
 ```SCSS
 div .text {
@@ -510,6 +539,7 @@ div .text {
 ```
 
 Compilado:
+
 ```CSS
 div .text {
     color: blue;
@@ -529,8 +559,8 @@ Para saber mais:
 
 #### 4.1.3 Javascript
 
-Para o Javascript, a preferencia é para o ES6, porem é possivel utilizar outras bibliotecas, como o Jquery, que ja vem incluso no pacote.
-É possivel tambem adicionar mais bibliotecas via `NPM`, ou adicionar na pasta JS do seu tema, e adicionar no `head` do seu template
+Para o Javascript, a preferencia é para o ES6, porem é possivel utilizar outras bibliotecas, como o jQuery, que ja vem incluso no pacote.
+É possivel tambem adicionar mais bibliotecas via `NPM`, ou adicionar na pasta JS do seu tema, e adicionar no `head` do seu template.
 
 ### 4.2 ADTs
 
@@ -578,15 +608,17 @@ Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas par
 
 ### 4.4 Componentes Liferay UI
 
-OS ADTs (Application Display Templates) e os Templates do Web Content em Freemarker(.ftl)tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
-```html
+Os ADTs (Application Display Templates) e os Templates do Web Content em FreeMarker (.ftl) tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
+
+```FreeMarker
 <@liferay_ui['propriedade']
     param="valor-do-parametro"
 />
 ```
 
-Por exemplo: Se voce quiser criar um _User Display_, você só precisa de
-```html
+Por exemplo: Se voce quiser criar um _User Display_, você só precisa de:
+
+```FreeMarker
 <@liferay_ui["user-display"]
     markupView="lexicon"
     showUserDetails=false
@@ -597,7 +629,8 @@ Por exemplo: Se voce quiser criar um _User Display_, você só precisa de
 ```
 
 Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
-```html
+
+```FreeMarker
 <@liferay_ui["icon"]
     icon="name-of-the-icon"
     markupView="lexicon"
@@ -606,13 +639,43 @@ Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
 />
 ```
 
->Você pode trocar os tipos dos icones, substituindo o `markupView` por Glyphicon, ou Font-Awesome
+>Você pode trocar os tipos dos icones, substituindo o `markupView` por Glyphicon, ou Font-Awesome.
 
->Para uma referencia completa dos icones, acesse o link [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/)
+>Para uma referencia completa dos icones, acesse [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/).
 
-Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte link:
-[https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/)
+Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte [link](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
 
+### 4.5 Gulp Tasks
+O Liferay possui gulp tasks pré definidas para auxiliar no _build_ e _deploy_ dos temas, essas tasks permitem compilar todos os arquivos do tema em um arquivo WAR e fazer o deploy no servidor de aplicação, bem como extender temas com themelets, que permitem fazer pequenas alterações sem que seja necessário criar um tema completo.
+
+#### 4.5.1 Gulp build
+Esta tarefa compila todo o código fonte em um arquivo WAR na pasta `dist` do seu tema.
+
+#### 4.5.2 Gulp deploy
+A tarefa `deploy` executa a tarefa `build` antes, para criar o arquivo WAR, e em seguida publica esse artefato no servidor de aplicação especificado.
+Se o bundle está em execução, pode-se usar a tarefa `deploy:gogo`, que é um método mais rapido que o `deploy`.
+>A documentação sugere que se use apenas um método de deploy, ou seja, se para o primeiro deploy for usada a tarefa `deploy`, é aconselhável que não se use a tarefa `deploy:gogo`.
+
+#### 4.5.3 Gulp watch
+Esta tarefa é similar à `deploy:gogo`, só funciona quando o bundle está em execução, ele fica observando os arquivos e quando há alterações é realizado um _fast deploy_, porém não possui _BrowserSync_, que é a tecnologia que permite visualizar as alterações no browser instantaneamente, por isso, para visualizar as alterações é necessário atualizar a página.
+
+#### 4.5.4 Gulp init
+Esta tarefa é usada para especificar o endereço do servidor de aplicação que será utilizado pelas tarefas de `deploy`.
+>Ele é chamado automaticamente pelas tarefas do Yeoman _liferay-theme_ e _liferay-theme:import_.
+
+As propriedades geradas por essa tarefa ficam salvas no arquivo `liferay-theme.json`, no diretório raiz do tema.
+
+#### 4.5.5 Gulp extend
+Esta tarefa permite configurar a base do tema (_base theme_) e também permite adicionar _themelets_ à ele.
+Quando se altera a base do tema, existem duas possibilidades: *Styled* ou *Unstyled*.
+- O _Base Theme Styled_ possui todo o estilo, efeitos e funcionalidades nativas do portal (como login, ferramentas de edição e gerenciamento de conteúdo), e todos os arquivos SCSS padrões ficam disponíveis, incluindo Bootstrap, Lexicon e etc, porém os portlets e as páginas não são estilizadas.
+- O _Base Theme Unstyled_, não possui definições de estilo, nem mesmo para o portal e suas funcionalidades, é util quando se deseja recriar toda a estrutura visual do portal.
+
+>Ambos os _Base Themes_ estão publicados como pacotes npm no liferay-portal.
+>Também é possível extender o tema a partir de outros temas publicados no `npm` e, de acordo com a documentação, não necessariamente precisam estar instalados.
+
+#### 4.5.6 Gulp status
+Esta tarefa apenas reporta qual o _base theme_ utilizado e quais _themelets_ estão aplicados.
 
 ## 5. Utilidades
 
@@ -621,8 +684,8 @@ Você pode ver uma lista completa com todas as tags disponiveis e seus parametro
   * [Taglibs. Sumário e documentação](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
   * [Certificação Liferay](https://www.liferay.com/pt/services/certification).
 
-## 6. Certificação
-A Liferay possui um [serviço de certificação](https://www.liferay.com/pt/services/certification) que é uma prova com 50 questões, variando entre questões de verdadeiro ou falso e multipla escolha, com duração de 90 minutos e custo de USD 200,00. Esta prova permite obter um reconhecimento oficial da habilidade e experiência com o ambiente Liferay. No momento, existem 3 certificações disponíveis atualmente, uma para o Liferay 6.2 e outras 2 para o Liferay DXP, separando os conteúdos Front-End e Back-End.
+## 6. Certificação Liferay
+A Liferay possui um [serviço de certificação](https://www.liferay.com/pt/services/certification) que é uma prova com 50 questões, variando entre questões de verdadeiro ou falso e multipla escolha, com duração de 90 minutos e custo de USD 200,00. Esta prova permite obter um reconhecimento oficial da habilidade e experiência com o ambiente Liferay. No momento, existem 3 certificações disponíveis, uma para o Liferay 6.2 e outras 2 para o Liferay DXP (separa os conteúdos Front-End e Back-End).
 
 ### 6.1 Liferay 6.2 Certified Professional Developer
 A certificação de Desenvolvedor Profissional para o Liferay 6.2 compreende os seguintes itens:
@@ -740,7 +803,6 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
     * Message Board Posts
     * Pages
 
-
 + Liferay Digital Experience Platform: Liferay Frameworks (25%)
     * Asset
     * Search and Indexing
@@ -756,9 +818,7 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 
 [+ Mais detalhes](https://www.liferay.com/pt/services/certification/dxp/back-end-developer)
 
-
----
-
+-----
 ## 7. Code snippets
 
 #### Blog / Web content
