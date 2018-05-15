@@ -444,6 +444,8 @@ Abaixo serão apresentados alguns componentes que auxiliam no desenvolvimento do
 
 #### 4.1.1 HTML & Estrutura
 
+##### Freemarker
+
 Para a estrutura HTML da página e dos portlets é utilizado o _Freemarker_ que é uma linguagem que mistura Java e HTML.
 
 Para construir elementos utilizando HTML normalmente:
@@ -475,6 +477,11 @@ E tambem podemos ter loops:
 
 [Mais detalhes](https://freemarker.apache.org/docs/)
 
+###### Soy Templates (Google Closure)
+
+Embora não utilizado pelos ADTs e pelos Web Content Displays, o _.soy_ pode ser usado para se construir portlets em conjunto com o _metal.js_.
+Para mais detalhes sobre o soy, [clique aqui](https://developers.google.com/closure/templates/)
+
 #### 4.1.2 CSS
 
 Para o CSS é utilizado SCSS, o CSS com funções como Variaveis, Nesting, Mixins entre outros
@@ -498,6 +505,14 @@ div .text.red {
     color: red;
 }
 ```
+
+Tambem são utilizadas as bibliotecas Bootstrap e Lexicon/Clay que possuem varios mixins e componentes já estilizados
+
+Para saber mais:
+- [Bootstrap](http://getbootstrap.com/docs/3.3/css/)
+- [Lexicon](https://lexiconcss.wedeploy.io/)
+
+>Alguns elementos do Lexicon podem ser chamados com a taglib liferay-ui
 
 #### 4.1.3 Javascript
 
@@ -534,7 +549,7 @@ O Web Content se utiliza de uma estrutura que deve ser criada para definir o que
 É possivel encontrar as opções de Estrutura e Templates no sub-menu de Web Content
 ![Web Content Submenu](./images/4-3-web-content-strucutures.jpeg)
 
->Lembrando que o Asset Display se utiliza de ADTs para a customização da listagem dos Web Contents, mas o Web Content em si, quando maximizado se utiliza da estrutura do Template
+>O Asset Display se utiliza de ADTs para a customização da listagem dos Web Contents, mas o Web Content em si, quando maximizado se utiliza da estrutura do Template
 
 [+ Mais Detalhes](https://dev.liferay.com/pt/discover/portal/-/knowledge_base/7-0/creating-web-content)
 
