@@ -435,7 +435,20 @@ Com o próximo deploy, o layout aparecerá como uma opção entre os outros ao c
 
 #### 3.2.4 Outros comandos do Liferay Theme Generator
 
-???
+O _Liferay Theme Generator_ tambem tem outros comandos como:
+
+```bash
+$ yo liferay-theme:import
+```
+Que importa outros temas encontrados na pasta para o modelo do _Liferay Theme Generator_
+
+```bash
+$ yo liferay-theme:themelets
+```
+Este instala themelets no seu tema
+> Para mais informações sobre themelets, [acesse aqui](https://dev.liferay.com/pta/develop/tutorials/-/knowledge_base/7-0/themelets)
+
+
 ## 4. Componentes do Front End
 
 Abaixo serão apresentados alguns componentes que auxiliam no desenvolvimento do Front-End, suas características principais e funcionalidades.
@@ -782,4 +795,3 @@ Variaveis restritas do Web Content (.ftl)
 .vars['reserved-article-url-title'].data
 .vars['reserved-article-version'].data
 ```
-
