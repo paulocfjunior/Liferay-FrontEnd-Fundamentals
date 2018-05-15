@@ -418,7 +418,7 @@ Os templates permitem que você mude completamente a estrutura ta pagina, como a
 
 Onde o `portletName` é o nome do pacote do portlet, trocando os . por _
 EX: com.liferay.portal.search.web.portlet.SearchPortlet = com_liferay_portal_search_web_portlet_SearchPortlet
->O `instanceId` precisa ser chamado caso o portlet pode ser usado multiplas vezes
+>O `instanceId` precisa ser chamado caso o portlet possa ser usado multiplas vezes
 
 Por exemplo, para retornar o portlet para busca na página, coloque no seu código:
 
@@ -483,6 +483,8 @@ Abaixo serão apresentados alguns componentes que auxiliam no desenvolvimento do
 
 #### 4.1.1 HTML & Estrutura
 
+##### Freemarker
+
 Para a estrutura HTML da página e dos portlets é utilizado o _Freemarker_ que é uma linguagem que mistura Java e HTML.
 
 Para construir elementos utilizando HTML normalmente:
@@ -517,6 +519,11 @@ E tambem podemos ter loops:
 
 [+ Mais detalhes](https://freemarker.apache.org/docs/)
 
+###### Soy Templates (Google Closure)
+
+Embora não utilizado pelos ADTs e pelos Web Content Displays, o _.soy_ pode ser usado para se construir portlets em conjunto com o _metal.js_.
+Para mais detalhes sobre o soy, [clique aqui](https://developers.google.com/closure/templates/)
+
 #### 4.1.2 CSS
 
 Para o CSS é utilizado SCSS, o CSS com funções como Variaveis, Nesting, Mixins entre outros:
@@ -541,6 +548,14 @@ div .text.red {
     color: red;
 }
 ```
+
+Tambem são utilizadas as bibliotecas Bootstrap e Lexicon/Clay que possuem varios mixins e componentes já estilizados
+
+Para saber mais:
+- [Bootstrap](http://getbootstrap.com/docs/3.3/css/)
+- [Lexicon](https://lexiconcss.wedeploy.io/)
+
+>Alguns elementos do Lexicon podem ser chamados com a taglib liferay-ui
 
 #### 4.1.3 Javascript
 
@@ -570,7 +585,26 @@ Cada _portlet_ tem um ADT especifico, com algumas predefinições e chamadas pro
 
 ### 4.3 Web Content Structures & Templates
 
-???
+Web Contents são elementos utilizados para apresentar conteudo seja através do proprio portlet do Web Content, ou de um Asset Display, que pode listar todos os conteudos do portal de forma organizadada, assim como um Blog, porem de forma mais aberta e customizável. Em conjunto com os ADTs, é possivel produzir elementos como galerias, listagem de posts, album de fotos, entre outros. É um dos portlets mais personalizaveis da liferay.
+
+O Web Content se utiliza de uma estrutura que deve ser criada para definir o que podera ser utilizado por um web content, e cada estrutura pode ter vários templates que assim como um ADT, se utilizam do Freemarker para customizar sua exibição.
+
+É possivel encontrar as opções de Estrutura e Templates no sub-menu de Web Content
+![Web Content Submenu](./images/4-3-web-content-strucutures.jpeg)
+
+>O Asset Display se utiliza de ADTs para a customização da listagem dos Web Contents, mas o Web Content em si, quando maximizado se utiliza da estrutura do Template
+
+[+ Mais Detalhes](https://dev.liferay.com/pt/discover/portal/-/knowledge_base/7-0/creating-web-content)
+
+#### 4.3.1 Web Content Structures
+
+Com as estrutura você pode definir o que um web content irá apresentar, dentre varias opções como publicação de imagens, texto comum, html e select boxes. E definir opções como conteudo obrigatório ou opcional para a publicação do Web Content.
+
+#### 4.3.2 Web Content Templates
+
+Com os templates você pode definir como a estrutura será exibida, a partir de um script _.ftl_.
+
+Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas para auxiliar na construção do código, junto com as chamadas dos elementos que foram determinados na estrutura, mas também é possivel usar algumas variaveis restritas para acessar outros elemenos do Web Content. ([Ver mais](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#7-code-snippets))
 
 ### 4.4 Componentes Liferay UI
 
@@ -787,17 +821,20 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 -----
 ## 7. Code snippets
 
+#### Blog / Web content
 Retornar as tags de um post/web content (.ftl)
 ```
 <#assign AssetTagLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetTagLocalService")>
 <#assign entryTags = AssetTagLocalService.getEntryTags(entry.entryId)>
 ```
 
-Retornar as categoras de um post (.ftl)
+Retornar as categoras de um post/web content (.ftl)
 ```
 <#assign AssetCategoryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
 <#assign entryCategories = AssetCategoryLocalService.getCategories(entry.classNameId, entry.classPK)>
 ```
+>Caso a chamda do serviceLocator esteja dando erro, retirar as variaveis restritas no portal em  Menu > Control Panel > System Settings > Foundation > FreeMarker Engine  e remover a variavel restrita serviceLocator
+
 
 Variaveis restritas do Web Content (.ftl)
 ```
@@ -818,3 +855,4 @@ Variaveis restritas do Web Content (.ftl)
 .vars['reserved-article-url-title'].data
 .vars['reserved-article-version'].data
 ```
+
