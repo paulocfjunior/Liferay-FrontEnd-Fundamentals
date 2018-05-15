@@ -2,49 +2,49 @@
 
 ## Sumário
 
-1. [Preparação de Ambiente]()
-    1. [Java JDK]()
-    2. [MySQL 5.6]()
-    3. [Node.JS e NPM]()
-    4. [Yeoman]()
-    5. [Gulp]()
-    6. [Gerador de código]()
-    7. [Liferay + Tomcat Bundle]()
-2. [Fundamentos]()
-3. [Ferramentas]()
-    1. [Blade CLI]()
-    2. [Liferay Theme Generator]()
-        1. [Criando um novo Tema]()
-        2. [Alterando a estrutura da página]()
-        3. [Criando novos layouts para o portal]()
-        4. [Criando Themelets]()
-        5. [Importando um tema]()
-4. [Componentes do Front End]()
-    1. [Linguagens utilizadas]()
-        1. [HTML & Estrutura]()
-            - [FreeMarker]()
-            - [Soy Templates (Google Closure)]()
-        2. [CSS]()
-        3. [JavaScript]()
-    2. [ADTs]()
-    3. [Web Content Structures & Templates]()
-        1. [Web Content Structures]()
-        2. [Web Content Templates]()
-    4. [Componentes Liferay UI]()
-    5. [Gulp Tasks]()
-        1. [Gulp build]()
-        2. [Gulp deploy]()
-        3. [Gulp watch]()
-        4. [Gulp init]()
-        5. [Gulp extend]()
-        6. [Gulp status]()
-5. [Utilidades]()
-6. [Certificação Liferay]()
-    1. [Liferay 6.2 Certified Professional Developer]()
-    2. [Liferay DXP Certified Professional Front-End Developer]()
-    3. [Liferay DXP Certified Professional Back-End Developer]()
-7. [Code snippets]()
-    - [Blog / Web content]()
+1. [Preparação de Ambiente](#1-preparação-de-ambiente)
+    1. [Java JDK](#11-java-jdk)
+    2. [MySQL 5.6](#12-mysql-56)
+    3. [Node.JS e NPM](#13-nodejs-e-npm)
+    4. [Yeoman](#14-yeoman)
+    5. [Gulp](#15-gulp)
+    6. [Gerador de código](#16-gerador-de-código)
+    7. [Liferay + Tomcat Bundle](#17-liferay--tomcat-bundle)
+2. [Fundamentos](#2-fundamentos)
+3. [Ferramentas](#3-ferramentas)
+    1. [Blade CLI](#31-blade-cli)
+    2. [Liferay Theme Generator](#32-liferay-theme-generator)
+        1. [Criando um novo Tema](#321-criando-um-novo-tema)
+        2. [Alterando a estrutura da página](#322-alterando-a-estrutura-da-página)
+        3. [Criando novos layouts para o portal](#323-criando-novos-layouts-para-o-portal)
+        4. [Criando Themelets](#324-criando-themelets)
+        5. [Importando um tema](#325-importando-temas)
+4. [Componentes do Front End](#4-componentes-do-front-end)
+    1. [Linguagens utilizadas](#41-linguagens-utilizadas)
+        1. [HTML & Estrutura](#411-html--estrutura)
+            - [FreeMarker](#freemarker)
+            - [Soy Templates (Google Closure)](#soy-templates-google-closure)
+        2. [CSS](#412-css)
+        3. [JavaScript](#413-javascript)
+    2. [ADTs](#42-adts)
+    3. [Web Content Structures & Templates](#43-web-content-structures--templates)
+        1. [Web Content Structures](#431-web-content-structures)
+        2. [Web Content Templates](#432-web-content-templates)
+    4. [Componentes Liferay UI](#44-componentes-liferay-ui)
+    5. [Gulp Tasks](#45-gulp-tasks)
+        1. [Gulp build](#451-gulp-build)
+        2. [Gulp deploy](#452-gulp-deploy)
+        3. [Gulp watch](#453-gulp-watch)
+        4. [Gulp init](#454-gulp-init)
+        5. [Gulp extend](#455-gulp-extend)
+        6. [Gulp status](#456-gulp-status)
+5. [Utilidades](#5-utilidades)
+6. [Certificação Liferay](#6-certificação-liferay)
+    1. [Liferay 6.2 Certified Professional Developer](#61-liferay-62-certified-professional-developer)
+    2. [Liferay DXP Certified Professional Front-End Developer](#62-liferay-dxp-certified-professional-front-end-developer)
+    3. [Liferay DXP Certified Professional Back-End Developer](#63-liferay-dxp-certified-professional-back-end-developer)
+7. [Code snippets](#7-code-snippets)
+    - [Blog / Web content](#blog--web-content)
 
 -----
 
@@ -836,21 +836,21 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 -----
 ## 7. Code snippets
 
-#### Blog / Web content
-Retornar as tags de um post/web content (ftl)
+### Blog / Web content
+Retornar as tags de um post/web content (ftl):
 ```
 <#assign AssetTagLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetTagLocalService")>
 <#assign entryTags = AssetTagLocalService.getEntryTags(entry.entryId)>
 ```
 
-Retornar as categoras de um post/web content (ftl)
+Retornar as categoras de um post/web content (ftl):
 ```
 <#assign AssetCategoryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
 <#assign entryCategories = AssetCategoryLocalService.getCategories(entry.classNameId, entry.classPK)>
 ```
 >Caso a chamada do serviceLocator falhe, deve-se retirar as variáveis restritas no portal em `Menu > Control Panel > System Settings > Foundation > FreeMarker Engine` e remover a variável restrita serviceLocator.
 
-Variaveis restritas do Web Content (ftl)
+Variaveis restritas do Web Content (ftl):
 ```
 .vars['reserved-article-asset-tag-names'].data
 .vars['reserved-article-author-comments'].data
