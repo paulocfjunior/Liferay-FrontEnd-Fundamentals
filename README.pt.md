@@ -840,20 +840,20 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 
 ### Blog / Web content
 Retornar as tags de um post/web content (ftl):
-```
+```FreeMarker
 <#assign AssetTagLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetTagLocalService")>
 <#assign entryTags = AssetTagLocalService.getEntryTags(entry.entryId)>
 ```
 
 Retornar as categoras de um post/web content (ftl):
-```
+```FreeMarker
 <#assign AssetCategoryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
 <#assign entryCategories = AssetCategoryLocalService.getCategories(entry.classNameId, entry.classPK)>
 ```
 >Caso a chamada do serviceLocator falhe, deve-se retirar as variáveis restritas no portal em `Menu > Control Panel > System Settings > Foundation > FreeMarker Engine` e remover a variável restrita serviceLocator.
 
 Variaveis restritas do Web Content (ftl):
-```
+```FreeMarker
 .vars['reserved-article-asset-tag-names'].data
 .vars['reserved-article-author-comments'].data
 .vars['reserved-article-author-email-address'].data
