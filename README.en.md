@@ -11,7 +11,7 @@
     6. [Code Generator](#16-code-generator)
     7. [Liferay + Tomcat Bundle](#17-liferay--tomcat-bundle)
 2. [Fundamentals](#2-fundamentals)
-3. [tools](#3-tools)
+3. [Tools](#3-tools)
     1. [Blade CLI](#31-blade-cli)
     2. [Liferay Theme Generator](#32-liferay-theme-generator)
         1. [Creating a new theme](#321-creating-a-new-theme)
@@ -219,9 +219,6 @@ cd [WORKSPACE_NAME]
 ./gradlew initBundle
 blade server start -b
 ```
-
-O parametro `-b` inicia o servidor em segundo plano. Alternativamente, pode ser usado o parametro `-d` para utilizar o modo de depuração.
-Após a execução desses comandos, o servidor entrará em processo de inicialização, para acompanhar os logs em tempo real, pode-se observar o arquivo `bundles/tomcat-[versao]/logs/catalina.out`, com o seguinte comando:
 
 The `-b` parameter starts the server in the background. Alternatively, the `-d` parameter can be used to use debug mode.
 After executing these commands the server will initialize, just like `startup.sh` script. To see the logs in real time, you can watch the `bundles/tomcat-[version]/logs/catalina.out` file with the tail command:
@@ -434,7 +431,7 @@ For example, to embed the search portlet into page, put in your code:
 />
 ```
 
-[+ More about this](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/embedding-portlets-in-themes-and-layout-templates).
+[+ More about this](https://dev.liferay.com/en/develop/tutorials/-/knowledge_base/7-0/embedding-portlets-in-themes-and-layout-templates).
 
 #### 3.2.3 Creating new layouts
 When creating a site or page in the Liferay portal, you need to define a layout for portlet placement
@@ -689,12 +686,12 @@ This task only repotrs the _Base Theme_ that has been used, and which _themelets
 ## 5. Util
 
   * [FreeMarker Docs](https://freemarker.apache.org/docs/index.html)
-  * [Liferay Docs](https://dev.liferay.com/pt/develop/tutorials).
+  * [Liferay Docs](https://dev.liferay.com/en/develop/tutorials).
   * [Taglibs Docs](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
-  * [Liferay Certification Service](https://www.liferay.com/pt/services/certification).
+  * [Liferay Certification Service](https://www.liferay.com/en/services/certification).
 
 ## 6. Liferay Certification
-Liferay has an [Certification Service](https://www.liferay.com/pt/services/certification), that is a test with 50 question, ranging from questions of true or false and multiple choice, with 90 minutes of duration and a cost of USD 200.00. This test allows an official recognition of the skill and experience with the Liferay environment. In the moment, there is three avaliable certifications, one for Liferay 6.2, and two others for Liferay DXP (Front-End and Back-End).
+Liferay has an [Certification Service](https://www.liferay.com/en/services/certification), that is a test with 50 question, ranging from questions of true or false and multiple choice, with 90 minutes of duration and a cost of USD 200.00. This test allows an official recognition of the skill and experience with the Liferay environment. In the moment, there is three avaliable certifications, one for Liferay 6.2, and two others for Liferay DXP (Front-End and Back-End).
 
 ### 6.1 Liferay 6.2 Certified Professional Developer
 
@@ -744,7 +741,7 @@ The Liferay 6.2 Professional Developer comprises the following items:
     * Modifying Portal Configuration
     * Customizing Core Portlets
 
-[+ More Details](https://www.liferay.com/pt/services/certification/professional-developer/6.2)
+[+ More Details](https://www.liferay.com/en/services/certification/professional-developer/6.2)
 
 ### 6.2 Liferay DXP Certified Professional Front-End Developer
 
@@ -789,7 +786,7 @@ The Liferay DXP Front-End Certification comprises the following items:
     * aui
     * liferay-ui
 
-[+ More Details](https://www.liferay.com/pt/services/certification/dxp/front-end-developer)
+[+ More Details](https://www.liferay.com/en/services/certification/dxp/front-end-developer)
 
 ### 6.3 Liferay DXP Certified Professional Back-End Developer
 
@@ -828,7 +825,7 @@ The Liferay DXP Back-End Certification comprises the following items:
     * Know how to make upgrades from Liferay 6.X to Liferay DXP
     * Development Strategy
 
-[+ More details](https://www.liferay.com/pt/services/certification/dxp/back-end-developer)
+[+ More details](https://www.liferay.com/en/services/certification/dxp/back-end-developer)
 
 -----
 ## 7. Code snippets
