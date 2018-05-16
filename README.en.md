@@ -48,25 +48,25 @@
 
 -----
 
-## 1. Preparação de Ambiente
-Será apresentado um tutorial para preparação de ambiente e primeiros passos na plataforma Liferay para Desenvolvedores Front End, com base no treinamento oficial Liferay e mais algumas informações fornecidas pela equipe da Liferay USA.
-Todos os passos foram executados em ambiente Linux, distribuição Ubuntu 16.04.
+## 1. Environment Setup
+A tutorial will be presented for the environment setup and first steps on the Liferay platform for Front End Developers, based on the official Liferay training and some information provided by the Liferay USA team.
+All steps were run in Linux environment, distribution Ubuntu 16.04.
 
 ### 1.1 Java JDK
-Para a execução do servidor local do Liferay, é preciso instalar a versão 1.8 do Java Development Kit (JDK) e acrescentar o endereço da pasta `bin` do JDK no início da variável PATH (através do arquivo `~/.bashrc`).
-Também é preciso definir as variáveis de ambiente `JAVA_HOME` e `JDK_HOME`, com o endereço de instalação do JDK, sem a pasta bin.
+To run the local Liferay server, you must install version 1.8 of the Java Development Kit (JDK) and append the address of the `bin` folder of the JDK at the beginning of the `PATH` variable (through the` ~ / .bashrc` file).
+You also need to set the `JAVA_HOME` and` JDK_HOME` environment variables, with the JDK installation address, without the bin folder.
 
-No final do arquivo .bashrc, foram inseridas as linhas:
+At the end of the `.bashrc` file, the following lines were inserted:
 
 ```bash
-export JAVA_HOME=/path/to/jdk (substituir)
+export JAVA_HOME=/path/to/jdk (replace)
 export JDK_HOME=$JAVA_HOME
 export PATH="$JDK_HOME/bin:$PATH"
 ```
 
 ### 1.2 MySQL 5.6
-É preciso também fazer a instalação do MySQL 5.6, embora a Plataforma do Liferay utilize por padrão o HSQL (Hyper SQL), eles não o recomendam para ambiente de produção.
-A instalação pode ser feita através desses comandos.
+It is necessary to install MySQL 5.6, although the Liferay Platform uses by default the HSQL (Hyper SQL), it is not recommended for production.
+Installation can be done through these commands.
 
 ```bash
 sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu trusty universe'
@@ -75,10 +75,10 @@ sudo apt install mysql-server-5.6
 sudo apt install mysql-client-5.6
 ```
 
-### 1.3 Node.JS e NPM
-Para muitas tarefas no Front End, é indispensável o Node.JS, para o Liferay não é diferente, é utilizada a plataforma Node para possibilitar a criação e teste de novos temas.
-Utilizaremos o NVM para instalar o Node, pois é uma maneira de permitir instalar múltiplas versões do Node, facilitando o teste em outras versões e retorno à versões anteriores quando necessário.
-Para instalar o Node.JS no Ubuntu, foram utilizados os seguintes comandos:
+### 1.3 Node.JS and NPM
+For many tasks in the Front End, it is indispensable Node.JS, for Liferay is no different, the Node platform is used to enable the creation and testing of new themes.
+We will use NVM to install Node, as it is a way to allow multiple versions of the Node to be installed, making it easier to test in other versions and return to previous versions when necessary.
+To install Node.JS in Ubuntu, the following commands were used:
 
 ```bash
 sudo apt-get update
@@ -88,69 +88,68 @@ bash install_nvm.sh
 source ~/.profile
 ```
 
-Para listar as versões disponíveis do Node para instalação, como exemplo estou utilizando a versão 8.11.1, mais recente e estável disponível no momento desta redação:
+To list the available versions of the Node for installation, use the `nvm ls-remote` command, the latest and stable version available at the time of this writing is 8.11.1, so to do the installation, use the commands:
 
 ```bash
 nvm ls-remote
-nvm install –delete-prefix v8.11.1 (exemplo)
-nvm use v8.11.1 (exemplo)
+nvm install –delete-prefix v8.11.1
+nvm use v8.11.1
 ```
 
 ### 1.4 Yeoman
-O Yeoman é um ambiente para geração de código executado em Node.JS que permite utilizar plugins para criar inícios rápidos para várias finalidades, como por exemplo temas para o Liferay.
-Para instalar o Yeoman é utilizado o npm:
+Yeoman is an environment for code generation run in Node.JS that allows you to use plugins to create quick starts for various purposes, such as themes for Liferay.
+To install Yeoman the npm is used:
 
 ```bash
 npm install -g yo
 ```
 
 ### 1.5 Gulp
-O Gulp é uma ferramenta para automação de tarefas do front end, como importação de dependências, lint de código, watchers e etc. O Liferay possui um conjunto de tarefas do Gulp para facilitar o processo de desenvolvimento.
+Gulp is a tool for automating front end tasks, such as importing dependencies, code lint, watchers and so on. Liferay has a set of Gulp tasks to facilitate the development process.
 
 ```bash
 npm install -g gulp
 ```
 
-### 1.6 Gerador de código
-Para geração dos códigos do Liferay é utilizado um plugin instalado via npm, que será utilizado pelo Yeoman.
+### 1.6 Code generator
+For the generation of Liferay codes, a plugin installed via npm is used, which will be used by Yeoman.
 
 ```bash
 npm install -g generator-liferay-theme@7.2.0
 ```
-
-Para mais detalhes sobre, confira a sessão [referente](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#32-liferay-theme-generator)
+For further details, check out the section [Liferay Theme Generator](#32-liferay-theme-generator).
 
 ### 1.7 Liferay + Tomcat Bundle
-A plataforma Liferay pode ser executada localmente através do bundle disponibilizado pela Liferay [neste endereço](https://www.liferay.com/downloads?_ga=2.140026997.754221885.1523906791-1737328940.1521481680) (Liferay Portal CE bundled with Tomcat). Ela já possui um servidor Tomcat embutido, portando só é necessário fazer o download e descompactar em algum local conhecido, o manual sugere separar os bundles dentro de uma pasta como `~/liferay/bundles/`, por exemplo.
-Para iniciar o servidor Tomcat executando o portal do Liferay, basta abrir o local onde foi descompactado o bundle, dentro da pasta `tomcat-[versao]/bin`, e executar o comando:
+The Liferay platform can be run locally through the bundle provided by Liferay at [this address](https://www.liferay.com/downloads?_ga=2.140026997.754221885.1523906791-1737328940.1521481680) (Liferay Portal CE bundled with Tomcat). It already has a built-in Tomcat server, so you only need to download and unzip to some known location, the manual suggests separating the bundles inside a folder like `~/liferay/bundles/`, for example.
+To start the Tomcat server running the Liferay portal, simply open the place where the bundle was unzipped inside the `tomcat-[version]/bin` folder and run the command:
 
 ```bash
 ./startup.sh
 ```
 
-Os logs da plataforma são externados no arquivo `tomcat-[versao]/logs/catalina.out`, portanto para acompanhar os logs em tempo real, é utilizado o comando:
+The platform logs are exported in the `tomcat-[version]/logs/catalina.out` file, so to see the logs in real time, the command used is:
 
 ```bash
 tail -f catalina.out
 ```
 
-O servidor leva alguns segundos para inicializar, quando conclui o processo de inicialização uma aba do navegador é lançada com o portal da Liferay aberto na página de configuração inicial, onde é possível definir a conta de usuário administrador, o nome do site principal e escolher o banco de dados padrão.
-Para encerrar a execução do servidor Tomcat é executado o seguinte script na pasta `tomcat-[versao]/bin`:
+The server takes a few seconds to initialize, when the startup process finishes, a browser tab is launched with the Liferay portal open on the initial configuration page, where it is possible to set the administrator user account, the name of the main site and choose the database.
+To terminate execution of the Tomcat server, the following script is executed in the `tomcat-[version]/bin` folder:
 
 ```bash
 ./shutdown.sh
 ```
 
-Assim como o startup.sh, o shutdown também leva alguns segundos para ser executado, porém ocorre em segundo plano, então não precisa ser mantido nenhuma janela aberta para que ele seja concluído.
+Like `startup.sh`, `shutdown.sh` also takes a few seconds to run, but it does happen in the background, so you do not need to keep any windows open for it to complete.
 
-## 2. Fundamentos
-O Liferay é uma plataforma para desenvolvimento de sites e sistemas para a web, dispositivos móveis e outros dispositivos que estejam conectados à internet. Possui fácil customização utilizando a técnica WYSIWYG (What you see is what you get), os componentes podem ser simplesmente arrastados para a tela e da forma como são exibidos ali é como serão apresentados aos usuários. As regras de negócio podem ser configuradas diretamente no editor, pois cada componente possui suas características e podem ser personalizadas facilmente para atender os mais variados critérios.
-A plataforma também permite gerenciar contas de usuários e permissões, gerenciamento de mídias e conteúdos em geral.
+## 2. Fundamentals
+Liferay is a platform for developing websites and systems for the web, mobile devices and other devices that are connected to the internet. It has easy customization using the WYSIWYG technique (What you see is what you get), the components can be simply dragged onto the screen and the way they are displayed there is how they will be presented to users. Business rules can be configured directly in the editor, since each component has its own characteristics and can easily be customized to meet the most varied criteria.
+The platform also allows managing user accounts and permissions, managing media and content in general.
 
-## 3. Ferramentas
+## 3. Tools
 
 ### 3.1 Blade CLI
-Para facilitar a criação de módulos, serviços ou qualquer outra estrutura do Liferay 7.0, bem como deploy, gerenciamento de servidor local e outras tarefas relacionadas à plataforma, pode ser utilizado o Blade CLI, que é uma ferramenta de linha de comando baseado em um ambiente Gradle. Ele possui subcomandos que auxiliam na criação e deploy de módulos em uma instância do Liferay. Esta ferramenta está embutida no Workspace da Liferay, e pode ser instalado seguindo as instruções da [Documentação oficial da Liferay - Instalando Blade CLI](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/installing-blade-cli). Para listar os comandos do Blade CLI com as suas respectivas funções, basta executar o comando `blade help`, serão listados os seguintes comandos:
+To facilitate the creation of Liferay 7.0 modules, services, or any other structure, as well as deploy, local server management, and other platform-related tasks, you can use Blade CLI, which is an Gradle environment-based command-line tool. It has subcommands that assist in creating and deploying modules in a Liferay instance. This tool is built into the Liferay Workspace, and can be installed following the instructions in [Liferay Official Documentation - Installing Blade CLI](https://dev.liferay.com/en/develop/tutorials/-/knowledge_base/7-0/installing-blade-cli). To list the CLI Blade commands with their respective functions, simply execute the `blade help` command, the following commands will be listed:
 
 ```
     create          Creates a new Liferay module project from several available
@@ -171,7 +170,7 @@ Para facilitar a criação de módulos, serviços ou qualquer outra estrutura do
     version         Show version information about blade
 ```
 
-O Blade se baseia em templates para criar os módulos, existem vários templates disponíveis para utilização, o que faz com que o desenvolvedor tenha bastante flexibilidade ao usá-lo. Os templates dispoíveis são mostrados pelo comando `blade create -l` e este é o retorno do comando:
+Blade relies on templates to create the modules, there are several templates available for use, which gives the developer plenty of flexibility in using it. The available templates are shown by the command `blade create -l` and this is the return of the command:
 
 ```
     activator                          Creates a Liferay module project that customizes the starting and stopping of a Liferay bundle.
@@ -212,7 +211,7 @@ O Blade se baseia em templates para criar os módulos, existem vários templates
     war-mvc-portlet                    Creates a Liferay WAR-style MVC portlet project.
 ```
 
-É possível criar um ambiente funcional do Liferay utilizando Blade CLI, a partir da sequência de comandos:
+It is possible to create a Liferay environment using Blade CLI, from the command sequence:
 
 ```bash
 blade init [WORKSPACE_NAME]
@@ -224,25 +223,28 @@ blade server start -b
 O parametro `-b` inicia o servidor em segundo plano. Alternativamente, pode ser usado o parametro `-d` para utilizar o modo de depuração.
 Após a execução desses comandos, o servidor entrará em processo de inicialização, para acompanhar os logs em tempo real, pode-se observar o arquivo `bundles/tomcat-[versao]/logs/catalina.out`, com o seguinte comando:
 
+The `-b` parameter starts the server in the background. Alternatively, the `-d` parameter can be used to use debug mode.
+After executing these commands the server will initialize, just like `startup.sh` script. To see the logs in real time, you can watch the `bundles/tomcat-[version]/logs/catalina.out` file with the tail command:
+
 ```bash
-tail -f bundles/tomcat-[versao]/logs/catalina.out
+tail -f bundles/tomcat-[version]/logs/catalina.out
 ```
 
-Isso irá observar todas as inserções no arquivo `catalina.out` que é onde os logs são registrados. Se erros ocorrerem, também serão mostrados nesse arquivo.
+This will show all the inserts in the `catalina.out` file which is where the logs are logged. If errors occur, they will also be shown in this file.
 
-Para interromper a execução do serviço e parar o servidor, utiliza-se o comando:
+To stop the execution of the service and stop the server, use the command:
 
 ```bash
 blade server stop
 ```
 
-Para criar um Tema do Liferay utilizando o Blade CLI, usa-se o comando, na raiz do workspace `[WORKSPACE_NAME]`:
+To create a Liferay Theme using the Blade CLI, use the command at the root of the workspace `[WORKSPACE_NAME]`:
 
 ```bash
 blade create -t theme [THEME_NAME]
 ```
 
-Este comando irá criar a `[WORKSPACE_NAME]/wars/[THEME_NAME]`, com a estrutura de pastas:
+This command will create the folder `[WORKSPACE_NAME]/wars/[THEME_NAME]`, with the folder structure below:
 
 ```
 [THEME_NAME]
@@ -255,13 +257,13 @@ Este comando irá criar a `[WORKSPACE_NAME]/wars/[THEME_NAME]`, com a estrutura 
             └── WEB-INF
 ```
 
-Para fazer o build do projeto, basta ir até a pasta raiz do `[THEME_NAME]` usar o comando do Blade:
+To deploy the project, just go to the root folder of `[THEME_NAME]` and use the Blade command:
 
 ```bash
 blade deploy
 ```
 
-Isso irá gerar a estrutura de pastas do build e ficará assim:
+This will generate the build structure of folders and will look like this:
 
 ```
 [THEME_NAME]
@@ -348,72 +350,70 @@ Isso irá gerar a estrutura de pastas do build e ficará assim:
             └── WEB-INF
 ```
 
-Para editar qualquer arquivo do build, pode-se criar (ou copiar) o arquivo da pasta `build` para a pasta `src`, com o mesmo nome, em um diretório correspondente, assim, quando for executado novamente o `blade deploy`, os arquivos da pasta `src` substiruirão os arquivos da pasta `build` correspondentes.
-**Editar partes desses arquivos afetará o funcionamento do portal como um todo, incluindo funções nativas do portal, portanto isso deve ser levado em consideração em todas as customizações.**
+To edit any file in the build, you can create (or copy) the file from the `build` folder to the` src` folder, with the same name, in a corresponding directory, so when the `blade deploy` is executed again, the files in the `src` folder will replace the files in the` build` folder.
+**Editing portions of these files will affect the functioning of the portal as a whole, including native portal functions, so this must be taken into account in all customizations.**
 
->A estrutura de pastas do `build` é similar à estrutura quando criada pelo Yeoman, a maioria dos arquivos consiste em SCSS modularizado em múltiplas pastas e arquivos. Existe um arquivo JavaScript na pasta `build/buildTheme/js`, que até o momento está praticamente vazio, mas pode ser duplicado em `src/main/webapp/js` (ainda não criada) e assim substituirá o arquivo do `/build` com as funcionalidades JavaScript implementadas em `src/main/webapp/js/main.js`.
+>The build structure of folders is similar to the structure when created by Yeoman, most of the files consist of modularized SCSS in multiple folders and files. There is also a JavaScript file in the `build/buildTheme/js` folder called `main.js`, which at the moment is practically empty, but can be duplicated in`src/main/webapp/js` (not yet created) and will replace `build`with the JavaScript functionalities implemented in`src/main/webapp/js/main.js`.
 
 ### 3.2 Liferay Theme Generator
+_Liferay Theme Generator_ can help with the start of a new theme and other related details such as layouts and color schemes among others.
 
-O _Liferay Theme Generator_ pode ajudar com o inicio de um novo tema e tambem com outros detalhes relacionado ao mesmo, como layouts e esquemas de cores entre outros.
+Themes are packages built to customize the general layout of the page, such as _header_ and _footer_, navigation menu, positioning of _portlets_ and so on.
 
-Temas são pacotes construidos para customizar o layout geral da pagina, como _header_ e _footer_, o menu de navegação, posicionamento dos _portlets_ entre outros.
+#### 3.2.1 Creating a new theme
 
-#### 3.2.1 Criando um novo Tema
-
-Na pasta `themes` do projeto, utilize o comando:
+In the project's `themes` folder, use the command:
 
 ```bash
 $ yo liferay-theme
 ```
 
-Logo após as definições das configurações, o yeoman criará uma estrutura inicial para o tema (talvez ele precise de privilegios de administrador como `sudo`), e logo em seguida ira rodar o `npm install` para instalar e as dependencias necesárias, criando a seguinte estrutura:
+Soon after the configuration settings, the Yeoman will create an initial structure for the theme (maybe it needs administrator privileges like `sudo`), and soon it will run `npm install` to install and the necessary dependencies, creating the following structure:
 
 ```
 my-theme
-├── node_modules                                     // Pasta com as dependencias instaladas
-├── build                                            // Build do tema (pasta criada somente após o primeiro build)
-├── src                                              // Principais arquivos do tema
+├── node_modules                                     // Folder with dependencies installed
+├── build                                            // Build theme (folder created only after the first build)
+├── src                                              // Top theme files
 │   │
 │   ├── css                                          // Custom CSS
 │   ├── js                                           // Custom JS
-│   └── WEB_INF                                      // Arquivos para o sistema da Liferay
+│   └── WEB_INF                                      // Liferay Metadata
 │       │
-│       ├── liferay-look-and-feel.xml                // Arquivo com as configurações de visualização
-│       └── liferay-plugin-package.properties        // Arquivo com detalhes para visualização, como nome e descrição
+│       ├── liferay-look-and-feel.xml                // File with display settings
+│       └── liferay-plugin-package.properties        // File with details to view, such as name and description
 │
-├── gulpfile.js                                      // Arquivo com as tasks do gulp
-├── liferay-theme.json                               // Detalhes do tema, como ID, URL para deploy, entre outros
-└── package.json                                     // Detalhes das dependencias
+├── gulpfile.js                                      // File with gulp's tasks
+├── liferay-theme.json                               // Theme details such as ID, URL to deploy, and more
+└── package.json                                     // Dependency details
 ```
 
-Os comandos de _deploy_ e _build_ do tema, são feitos atravez do _gulp_:
+The _deploy_ and _build_ commands of the theme are made through _gulp_:
 
 ```bash
-$ gulp build        //Faz o build do tema e cria os componentes na pasta my-theme/build
-$ gulp deploy       //Faz o build e o deploy do tema para o servidor
-$ gulp watch        //Faz o deploy e continua rodando aplicando alterações encontradas diretamente
+$ gulp build        // Build the theme and create the components in the `my-theme/build` folder
+$ gulp deploy       // Build and deploy the theme to the server
+$ gulp watch        // Deploy, watch to changes and apply them continuously
 ```
 
-#### 3.2.2 Alterando a estrutura da página
-
-Após criar um tema, faça o primeiro build com o gulp. Assim será criada a pasta `build` dentro do seu tema. Dentro dela voce encontrará a pasta `templates` dentro dela voce encontra a estrutura base do Tema.
+#### 3.2.2 Customizing page structure
+After creating a theme, make the first build with gulp. This will create the `build` folder within your theme. Inside it you will find the folder `templates` inside it you will find the base structure of the Theme.
 
 ```
 templates
-├── init.ftl                     // Configurações iniciais das variaveis do FTL (não recomendado alterar esse arquivo)
-├── init_custom.ftl              // Utilizado para alterar as configurações iniciais do init.ftl
-├── navigation.ftl               // Template do menu de navegação do portal
-├── portal_normal.ftl            // Estrutura inicial do portal
-├── portal_pop_up.ftl            // Template das popups do portal
-└── portlet.ftl                  // Template da estrutura que envolve os portlets
+├── init.ftl                     // Initial settings of FTL variables (not recommended to change this file)
+├── init_custom.ftl              // Used to append at the end of init.ftl
+├── navigation.ftl               // Portal navigation menu template
+├── portal_normal.ftl            // Initial portal structure
+├── portal_pop_up.ftl            // Portal popups template
+└── portlet.ftl                  // Structure Template involving Portlets
 ```
 
-Copie e cole o componente que voce quer alterar na sua pasta `src` e assim o gulp substituira o arquivo ao executar o _build_.
+Copy and paste the component you want to change in your `src` folder and so gulp will replace the file when running _build_.
 
-Os templates permitem que você mude completamente a estrutura ta pagina, como as tags HTML, e até fixar alguns portles, fazendo com que eles não possam ser removidos.
+Templates allow you to completely change the structure of the page, such as HTML tags, and even embed some portles, so they can not be removed.
 
-É possivel chamar os portlets com a seguinte tag:
+It is possible to call the portlets with the following tag:
 
 ```FreeMarker
 <@liferay_portlet["runtime"]
@@ -422,11 +422,11 @@ Os templates permitem que você mude completamente a estrutura ta pagina, como a
 />
 ```
 
-Onde o `portletName` é o nome do pacote do portlet, trocando os . por _
-EX: com.liferay.portal.search.web.portlet.SearchPortlet = com_liferay_portal_search_web_portlet_SearchPortlet
->O `instanceId` precisa ser chamado caso o portlet possa ser usado multiplas vezes
+Where `portletName` is the name of the portlet package, changing the dots by underline
+Ex: com.liferay.portal.search.web.portlet.SearchPortlet = com_liferay_portal_search_web_portlet_SearchPortlet
+>`InstanceId` needs to be called if the portlet can be used multiple times.
 
-Por exemplo, para retornar o portlet para busca na página, coloque no seu código:
+For example, to embed the search portlet into page, put in your code:
 
 ```FreeMarker
 <@liferay_portlet["runtime"]
@@ -434,38 +434,37 @@ Por exemplo, para retornar o portlet para busca na página, coloque no seu códi
 />
 ```
 
-[+ Mais detalhes](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/embedding-portlets-in-themes-and-layout-templates)
+[+ More about this](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/embedding-portlets-in-themes-and-layout-templates).
 
-#### 3.2.3 Criando novos layouts para o portal
+#### 3.2.3 Creating new layouts
+When creating a site or page in the Liferay portal, you need to define a layout for portlet placement
+![Default layouts](./images/3-2-3-layout-default.png)
 
-Ao criar um site ou uma página no portal Liferay, você precisa definir um layout para o posicionamento dos portlets
-![Layouts padrões](./images/3-2-3-layout-default.png)
-
-Mas é possivel criar um novo layout caso necessário, com o _Liferay Theme Generator_ e o comando
+But it is possible to create a new layout if necessary, with the _Liferay Theme Generator_ and the command
 
 ```bash
 $ yo liferay-theme:layout
 ```
 
-E seguir as instruções do gerador, como o escolha de nome, id e quantas colunas e linhas o layout vai ter.
->Lembrando que é utilizado o sistema do bootstrap de 12 colunas.
+And follow the generator's instructions, like choosing name, id and how many columns and rows the layout will have.
+>Remembering that the 12-column bootstrap system is used.
 
-Ao terminar de definir as opções, o sistema criará um arquivo de extensão `tpl` com a estrutura do seu layout, e uma imagem de mesmo nome para usar como ícone.
->Se o gerador for usado em uma pasta com um tema criado pelo mesmo, ele criará os arquivos na pasta `src/layouttpl`.
+When you finish defining the options, the system will create a `tpl` extension file with the structure of its layout, and an image of the same name to use as an icon.
+>If the generator is used in a folder with a theme created by it, it will create the files in the `src/layouttpl` folder.
 
-Com o próximo deploy, o layout aparecerá como uma opção entre os outros ao criar ou editar uma página.
+In the next deploy, the layout will appear as an option among others when creating or editing a page.
 
-#### 3.2.4 Criando Themelets
-Existe um componente que se chama _themelet_, que é uma extensão para um tema e pode agregar folhas de estilo, imagens, templates e funcionalidades JavaScript à ele. É indicado para pequenas alterações e tem o objetivo de trazer mais modularidade para os temas e evitar repetição de código.
->No registro do npm existem themelets disponíveis para reutilização.
+#### 3.2.4 Creating Themelets
+There is a component called _themelet_, which is an extension to a theme and can add style sheets, images, templates and JavaScript functionality to it. It is suitable for small changes and aims to bring more modularity to the themes and avoid repetition of code.
+>In the npm record there are themelets available for reuse.
 
-A criação de _themelets_ é feita a partir do Yeoman, com a tarefa `liferay-theme:themelet`:
+The creation of _themelets_ is done from Yeoman, with the `liferay-theme: themelet` task:
 
 ```bash
 yo liferay-theme:themelet
 ```
 
-Após este comando a estrutura de pastas criada é a seguinte:
+After this command the created folder structure is as follows:
 
 ```
 [THEMELET_ROOT]
@@ -475,73 +474,73 @@ Após este comando a estrutura de pastas criada é a seguinte:
         └── _custom.scss
 ```
 
-Dentro da pasta `src`, pode-se criar as pastas `js`, `template` e `images`, seguindo as mesmas nomenclaturas e a estrutura de um tema, para que os arquivos sejam alocados corretamente no momento do build.
+Within the `src` folder, you can create `js`, `template` and `images` folders, following the same naming and structure of a theme, so that the files are allocated correctly at the moment of the build.
 
-Para tornar o themelet disponível para utilização, pode-se utilizar dois métodos do npm:
-- `npm link`: cria um symlink do diretório do themelet na pasta global do node_modules, dessa forma qualquer alteração no themelet ficará disponível instantaneamente para os temas que o extendem.
-- `npm install -g`: este método copia os arquivos do themelet para a pasta node_modules global, mas não mantém o vínculo com a pasta original, dessa forma, quando houverem alterações no themelet será necessário executar o comando novamente.
+To make the themelet available for use, you can use two npm methods:
+- `npm link`: Creates a symlink of the themelet directory in the global folder of `node_modules`, so any changes in the themelet will be instantly available for the themes that extend it.
+- `npm install -g`: This method copies the themelet files to the global `node_modules` folder, but does not maintain the link to the original folder, so when there are changes in the themelet you will need to run the command again.
 
-> Para mais informações sobre themelets, [acesse aqui](https://dev.liferay.com/pta/develop/tutorials/-/knowledge_base/7-0/themelets).
+>For more information about themelets, [click here](https://dev.liferay.com/pta/develop/tutorials/-/knowledge_base/7-0/themelets).
 
-#### 3.2.5 Importando temas
-Esta funcionalidade do `liferay-theme` permite importar outros temas encontrados na pasta para o modelo do _Liferay Theme Generator_.
+#### 3.2.5 Importing themes
+This `liferay-theme` feature allows you to import other themes found in the folder into the _Liferay Theme Generator_ template.
 
 ```bash
 yo liferay-theme:import
 ```
 
-## 4. Componentes do Front End
+## 4. Front End Components
 
-Abaixo serão apresentados alguns componentes que auxiliam no desenvolvimento do Front-End, suas características principais e funcionalidades.
+Below are some components that help in the development of Front End, its main features and functionalities.
 
-### 4.1 Linguagens utilizadas
+### 4.1 Languages used
 
-#### 4.1.1 HTML & Estrutura
+#### 4.1.1 HTML & Structure
 
 ##### FreeMarker
 
-Para a estrutura HTML da página e dos portlets é utilizado o _FreeMarker_ que é uma linguagem que mistura Java e HTML.
+For the HTML structure of the page and the portlets is used the _FreeMarker_ which is a language that mixes Java and HTML.
 
-Para construir elementos utilizando HTML normalmente:
+To build elements using HTML typically:
 
 ```HTML
 <ul>
-    <li>Exemplo</li>
+    <li>Example</li>
 </ul>
 ```
 
-Mas também podemos ter a ajuda de variaveis e interpolação:
+In FreeMarker we could use variables and interpolation:
 
 ```FreeMarker
-<#assign variable = "Exemplo" />
+<#assign variable = "Example" />
 
 <ul>
     <li>${variable}</li>
 </ul>
 ```
 
-E tambem podemos ter loops:
+We also could have loops, logical structures, objects, includes and so on:
 
 ```FreeMarker
-<#assign objectList = ["Exemplo 1","Exemplo 2", "Exemplo 3"] />
+<#assign objectList = ["Example 1","Example 2", "Example 3"] />
 
 <ul>
-    <#list object in objectList>
-        <li>${object}</li>
-    </# list>
+    <#if objectList?has_content>
+        <#list objectList as object>
+            <li>${object}</li>
+        </#list>
+    </#if>
 </ul>
 ```
 
-[+ Mais detalhes](https://freemarker.apache.org/docs/).
+[+ More about](https://freemarker.apache.org/docs/).
 
 ##### Soy Templates (Google Closure)
-
-Embora não utilizado pelos ADTs e pelos Web Content Displays, o _.soy_ pode ser usado para se construir portlets em conjunto com o _metal.js_.
-Para mais detalhes sobre o soy, [clique aqui](https://developers.google.com/closure/templates/).
+Although not used by ADTs and Web Content Displays, _soy_ can be used to build portlets in conjunction with _metal.js_.
+For more details on _soy_, [click here](https://developers.google.com/closure/templates/).
 
 #### 4.1.2 CSS
-
-Para o CSS é utilizado SCSS, o CSS com funções como Variaveis, Nesting, Mixins entre outros:
+For the CSS is used SCSS, the preprocessed CSS with functions like variables, nesting, mixins and so on:
 
 ```SCSS
 div .text {
@@ -564,26 +563,24 @@ div .text.red {
 }
 ```
 
-Tambem são utilizadas as bibliotecas Bootstrap e Lexicon/Clay que possuem varios mixins e componentes já estilizados.
+Also used are Bootstrap and Lexicon/Clay libraries that have several mixins and components already styled.
 
-Para saber mais:
+To get more about:
 - [Bootstrap](http://getbootstrap.com/docs/3.3/css/).
 - [Lexicon](https://lexiconcss.wedeploy.io/).
 
->Alguns elementos do Lexicon podem ser chamados com a taglib liferay-ui.
+>Some elements from Lexicon can be called by the liferay-ui taglib.
 
 #### 4.1.3 JavaScript
-
-Para o JavaScript, a preferencia é para o ES6, porem é possivel utilizar outras bibliotecas, como o jQuery, que ja vem incluso no pacote.
-É possivel tambem adicionar mais bibliotecas via `NPM`, ou adicionar na pasta JS do seu tema, e importar na tag `head` do seu template `portal_normal.ftl`.
+For JavaScript, preference is for ES6, but it is possible to use other libraries, such as jQuery, which is already included in the package.
+It is also possible to add more libraries via `NPM`, or add to the JS folder of your theme, and import into the `head` tag of your `portal_normal.ftl` template.
 
 ### 4.2 ADTs
+_Application Display Templates_ or ADTs, are templates that allow customization of _portlets_. They are templates in _FreeMarker_ (ftl), with classes and custom structure.
 
-_Application Display Templates_ ou ADTs, são templates que permitem a customização dos _portlets_, são templates em _FreeMarker_ (ftl), com classes e estrutura personalizada.
+The CSS comes from the theme classes, or an inline style that can be placed in _portlet_ by the portal.
 
-O CSS vem do tema a partir de classes, ou um estilo inline que pode ser colocado no _portlet_ pelo portal.
-
-Os _portlets_ que suportam ADTs são:
+The _portlets_ that support ADTs are:
 - Asset Categories Navigation;
 - Asset Publisher;
 - Asset Tags Navigation;
@@ -594,44 +591,45 @@ Os _portlets_ que suportam ADTs são:
 - Language;
 - Navigation Menu;
 - SiteMap;
-- e Wiki.
+- and Wiki.
 
-Cada _portlet_ tem um ADT especifico, com algumas predefinições e chamadas prontas para facilitar a customização do mesmo.
+Each _portlet_ has a specific ADT, with some presets and ready-made calls to make it easy to customize.
 
 ### 4.3 Web Content Structures & Templates
+Web Contents are elements used to present content either through the Web Content portlet itself or an Asset Display, which can list all the contents of the portal in an organized way, as well as a Blog, but in a more open and customizable way. In conjunction with the ADTs, it is possible to produce elements such as galleries, listing of posts, photo album, among others. It is one of liferay's most customizable portlets.
 
-Web Contents são elementos utilizados para apresentar conteudo seja através do proprio portlet do Web Content, ou de um Asset Display, que pode listar todos os conteudos do portal de forma organizadada, assim como um Blog, porem de forma mais aberta e customizável. Em conjunto com os ADTs, é possivel produzir elementos como galerias, listagem de posts, album de fotos, entre outros. É um dos portlets mais personalizaveis da liferay.
+Web Content uses a structure that must be created to define what can be used by a web content, and each structure can have several templates that, like an ADT, use FreeMarker to customize its display.
 
-O Web Content se utiliza de uma estrutura que deve ser criada para definir o que podera ser utilizado por um web content, e cada estrutura pode ter vários templates que assim como um ADT, se utilizam do FreeMarker para customizar sua exibição.
-
-É possivel encontrar as opções de Estrutura e Templates no sub-menu de Web Content:
+You can find the Structure and Templates options in the Web Content sub-menu:
 ![Web Content Submenu](./images/4-3-web-content-strucutures.jpeg)
 
->O Asset Display se utiliza de ADTs para a customização da listagem dos Web Contents, mas o Web Content em si, quando maximizado se utiliza da estrutura do Template.
+>The Asset Display uses ADTs to customize the Web Contents listing, but the Web Content itself, when maximized, uses the Template structure.
 
-[+ Mais Detalhes](https://dev.liferay.com/pt/discover/portal/-/knowledge_base/7-0/creating-web-content).
+[+ More Details](https://dev.liferay.com/en/discover/portal/-/knowledge_base/7-0/creating-web-content).
 
 #### 4.3.1 Web Content Structures
-
-Com as estruturas você pode definir o que um web content irá apresentar, dentre varias opções como publicação de imagens, texto comum, html e select boxes. E definir opções como conteúdo obrigatório ou opcional para a publicação do Web Content.
+With the structures you can define what a web content will present, among several options like image publishing, common text, html and select boxes. And set options as either mandatory or optional content for Web Content publishing.
 
 #### 4.3.2 Web Content Templates
-
 Com os templates você pode definir como a estrutura será exibida, a partir de um script no formato _ftl_.
 
-Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas para auxiliar na construção do código, junto com as chamadas dos elementos que foram determinados na estrutura, mas também é possivel usar algumas variaveis restritas para acessar outros elementos do Web Content. ([Ver mais](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#7-code-snippets)).
+Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas para auxiliar na construção do código, junto com as chamadas dos elementos que foram determinados na estrutura, mas também é possivel usar algumas variaveis restritas para acessar outros elementos do Web Content. ([Ver mais](#7-code-snippets)).
 
-### 4.4 Componentes Liferay UI
+With the templates you can define how the structure will be displayed, from a _ftl_ script.
 
-Os ADTs (Application Display Templates) e os Templates do Web Content em FreeMarker Template (_ftl_) tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
+Just like in ADTs, you can find alongside some variables ready to assist in building the code, along the calls of the elements that were determined in the structure, but it is also possible to use some restricted variables to access other elements of Web Content. ([See more](#7-code-snippets)).
+
+### 4.4 Liferay UI Components
+
+The Application Display Templates (ADTs) and the Web Content Templates in FreeMarker Template (_ftl_) have full UI and Utils taglibs support, using the following structure:
 
 ```FreeMarker
-<@liferay_ui['propriedade']
-    param="valor-do-parametro"
+<@liferay_ui['property']
+    param="value"
 />
 ```
 
-Por exemplo: Se voce quiser criar um _User Display_, você só precisa de:
+For example: If you want to create a _User Display_, you need:
 
 ```FreeMarker
 <@liferay_ui["user-display"]
@@ -643,22 +641,22 @@ Por exemplo: Se voce quiser criar um _User Display_, você só precisa de:
 />
 ```
 
-Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
+You can also use other elements, such as Lexicon icons:
 
 ```FreeMarker
 <@liferay_ui["icon"]
     icon="name-of-the-icon"
     markupView="lexicon"
     message="An message popup"
-    cssClass="classe-adicional"
+    cssClass="additional-class"
 />
 ```
 
->Você pode trocar os tipos dos icones, substituindo o `markupView` por Glyphicon, ou Font-Awesome.
+> You can change the types of icons, replacing `markupView` with Glyphicon, or Font-Awesome.
 
->Para uma referencia completa dos icones, acesse [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/).
+> For a complete reference of the icons, go to [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/).
 
-Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte [link](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
+You can see a complete list with all available tags and their parameters in the following [link](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
 
 ### 4.5 Gulp Tasks
 O Liferay possui gulp tasks pré definidas para auxiliar no _build_ e _deploy_ dos temas, essas tasks permitem compilar todos os arquivos do tema em um arquivo WAR e fazer o `deploy` no servidor de aplicação, bem como extender temas com themelets, que permitem fazer pequenas alterações sem que seja necessário criar um tema completo.

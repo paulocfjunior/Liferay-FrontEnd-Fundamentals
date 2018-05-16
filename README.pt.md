@@ -88,7 +88,7 @@ bash install_nvm.sh
 source ~/.profile
 ```
 
-Para listar as versões disponíveis do Node para instalação, como exemplo estou utilizando a versão 8.11.1, mais recente e estável disponível no momento desta redação:
+Para listar as versões disponíveis do Node para instalação usa-se o comando `nvm ls-remote`, a versão mais recente e estável disponível no momento desta redação é a 8.11.1, então para fazer a instalação utiliza-se os comandos:
 
 ```bash
 nvm ls-remote
@@ -118,7 +118,7 @@ Para geração dos códigos do Liferay é utilizado um plugin instalado via npm,
 npm install -g generator-liferay-theme@7.2.0
 ```
 
-Para mais detalhes sobre, confira a sessão [referente](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#32-liferay-theme-generator)
+Para mais detalhes sobre, confira a sessão [Liferay Theme Generator](#32-liferay-theme-generator).
 
 ### 1.7 Liferay + Tomcat Bundle
 A plataforma Liferay pode ser executada localmente através do bundle disponibilizado pela Liferay [neste endereço](https://www.liferay.com/downloads?_ga=2.140026997.754221885.1523906791-1737328940.1521481680) (Liferay Portal CE bundled with Tomcat). Ela já possui um servidor Tomcat embutido, portando só é necessário fazer o download e descompactar em algum local conhecido, o manual sugere separar os bundles dentro de uma pasta como `~/liferay/bundles/`, por exemplo.
@@ -255,7 +255,7 @@ Este comando irá criar a `[WORKSPACE_NAME]/wars/[THEME_NAME]`, com a estrutura 
             └── WEB-INF
 ```
 
-Para fazer o build do projeto, basta ir até a pasta raiz do `[THEME_NAME]` usar o comando do Blade:
+Para fazer o deploy do projeto, basta ir até a pasta raiz do `[THEME_NAME]` usar o comando do Blade:
 
 ```bash
 blade deploy
@@ -351,7 +351,7 @@ Isso irá gerar a estrutura de pastas do build e ficará assim:
 Para editar qualquer arquivo do build, pode-se criar (ou copiar) o arquivo da pasta `build` para a pasta `src`, com o mesmo nome, em um diretório correspondente, assim, quando for executado novamente o `blade deploy`, os arquivos da pasta `src` substiruirão os arquivos da pasta `build` correspondentes.
 **Editar partes desses arquivos afetará o funcionamento do portal como um todo, incluindo funções nativas do portal, portanto isso deve ser levado em consideração em todas as customizações.**
 
->A estrutura de pastas do `build` é similar à estrutura quando criada pelo Yeoman, a maioria dos arquivos consiste em SCSS modularizado em múltiplas pastas e arquivos. Existe um arquivo JavaScript na pasta `build/buildTheme/js`, que até o momento está praticamente vazio, mas pode ser duplicado em `src/main/webapp/js` (ainda não criada) e assim substituirá o arquivo do `/build` com as funcionalidades JavaScript implementadas em `src/main/webapp/js/main.js`.
+>A estrutura de pastas do `build` é similar à estrutura quando criada pelo Yeoman, a maioria dos arquivos consiste em SCSS modularizado em múltiplas pastas e arquivos. Existe um arquivo JavaScript na pasta `build/buildTheme/js`, que até o momento está praticamente vazio, mas pode ser duplicado em `src/main/webapp/js` (ainda não criada) e assim substituirá o arquivo do `build` com as funcionalidades JavaScript implementadas em `src/main/webapp/js/main.js`.
 
 ### 3.2 Liferay Theme Generator
 
@@ -520,15 +520,17 @@ Mas também podemos ter a ajuda de variaveis e interpolação:
 </ul>
 ```
 
-E tambem podemos ter loops:
+E tambem podemos ter loops, estruturas lógicas, objetos, importações entre outras funcionalidades:
 
 ```FreeMarker
-<#assign objectList = ["Exemplo 1","Exemplo 2", "Exemplo 3"] />
+<#assign objectList = ["Example 1","Example 2", "Example 3"] />
 
 <ul>
-    <#list object in objectList>
-        <li>${object}</li>
-    </# list>
+    <#if objectList?has_content >
+        <#list objectList as object>
+            <li>${object}</li>
+        </#list>
+    </#if>
 </ul>
 ```
 
@@ -619,7 +621,7 @@ Com as estruturas você pode definir o que um web content irá apresentar, dentr
 
 Com os templates você pode definir como a estrutura será exibida, a partir de um script no formato _ftl_.
 
-Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas para auxiliar na construção do código, junto com as chamadas dos elementos que foram determinados na estrutura, mas também é possivel usar algumas variaveis restritas para acessar outros elementos do Web Content. ([Ver mais](https://github.com/paulocfjunior/Liferay-FrontEnd-Fundamentals/blob/master/README.md#7-code-snippets)).
+Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas para auxiliar na construção do código, junto com as chamadas dos elementos que foram determinados na estrutura, mas também é possivel usar algumas variaveis restritas para acessar outros elementos do Web Content. ([Ver mais](#7-code-snippets)).
 
 ### 4.4 Componentes Liferay UI
 
