@@ -623,16 +623,14 @@ Assim como nos ADTs, você pode encontrar ao lado algumas váriaveis prontas par
 
 ### 4.4 Componentes Liferay UI
 
-Os ADTs (Application Display Templates) e os Templates do Web Content em FreeMarker Template (_ftl_) tem um suporte completo as taglibs de UI e Utils, somente usando a seguinte tag:
-
+The ADTs (Application Display Templates) and the Web Content Templates, has full suppor to the UI and Utils taglibs, using the tag:
 ```FreeMarker
 <@liferay_ui['propriedade']
     param="valor-do-parametro"
 />
 ```
 
-Por exemplo: Se voce quiser criar um _User Display_, você só precisa de:
-
+For example: If you want to create a _User Display_ you only need to use:
 ```FreeMarker
 <@liferay_ui["user-display"]
     markupView="lexicon"
@@ -643,8 +641,7 @@ Por exemplo: Se voce quiser criar um _User Display_, você só precisa de:
 />
 ```
 
-Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
-
+Its also possible to use other elements from the UI, like the Lexicon icons:
 ```FreeMarker
 <@liferay_ui["icon"]
     icon="name-of-the-icon"
@@ -653,17 +650,15 @@ Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
     cssClass="classe-adicional"
 />
 ```
+>You can change the icons markup, changing the `markupView` param to _Glyphicon_ or _Font-Awesome_.
+>To a Complete Reference  of the icons, access [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/).
 
->Você pode trocar os tipos dos icones, substituindo o `markupView` por Glyphicon, ou Font-Awesome.
-
->Para uma referencia completa dos icones, acesse [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/).
-
-Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte [link](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
+You can see a complete list, with all the tags avaliable and the parameters in the following [link](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
 
 ### 4.5 Gulp Tasks
 Liferay have predefined gulp tasks to help in the theme build and deploy, this tasks allows to compile all theme files in a WAR file, and do the `deploy` in the application server, it also allows to extend themes with themelets, that help make little changes without creat a complete new theme.
 
-#### 4.5.1 Gulp build
+#### 4.5.1 Gulp build   
 This taks compiles all the source-code in a file .WAR, in the `dist` folder.
 
 #### 4.5.2 Gulp deploy
