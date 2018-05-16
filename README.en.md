@@ -1,6 +1,6 @@
-# Liferay Front End Developer – Primeiros Passos
+# Liferay Front End Developer – First steps
 
-## Sumário
+## Table of contents
 
 1. [Environment Setup](#1-environment-setup)
     1. [Java JDK](#11-java-jdk)
