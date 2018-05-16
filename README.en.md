@@ -661,49 +661,50 @@ Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
 Você pode ver uma lista completa com todas as tags disponiveis e seus parametros no seguinte [link](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
 
 ### 4.5 Gulp Tasks
-O Liferay possui gulp tasks pré definidas para auxiliar no _build_ e _deploy_ dos temas, essas tasks permitem compilar todos os arquivos do tema em um arquivo WAR e fazer o `deploy` no servidor de aplicação, bem como extender temas com themelets, que permitem fazer pequenas alterações sem que seja necessário criar um tema completo.
+Liferay have predefined gulp tasks to help in the theme build and deploy, this tasks allows to compile all theme files in a WAR file, and do the `deploy` in the application server, it also allows to extend themes with themelets, that help make little changes without creat a complete new theme.
 
 #### 4.5.1 Gulp build
-Esta tarefa compila todo o código fonte em um arquivo WAR na pasta `dist` do seu tema.
+This taks compiles all the source-code in a file .WAR, in the `dist` folder.
 
 #### 4.5.2 Gulp deploy
-A tarefa `deploy` executa a tarefa `build` antes, para criar o arquivo WAR, e em seguida publica esse artefato no servidor de aplicação especificado.
-Se o bundle está em execução, pode-se usar a tarefa `deploy:gogo`, que é um método mais rapido que o `deploy`.
->A documentação sugere que se use apenas um método de deploy, ou seja, se para o primeiro deploy for usada a tarefa `deploy`, é aconselhável que não se use a tarefa `deploy:gogo`.
+The task `deploy` executes the `build` task before, to create the `WAR`, and after that publishes this file on the specified application server.
+If the Bundle is in execution, you can use the taks `deploy:gogo`, that is a fast method than the `deploy`
+>The documentation suggests that only one deploy method is used, that means, if for the first deploy the task `deploy` is used, it is advisable that the `deploy:gogo` task not to be used.
 
 #### 4.5.3 Gulp watch
-Esta tarefa é similar à `deploy:gogo`, só funciona quando o bundle está em execução, ele fica observando os arquivos e quando há alterações é realizado um _fast deploy_, porém não possui _BrowserSync_, que é a tecnologia que permite visualizar as alterações no browser instantaneamente, por isso, para visualizar as alterações é necessário atualizar a página.
+This task its similar to the `deploy:gogo`, and only works when the bundle is running. It keeps looking the files and when it finds alterations on the files, it makes a _fast deploy_, but it doesn't have a _BrowserSync_, which is the technology that allows you to view the changes in the browser instantly, so to see the changes you need to refresh the page.
 
 #### 4.5.4 Gulp init
-Esta tarefa é usada para especificar o endereço do servidor de aplicação que será utilizado pelas tarefas de `deploy`.
->Ele é chamado automaticamente pelas tarefas do Yeoman _liferay-theme_ e _liferay-theme:import_.
+This task is used to specify the application server address that will be used by the `deploy` task.
+>It is automatically called by the Yeoman _liferay-theme_ and _liferay-theme:import_.
 
 As propriedades geradas por essa tarefa ficam salvas no arquivo `liferay-theme.json`, no diretório raiz do tema.
 
 #### 4.5.5 Gulp extend
-Esta tarefa permite configurar a base do tema (_base theme_) e também permite adicionar _themelets_ à ele.
-Quando se altera a base do tema, existem duas possibilidades: *Styled* ou *Unstyled*.
-- O _Base Theme Styled_ possui todo o estilo, efeitos e funcionalidades nativas do portal (como login, ferramentas de edição e gerenciamento de conteúdo), e todos os arquivos SCSS padrões ficam disponíveis, incluindo Bootstrap, Lexicon e etc, porém os portlets e as páginas não são estilizadas.
-- O _Base Theme Unstyled_, não possui definições de estilo, nem mesmo para o portal e suas funcionalidades, é util quando se deseja recriar toda a estrutura visual do portal.
+This task allows to configure the _base theme_ and also allows to add and install _themelets_ to it.
+When the base theme is changed, there is two possibilities: **styled** or **unstyled**.
+- The _Base Theme Styled_ has all the portal native style and features (like login, edition tools and content management tool), and all default SCSS are avaliable, including the Bootstrap, Lexicon, etc., but the portlets and the pages aren't stylized.
+- The _Base Theme Unstyled_, doesn't have any style predefinition, ever for the portal and its features. It used when its needed to recreate all the portal visual structure.
 
->Ambos os _Base Themes_ estão publicados como pacotes npm, [Styled](https://www.npmjs.com/package/liferay-theme-styled) e [Unstyled](https://www.npmjs.com/package/liferay-theme-unstyled).
->Também é possível extender o tema a partir de outros temas publicados no `npm` e, de acordo com a documentação, não necessariamente precisam estar instalados.
+>Both Base Themes are published as npm packages, [Styled](https://www.npmjs.com/package/liferay-theme-styled) and [Unstyled](https://www.npmjs.com/package/liferay-theme-unstyled).
+>Its also possible to extend the theme from other themes published on `npm` and, according to the documentation, do not necessarily need to be installed.
 
 #### 4.5.6 Gulp status
-Esta tarefa apenas reporta qual o _base theme_ utilizado e quais _themelets_ estão aplicados.
+This task only repotrs the _Base Theme_ that has been used, and which _themelets_ are been used.
 
 ## 5. Utilidades
 
-  * [FreeMarker. Documentação](https://freemarker.apache.org/docs/index.html)
-  * [Documentação Liferay](https://dev.liferay.com/pt/develop/tutorials).
-  * [Taglibs. Sumário e documentação](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
-  * [Certificação Liferay](https://www.liferay.com/pt/services/certification).
+  * [FreeMarker Docs](https://freemarker.apache.org/docs/index.html)
+  * [Liferay Docs](https://dev.liferay.com/pt/develop/tutorials).
+  * [Taglibs Docs](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
+  * [Liferay Certification Service](https://www.liferay.com/pt/services/certification).
 
 ## 6. Certificação Liferay
-A Liferay possui um [serviço de certificação](https://www.liferay.com/pt/services/certification) que é uma prova com 50 questões, variando entre questões de verdadeiro ou falso e multipla escolha, com duração de 90 minutos e custo de USD 200,00. Esta prova permite obter um reconhecimento oficial da habilidade e experiência com o ambiente Liferay. No momento, existem 3 certificações disponíveis, uma para o Liferay 6.2 e outras 2 para o Liferay DXP (separa os conteúdos Front-End e Back-End).
+Liferay has an [Certification Service](https://www.liferay.com/pt/services/certification), that is a test with 50 question, ranging from questions of true or false and multiple choice, with 90 minutes of duration and a cost of USD 200.00. This test allows an official recognition of the skill and experience with the Liferay environment. In the moment, there is three avaliable certificions, one for Liferay 6.2, and two others for Liferay DXP (Front-End and Back-End).
 
 ### 6.1 Liferay 6.2 Certified Professional Developer
-A certificação de Desenvolvedor Profissional para o Liferay 6.2 compreende os seguintes itens:
+
+The Liferay 6.2 Professional Developer comprises the following items:
 
 + Liferay Development Best Practices (10%)
     * Development Environment Setup
@@ -749,10 +750,11 @@ A certificação de Desenvolvedor Profissional para o Liferay 6.2 compreende os 
     * Modifying Portal Configuration
     * Customizing Core Portlets
 
-[+ Mais detalhes](https://www.liferay.com/pt/services/certification/professional-developer/6.2)
+[+ More Details](https://www.liferay.com/pt/services/certification/professional-developer/6.2)
 
 ### 6.2 Liferay DXP Certified Professional Front-End Developer
-A certificação de Front-End para o Liferay DXP compreende os seguintes itens:
+
+The Liferay DXP Front-End Certification comprises the following items:
 
 + Front-End State-of-the-Art (10%)
     * Bootstrap
@@ -793,10 +795,11 @@ A certificação de Front-End para o Liferay DXP compreende os seguintes itens:
     * aui
     * liferay-ui
 
-[+ Mais detalhes](https://www.liferay.com/pt/services/certification/dxp/front-end-developer)
+[+ More Details](https://www.liferay.com/pt/services/certification/dxp/front-end-developer)
 
 ### 6.3 Liferay DXP Certified Professional Back-End Developer
-A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
+
+The Liferay DXP Back-End Certification comprises the following items:
 
 + Liferay Digital Experience Platform: Basic Concepts (25%)
     * OSGi
@@ -831,26 +834,27 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
     * Know how to make upgrades from Liferay 6.X to Liferay DXP
     * Development Strategy
 
-[+ Mais detalhes](https://www.liferay.com/pt/services/certification/dxp/back-end-developer)
+[+ More details](https://www.liferay.com/pt/services/certification/dxp/back-end-developer)
 
 -----
 ## 7. Code snippets
 
 ### Blog / Web content
-Retornar as tags de um post/web content (ftl):
+
+Return posts/web content tags:
 ```
 <#assign AssetTagLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetTagLocalService")>
 <#assign entryTags = AssetTagLocalService.getEntryTags(entry.entryId)>
 ```
 
-Retornar as categoras de um post/web content (ftl):
+Return posts/web content categories:
 ```
 <#assign AssetCategoryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
 <#assign entryCategories = AssetCategoryLocalService.getCategories(entry.classNameId, entry.classPK)>
 ```
 >Caso a chamada do serviceLocator falhe, deve-se retirar as variáveis restritas no portal em `Menu > Control Panel > System Settings > Foundation > FreeMarker Engine` e remover a variável restrita serviceLocator.
 
-Variaveis restritas do Web Content (ftl):
+Web Content restric variables:
 ```
 .vars['reserved-article-asset-tag-names'].data
 .vars['reserved-article-author-comments'].data
