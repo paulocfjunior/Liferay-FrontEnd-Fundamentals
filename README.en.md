@@ -38,12 +38,19 @@
         4. [Gulp init](#454-gulp-init)
         5. [Gulp extend](#455-gulp-extend)
         6. [Gulp status](#456-gulp-status)
-5. [Util](#5-util)
-6. [Liferay Certification](#6-liferay-certification)
-    1. [Liferay 6.2 Certified Professional Developer](#61-liferay-62-certified-professional-developer)
-    2. [Liferay DXP Certified Professional Front-End Developer](#62-liferay-dxp-certified-professional-front-end-developer)
-    3. [Liferay DXP Certified Professional Back-End Developer](#63-liferay-dxp-certified-professional-back-end-developer)
-7. [Code snippets](#7-code-snippets)
+5. [Front-End Good Practices](#5-front-end-good-practices)
+    1 [Configuration Reccomendations](#5-1-configuration-reccomendations)
+    2 [Code Formatting](#5-2-code-formatting)
+        1 [HTML/TPL/FTL](#5-2-1-html-tpl-ftl)
+        2 [CSS/SCSS](#5-2-2-css-scss)
+        3 [JS](#5-2-3-js)
+    3 [Liferay Front End Source Formatter](#5-3-liferay-front-end-source-formatter)
+6. [Util](#6-util)
+7. [Liferay Certification](#7-liferay-certification)
+    1. [Liferay 6.2 Certified Professional Developer](#71-liferay-62-certified-professional-developer)
+    2. [Liferay DXP Certified Professional Front-End Developer](#72-liferay-dxp-certified-professional-front-end-developer)
+    3. [Liferay DXP Certified Professional Back-End Developer](#73-liferay-dxp-certified-professional-back-end-developer)
+8. [Code snippets](#8-code-snippets)
     - [Blog / Web content](#blog--web-content)
 
 -----
@@ -682,6 +689,112 @@ When the base theme is changed, there is two possibilities: **styled** or **unst
 
 #### 4.5.6 Gulp status
 This task only repotrs the _Base Theme_ that has been used, and which _themelets_ are been used.
+
+## 5. Front End Good Practices
+
+### 5.1 Configuration Recommendations
+
+Regardless of the editor/IDE that is used, it's recommended using some options to help with the little details on the code. If possible look for these options on your favorite editor:
+
+- Remove trailing whitespace
+    This option automatically removes any trailer whitespace at the end of the lines.
+    > VSCode has this options, and Sublime Text has packages that implement this feature
+
+- Indents and Spacing
+    Liferay uses as default the 4 tabs indent. A lot of editors can easily change the file indentation from space to tabs, they just need to have the same size. The priority here is to not mix them both
+
+- Render/Show whitespace
+    Some IDEs has an option to show the file whitespace, and let this option turned on can help with double spaces, and trailing spaces
+    ![Whitespaces Rendering](./images/5-1-recomendacoes.png)
+
+### 5.2 Code Formatting
+
+#### 5.2.1 HTML/TPL/FTL
+
+- Organize the attributes of HTMl alphabetically, for example:
+    `<input type =" "class =" "id =" ">` should be `<input class="" id="" type=""> `
+- Organize attribute values ​​(such as classes) alphabetically as well, for example:
+    `<div class =" box alert custom ">` should be `<div class =" alert box custom ">`
+- Block-level elements need a class or an id (`div`,` aside`, `sections`)
+
+#### 5.2.2 CSS/SCSS
+
+- Hexadecimal colors must be capitalized for ease of viewing
+    - `# 2C2C3C` ->` # 2C2C3C`
+- Comments need a line before and after the text
+- Rules and properties should be written in a block and not in single lines
+- Use 0 instead of 0px when applicable
+- Always check if all properties end with semicolons
+- Each priority must have its own line and must be organized in alphabetical order
+    ```css
+    .class-style {
+        margin: 0 auto;
+        max-width: 1170px;
+        margin: 0 auto;
+        padding: 0 15px;
+        width: 100%;
+    }
+    ```
+- `@ includes` must have a line of spacing between them
+    ```scss
+    @include "CSS"
+
+    @include "Another CSS"
+    ```
+- Avoid going more than 3 levels deep in the SASS hierarchy to facilitate maintenance
+
+#### 5.2.3 JS
+
+- Just like in the CSS, comments should have a separating space before and after the text
+- Place each argument of a function on a separate line
+- Spacing the functions of your arguments
+    ```js
+    if (param == true) {
+        do something;
+    }
+    else {
+        do other thing;
+    }
+    ```
+- Remove all console.logs from code
+
+### 5.3 Liferay Front End Source Formatter
+
+The Liferay Front End Source Formatter is an npm command that helps you to check if your code follows Liferay patterns, looking for errors and unfollowed practices, such as those cited above, and shows the line for the correction
+
+To install, simply run the command:
+```bash
+$ npm install -g check-source-formatting
+```
+> Remember that you need node.js v6.0 or greater
+
+The basic mode of use is:
+```bash
+$ csf caminho/para/o/arquivo
+```
+
+and just below it returned the errors found:
+![CSF mostrando os erros](./images/5-3-liferay.png)
+
+
+Or check multiple files at the same time with the command:
+```bash
+$ find . -name '*.css' | xargs csf
+```
+
+And it's also possible to integrate with git, to check only the last changed files
+
+In your .gitconfig file, include the following alias
+```
+sfm = "!f() { git diff --stat --name-only master.. | tr \"\\n\" \"\\0\" | xargs -0 -J{} csf {} $@; }; f"
+```
+
+So you can run the command directly from your terminal:
+```bash
+$ smf
+```
+
+[(+ More information)](https://github.com/liferay/liferay-frontend-source-formatter)
 
 ## 5. Util
 
