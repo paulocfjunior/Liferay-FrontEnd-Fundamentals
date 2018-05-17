@@ -38,12 +38,13 @@
         4. [Gulp init](#454-gulp-init)
         5. [Gulp extend](#455-gulp-extend)
         6. [Gulp status](#456-gulp-status)
-5. [Utilidades](#5-utilidades)
-6. [Certificação Liferay](#6-certificação-liferay)
-    1. [Liferay 6.2 Certified Professional Developer](#61-liferay-62-certified-professional-developer)
-    2. [Liferay DXP Certified Professional Front-End Developer](#62-liferay-dxp-certified-professional-front-end-developer)
-    3. [Liferay DXP Certified Professional Back-End Developer](#63-liferay-dxp-certified-professional-back-end-developer)
-7. [Code snippets](#7-code-snippets)
+5. [Boas Práticas de Front-End](#5-boas-praticas-de-front-end)
+6. [Utilidades](#6-utilidades)
+7. [Certificação Liferay](#7-certificação-liferay)
+    1. [Liferay 6.2 Certified Professional Developer](#71-liferay-62-certified-professional-developer)
+    2. [Liferay DXP Certified Professional Front-End Developer](#72-liferay-dxp-certified-professional-front-end-developer)
+    3. [Liferay DXP Certified Professional Back-End Developer](#73-liferay-dxp-certified-professional-back-end-developer)
+8. [Code snippets](#8-code-snippets)
     - [Blog / Web content](#blog--web-content)
 
 -----
@@ -693,6 +694,113 @@ Quando se altera a base do tema, existem duas possibilidades: *Styled* ou *Unsty
 
 #### 4.5.6 Gulp status
 Esta tarefa apenas reporta qual o _base theme_ utilizado e quais _themelets_ estão aplicados.
+
+## 5. Boas Práticas de Front End
+
+### 5.1 Recomendaçoes de Configuração
+Independente do editor/IDE que seja usada, é recomendado se utilizar algumas opções para ajudar com os detalhes e cuidado do código.
+Se possivel procure opções como essa no seu editor Favorito:
+
+- Remover o espaço em branco (_whitespace_)
+    Essa opção remove automaticamente qualquer espaço extra ao final das linhas
+    O VScode vem com essa opção, e o Sublime possui packages que implementam esta caracteristica
+
+- Espaçamento da Indentação
+    A Liferay usa como padrão a tabulação de 4 espaços. Muitos editores conseguem alterar facilmente a indentação de espaços para tabulação, desde que o espaçamento seja do mesmo tamanho. O importante é não misturar tabulação e espaços
+
+- Renderizar/Mostrar o espaço em branco (_whitespace_)
+    Algumas IDEs tem como opção apresentar o espaço vazio do arquivo, e deixar está opção ligada ajuda muito a ver se tem espaços duplos entre as tags, ou se tem espaço sobrando ao final da linha
+    ![Renderização do Whitespace](./images/5-1-recomendacoes.png)
+
+### 5.2 Formatação de código
+
+#### 5.2.1 HTML/TPL/FTL
+
+- Organizar os attributos do HTMl de forma alfabética, por exemplo: 
+    - `<input type="" class="" id="">` deveria ser `<input class="" id="" type=""> `
+- Organizar os valores dos attributos (como classes) de forma alfabética também, por exemplo:
+    - `<div class="box alert custom">` deveria ser `<div class="alert box custom">`
+- Elementos block-level precisam de uma classe ou um id (`div`,`aside`,`sections`);
+
+#### 5.2.2 CSS/SCSS
+
+- Cores Hexadecimais devem usar letras maiúsculas para facilitar a visualização
+    - `#2c2c3c` -> `#2C2C3C`
+- Comentarios precisam de uma linha antes e depois do texto
+- Regras e propriedades devem ser escritas em bloco e não em linhas unicas
+- Use 0 em vez de 0px quando aplicavel
+- Sempre verificar se todas as propriedades terminam com ponto e virgula
+- Cada proriedade deve ter a sua propria linha, e devem ser organizadas em ordem alfabética
+    ```css
+    .class-style {
+        margin: 0 auto;
+        max-width: 1170px;
+        margin: 0 auto;
+        padding: 0 15px;
+        width: 100%; 
+    }
+    ```
+- `@includes` devem ter uma linha de espaçamento entre eles
+    ```scss
+        @include "CSS"
+
+        @include "Outro CSS"
+    ```
+- Evitar ir além de 3 níveis na hierarquia do SASS para facilitar a manuntenção
+
+
+#### 5.2.3 JS
+
+- Assim como no CSS, comentários devem ter um espaço de separação antes e depois do texto
+- Colocar cada argumento de uma função em uma linha separada
+- Espaçar as funções de seus argumentos
+    ```js
+    if (param == true) { ... 
+        do something;
+    }
+    else { 
+        do other thing;
+    }
+    ```
+- Remover todos os console.logs do código;
+
+### 5.3 Liferay Front End Source Formatter
+
+O _Liferay Front End Source Formatter_ é um comando `npm` que ajuda a verificar se o seu código segue os padrões liferay, procurando por erros e praticas nao seguidas, como as citadas acima, e mostra a linha para a correção
+
+Para instalar basta rodar o comando:
+```bash
+$ npm install -g check-source-formatting
+```
+>Talvez seja necessário rodar o comando com `sudo`
+>Lembrando que é necessário o node.js v6.0 ou maior
+
+O modo básico de utilização é:
+```bash
+$ csf caminho/para/o/arquivo
+```
+
+e logo abaixo ele retornara os erros encontrados
+![CSF mostrando os erros](./images/5-3-liferay.png)
+
+Ou verificar vários arquivos ao meso tempo com o comando:
+```bash
+$ find . -name '*.css' | xargs csf
+```
+
+E também é possivel integrar com o git, para verificar somente os ultimos arquivos alterados
+
+No seu arquivo .gitconfig, inclua o seguinte alias
+```
+sfm = "!f() { git diff --stat --name-only master.. | tr \"\\n\" \"\\0\" | xargs -0 -J{} csf {} $@; }; f"
+```
+
+Assim você podera rodar diretamente do seu terminal o comando:
+```bash
+$ smf
+```
+
+[(+ Mais informações)](https://github.com/liferay/liferay-frontend-source-formatter)
 
 ## 5. Utilidades
 
