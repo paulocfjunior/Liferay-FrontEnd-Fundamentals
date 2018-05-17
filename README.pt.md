@@ -39,6 +39,12 @@
         5. [Gulp extend](#455-gulp-extend)
         6. [Gulp status](#456-gulp-status)
 5. [Boas Práticas de Front-End](#5-boas-praticas-de-front-end)
+    5.1 [Recomendaçoes de Configuração](#5-1-recomendaçoes-de-configuracao)
+    5.2 [Formatação de código](#5-2-formatação-de-codigo)
+        5.2.1 [HTML/TPL/FTL](#5-2-1-html-tpl-ftl)
+        5.2.2 [CSS/SCSS](#5-2-2-css-scss)
+        5.2.3 [JS](#5-2-3-js)
+    5.3 [Liferay Front End Source Formatter](#5-3-liferay-front-end-source-formatter)
 6. [Utilidades](#6-utilidades)
 7. [Certificação Liferay](#7-certificação-liferay)
     1. [Liferay 6.2 Certified Professional Developer](#71-liferay-62-certified-professional-developer)
@@ -802,17 +808,17 @@ $ smf
 
 [(+ Mais informações)](https://github.com/liferay/liferay-frontend-source-formatter)
 
-## 5. Utilidades
+## 6. Utilidades
 
   * [FreeMarker. Documentação](https://freemarker.apache.org/docs/index.html)
   * [Documentação Liferay](https://dev.liferay.com/pt/develop/tutorials).
   * [Taglibs. Sumário e documentação](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
   * [Certificação Liferay](https://www.liferay.com/pt/services/certification).
 
-## 6. Certificação Liferay
+## 7. Certificação Liferay
 A Liferay possui um [serviço de certificação](https://www.liferay.com/pt/services/certification) que é uma prova com 50 questões, variando entre questões de verdadeiro ou falso e multipla escolha, com duração de 90 minutos e custo de USD 200,00. Esta prova permite obter um reconhecimento oficial da habilidade e experiência com o ambiente Liferay. No momento, existem 3 certificações disponíveis, uma para o Liferay 6.2 e outras 2 para o Liferay DXP (separa os conteúdos Front-End e Back-End).
 
-### 6.1 Liferay 6.2 Certified Professional Developer
+### 7.1 Liferay 6.2 Certified Professional Developer
 A certificação de Desenvolvedor Profissional para o Liferay 6.2 compreende os seguintes itens:
 
 + Liferay Development Best Practices (10%)
@@ -861,7 +867,7 @@ A certificação de Desenvolvedor Profissional para o Liferay 6.2 compreende os 
 
 [+ Mais detalhes](https://www.liferay.com/pt/services/certification/professional-developer/6.2)
 
-### 6.2 Liferay DXP Certified Professional Front-End Developer
+### 7.2 Liferay DXP Certified Professional Front-End Developer
 A certificação de Front-End para o Liferay DXP compreende os seguintes itens:
 
 + Front-End State-of-the-Art (10%)
@@ -905,7 +911,7 @@ A certificação de Front-End para o Liferay DXP compreende os seguintes itens:
 
 [+ Mais detalhes](https://www.liferay.com/pt/services/certification/dxp/front-end-developer)
 
-### 6.3 Liferay DXP Certified Professional Back-End Developer
+### 7.3 Liferay DXP Certified Professional Back-End Developer
 A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 
 + Liferay Digital Experience Platform: Basic Concepts (25%)
@@ -944,7 +950,7 @@ A certificação de Back-End para o Liferay DXP compreende os seguintes itens:
 [+ Mais detalhes](https://www.liferay.com/pt/services/certification/dxp/back-end-developer)
 
 -----
-## 7. Code snippets
+## 8. Code snippets
 
 ### Blog / Web content
 Retornar as tags de um post/web content (ftl):
