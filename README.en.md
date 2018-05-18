@@ -39,12 +39,12 @@
         5. [Gulp extend](#455-gulp-extend)
         6. [Gulp status](#456-gulp-status)
 5. [Front-End Good Practices](#5-front-end-good-practices)
-    1 [Configuration Reccomendations](#5-1-configuration-reccomendations)
-    2 [Code Formatting](#5-2-code-formatting)
-        1 [HTML/TPL/FTL](#5-2-1-html-tpl-ftl)
-        2 [CSS/SCSS](#5-2-2-css-scss)
-        3 [JS](#5-2-3-js)
-    3 [Liferay Front End Source Formatter](#5-3-liferay-front-end-source-formatter)
+    1. [Configuration Recommendations](#51-configuration-recommendations)
+    2. [Code Formatting](#52-code-formatting)
+        1. [HTML/TPL/FTL](#521-htmltplftl)
+        2. [CSS/SCSS](#522-cssscss)
+        3. [JS](#523-js)
+    3. [Liferay Front End Source Formatter](#53-liferay-front-end-source-formatter)
 6. [Util](#6-util)
 7. [Liferay Certification](#7-liferay-certification)
     1. [Liferay 6.2 Certified Professional Developer](#71-liferay-62-certified-professional-developer)
@@ -652,9 +652,9 @@ You can also use other elements, such as Lexicon icons:
 />
 ```
 
-> You can change the types of icons, replacing `markupView` with Glyphicon, or Font-Awesome.
+>You can change the types of icons, replacing `markupView` with Glyphicon, or Font-Awesome.
 
-> For a complete reference of the icons, go to [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/).
+>For a complete reference of the icons, go to [Lexicon Icons](https://lexiconcss.wedeploy.io/content/icons/).
 
 You can see a complete list with all available tags and their parameters in the following [link](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
 
@@ -698,35 +698,36 @@ Regardless of the editor/IDE that is used, it's recommended using some options t
 
 - Remove trailing whitespace
     This option automatically removes any trailer whitespace at the end of the lines.
-    > VSCode has this options, and Sublime Text has packages that implement this feature
+
+    >VSCode has this options, and Sublime Text has packages that implement this feature.
 
 - Indents and Spacing
-    Liferay uses as default the 4 tabs indent. A lot of editors can easily change the file indentation from space to tabs, they just need to have the same size. The priority here is to not mix them both
+    Liferay uses as default the 4-spaces tab indent. A lot of editors can easily change the file indentation from space to tabs, they just need to have the same size. The priority here is to not mix them both.
 
 - Render/Show whitespace
-    Some IDEs has an option to show the file whitespace, and let this option turned on can help with double spaces, and trailing spaces
-    ![Whitespaces Rendering](./images/5-1-recomendacoes.png)
+    Some IDEs has an option to show the file whitespace, and let this option turned on can help with double spaces, and trailing spaces:
+    ![Whitespaces Rendering](./images/5-1-recomendacoes.png).
 
 ### 5.2 Code Formatting
 
 #### 5.2.1 HTML/TPL/FTL
 
-- Organize the attributes of HTMl alphabetically, for example:
+- Organize the attributes of HTML alphabetically, for example:
     `<input type =" "class =" "id =" ">` should be `<input class="" id="" type=""> `
 - Organize attribute values ​​(such as classes) alphabetically as well, for example:
     `<div class =" box alert custom ">` should be `<div class =" alert box custom ">`
-- Block-level elements need a class or an id (`div`,` aside`, `sections`)
+- Block-level elements need a class or an id (`div`,` aside`, `sections`).
 
 #### 5.2.2 CSS/SCSS
 
-- Hexadecimal colors must be capitalized for ease of viewing
-    - `# 2C2C3C` ->` # 2C2C3C`
-- Comments need a line before and after the text
-- Rules and properties should be written in a block and not in single lines
-- Use 0 instead of 0px when applicable
-- Always check if all properties end with semicolons
-- Each priority must have its own line and must be organized in alphabetical order
-    ```css
+- Hexadecimal colors must be capitalized for ease of viewing:
+    - `#2c2c3c` -> `#2C2C3C`
+- Comments need a line before and after the text.
+- Rules and properties should be written in a block and not in single lines.
+- Use 0 instead of 0px when applicable.
+- Always check if all properties end with semicolons.
+- Each priority must have its own line and must be organized in alphabetical order:
+    ```css
     .class-style {
         margin: 0 auto;
         max-width: 1170px;
@@ -735,19 +736,19 @@ Regardless of the editor/IDE that is used, it's recommended using some options t
         width: 100%;
     }
     ```
-- `@ includes` must have a line of spacing between them
+- `@ includes` must have a line of spacing between them:
     ```scss
     @include "CSS"
 
     @include "Another CSS"
     ```
-- Avoid going more than 3 levels deep in the SASS hierarchy to facilitate maintenance
+- Avoid going more than 3 levels deep in the SASS hierarchy to facilitate maintenance.
 
 #### 5.2.3 JS
 
-- Just like in the CSS, comments should have a separating space before and after the text
-- Place each argument of a function on a separate line
-- Spacing the functions of your arguments
+- Just like in the CSS, comments should have a separating space before and after the text.
+- Place each argument of a function on a separate line.
+- Spacing the functions of your arguments:
     ```js
     if (param == true) {
         do something;
@@ -756,24 +757,24 @@ Regardless of the editor/IDE that is used, it's recommended using some options t
         do other thing;
     }
     ```
-- Remove all console.logs from code
+- Remove all `console.log` from code.
 
 ### 5.3 Liferay Front End Source Formatter
 
-The Liferay Front End Source Formatter is an npm command that helps you to check if your code follows Liferay patterns, looking for errors and unfollowed practices, such as those cited above, and shows the line for the correction
+The Liferay Front End Source Formatter is an npm command that helps you to check if your code follows Liferay patterns, looking for errors and unfollowed practices, such as those cited above, and shows the line for the correction.
 
 To install, simply run the command:
 ```bash
 $ npm install -g check-source-formatting
 ```
-> Remember that you need node.js v6.0 or greater
+>Remember that you need node.js v6.0 or greater.
 
 The basic mode of use is:
 ```bash
-$ csf caminho/para/o/arquivo
+$ csf path/to/file
 ```
 
-and just below it returned the errors found:
+And just below it returned the errors found:
 ![CSF mostrando os erros](./images/5-3-liferay.png)
 
 
@@ -782,23 +783,22 @@ Or check multiple files at the same time with the command:
 $ find . -name '*.css' | xargs csf
 ```
 
-And it's also possible to integrate with git, to check only the last changed files
-
-In your .gitconfig file, include the following alias
-```
+And it's also possible to integrate with git, to check only the last changed files.
+In your .gitconfig file, include the following alias:
+```bash
 sfm = "!f() { git diff --stat --name-only master.. | tr \"\\n\" \"\\0\" | xargs -0 -J{} csf {} $@; }; f"
 ```
 
 So you can run the command directly from your terminal:
 ```bash
-$ smf
+$ sfm
 ```
 
-[(+ More information)](https://github.com/liferay/liferay-frontend-source-formatter)
+[+ More information](https://github.com/liferay/liferay-frontend-source-formatter).
 
 ## 5. Util
 
-  * [FreeMarker Docs](https://freemarker.apache.org/docs/index.html)
+  * [FreeMarker Docs](https://freemarker.apache.org/docs/index.html).
   * [Liferay Docs](https://dev.liferay.com/en/develop/tutorials).
   * [Taglibs Docs](https://docs.liferay.com/ce/portal/7.0-latest/taglibs/util-taglib/).
   * [Liferay Certification Service](https://www.liferay.com/en/services/certification).
@@ -811,93 +811,93 @@ Liferay has an [Certification Service](https://www.liferay.com/en/services/certi
 The Liferay 6.2 Professional Developer comprises the following items:
 
 + Liferay Development Best Practices (10%)
-    * Development Environment Setup
-    * Understanding Liferay Plugins
+    * Development Environment Setup;
+    * Understanding Liferay Plugins.
 
 + Liferay Architecture and APIs (25%)
-    * Understanding Liferay Architecture
-    * Service Builder
-    * Liferay Utilities
-    * User Management and Group APIs
-    * AlloyUI
-    * Expando API
-    * Application Display Templates
+    * Understanding Liferay Architecture;
+    * Service Builder;
+    * Liferay Utilities;
+    * User Management and Group APIs;
+    * AlloyUI;
+    * Expando API;
+    * Application Display Templates.
 
 + Liferay Portlet Plugin Development (20%)
-    * Portlet API
-    * Configuration
-    * IPC
-    * Liferay MVCPortlet
-    * JSP and UI Technologies
-    * Permissions
+    * Portlet API;
+    * Configuration;
+    * IPC;
+    * Liferay MVCPortlet;
+    * JSP and UI Technologies;
+    * Permissions.
 
 + Liferay Hook Plugin Development (25%)
-    * Best Practices
-    * Configuration Hook
-    * JSP Hook
-    * Language Hook
-    * Indexer Post Processor Hook
-    * Service Wrapper Hook
-    * Struts Action Hook
-    * Servlet Filter Hook
+    * Best Practices;
+    * Configuration Hook;
+    * JSP Hook;
+    * Language Hook;
+    * Indexer Post Processor Hook;
+    * Service Wrapper Hook;
+    * Struts Action Hook;
+    * Servlet Filter Hook.
 
 + Liferay Theme Plugin Development (5%)
-    * Understanding Liferay Theme Development
-    * Color Schemes and Theme Settings
-    * Embedded Portlets
+    * Understanding Liferay Theme Development;
+    * Color Schemes and Theme Settings;
+    * Embedded Portlets.
 
 + Liferay Layout Template Plugin Development (5%)
-    * Understanding Liferay Layout Template Development
+    * Understanding Liferay Layout Template Development.
 
 + Liferay Advanced Customization (10%)
-    * Understanding EXT Plugins
-    * Modifying Portal Configuration
-    * Customizing Core Portlets
+    * Understanding EXT Plugins;
+    * Modifying Portal Configuration;
+    * Customizing Core Portlets.
 
-[+ More Details](https://www.liferay.com/en/services/certification/professional-developer/6.2)
+[+ More Details](https://www.liferay.com/en/services/certification/professional-developer/6.2).
 
 ### 6.2 Liferay DXP Certified Professional Front-End Developer
 
 The Liferay DXP Front-End Certification comprises the following items:
 
 + Front-End State-of-the-Art (10%)
-    * Bootstrap
-    * NodeJS
-    * NPM
-    * Yeoman
-    * Gulp
-    * Soy Templates
+    * Bootstrap;
+    * NodeJS;
+    * NPM;
+    * Yeoman;
+    * Gulp;
+    * Soy Templates.
 
 + Liferay Technologies (15%)
-    * Lexicon
-    * Metal.js
-    * AlloyUi
-    * Senna
-    * AlloyEditor
-    * Liferay AMD Module Loader
-    * Themes SDK
+    * Lexicon;
+    * Metal.js;
+    * AlloyUi;
+    * Senna;
+    * AlloyEditor;
+    * Liferay AMD Module Loader;
+    * Themes SDK.
 
 + Building Layout Templates (20%)
-    * Layout Templates with Liferay Themes Generator
-    * Embedding Portlets in Layouts Templates
+    * Layout Templates with Liferay Themes Generator;
+    * Embedding Portlets in Layouts Templates.
 
 + Building Themes (45%)
-    * Liferay Themes Generator
-    * Themelets
-    * Theme Contributors
-    * Context Contributors
-    * Portlet Decorators
-    * LayoutSet
-    * Resources Importer
-    * Embedding Portlets in Themes
+    * Liferay Themes Generator;
+    * Themelets;
+    * Theme Contributors;
+    * Context Contributors;
+    * Portlet Decorators;
+    * LayoutSet;
+    * Resources Importer;
+    * Embedding Portlets in Themes.
 
 + Customizing with Templates (5%)
-    * Web Content Templates
-    * Workflow Templates
-    * Application Display Templates
+    * Web Content Templates;
+    * Workflow Templates;
+    * Application Display Templates.
 + Taglibs (5%)
-    * aui
-    * liferay-ui
+    * aui;
+    * liferay-ui.
 
 [+ More Details](https://www.liferay.com/en/services/certification/dxp/front-end-developer)
 
@@ -906,39 +906,39 @@ The Liferay DXP Front-End Certification comprises the following items:
 The Liferay DXP Back-End Certification comprises the following items:
 
 + Liferay Digital Experience Platform: Basic Concepts (25%)
-    * OSGi
-    * Liferay Modules (Bundles)
-    * JSR-286 specification
-    * Portlet Lifecycle
-    * Gogo Shell
+    * OSGi;
+    * Liferay Modules (Bundles);
+    * JSR-286 specification;
+    * Portlet Lifecycle;
+    * Gogo Shell.
 
 + Liferay Digital Experience Platform: Portlet Modules (20%)
-    * Portlet Components
-    * Attributes
-    * MVC
-    * Declarative Services
+    * Portlet Components;
+    * Attributes;
+    * MVC;
+    * Declarative Services.
 
 + Liferay Digital Experience Platform: Liferay Services (25%)
-    * Users
-    * Blogs
-    * Web Content Articles
-    * Message Board Posts
-    * Pages
+    * Users;
+    * Blogs;
+    * Web Content Articles;
+    * Message Board Posts;
+    * Pages.
 
 + Liferay Digital Experience Platform: Liferay Frameworks (25%)
-    * Asset
-    * Search and Indexing
-    * Liferay Utilities
-    * Feedback Validation
-    * Persistence Layer
-    * Messaging
-    * Authentication
+    * Asset;
+    * Search and Indexing;
+    * Liferay Utilities;
+    * Feedback Validation;
+    * Persistence Layer;
+    * Messaging;
+    * Authentication.
 
 + Liferay Digital Experience Platform: Upgrade Process (5%)
-    * Know how to make upgrades from Liferay 6.X to Liferay DXP
-    * Development Strategy
+    * Know how to make upgrades from Liferay 6.X to Liferay DXP;
+    * Development Strategy.
 
-[+ More details](https://www.liferay.com/en/services/certification/dxp/back-end-developer)
+[+ More details](https://www.liferay.com/en/services/certification/dxp/back-end-developer).
 
 -----
 ## 7. Code snippets

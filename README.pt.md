@@ -39,12 +39,12 @@
         5. [Gulp extend](#455-gulp-extend)
         6. [Gulp status](#456-gulp-status)
 5. [Boas Práticas de Front-End](#5-boas-praticas-de-front-end)
-    5.1 [Recomendaçoes de Configuração](#5-1-recomendaçoes-de-configuracao)
-    5.2 [Formatação de código](#5-2-formatação-de-codigo)
-        5.2.1 [HTML/TPL/FTL](#5-2-1-html-tpl-ftl)
-        5.2.2 [CSS/SCSS](#5-2-2-css-scss)
-        5.2.3 [JS](#5-2-3-js)
-    5.3 [Liferay Front End Source Formatter](#5-3-liferay-front-end-source-formatter)
+    1. [Recomendações de Configuração](#51-recomendações-de-configuracao)
+    2. [Formatação de código](#52-formatação-de-codigo)
+        1. [HTML/TPL/FTL](#521-htmltplftl)
+        2. [CSS/SCSS](#522-cssscss)
+        3. [JS](#523-js)
+    3. [Liferay Front End Source Formatter](#53-liferay-front-end-source-formatter)
 6. [Utilidades](#6-utilidades)
 7. [Certificação Liferay](#7-certificação-liferay)
     1. [Liferay 6.2 Certified Professional Developer](#71-liferay-62-certified-professional-developer)
@@ -703,16 +703,16 @@ Esta tarefa apenas reporta qual o _base theme_ utilizado e quais _themelets_ est
 
 ## 5. Boas Práticas de Front End
 
-### 5.1 Recomendaçoes de Configuração
+### 5.1 Recomendações de Configuração
 Independente do editor/IDE que seja usada, é recomendado se utilizar algumas opções para ajudar com os detalhes e cuidado do código.
 Se possivel procure opções como essa no seu editor Favorito:
 
 - Remover o espaço em branco (_whitespace_)
-    Essa opção remove automaticamente qualquer espaço extra ao final das linhas
-    O VScode vem com essa opção, e o Sublime possui packages que implementam esta caracteristica
+    Essa opção remove automaticamente qualquer espaço extra ao final das linhas.
+    O VScode vem com essa opção, e o Sublime possui plugins que implementam esta característica.
 
 - Espaçamento da Indentação
-    A Liferay usa como padrão a tabulação de 4 espaços. Muitos editores conseguem alterar facilmente a indentação de espaços para tabulação, desde que o espaçamento seja do mesmo tamanho. O importante é não misturar tabulação e espaços
+    A Liferay usa como padrão a tabulação de 4 espaços. Muitos editores conseguem alterar facilmente a indentação de espaços para tabulação, desde que o espaçamento seja do mesmo tamanho. O importante é não misturar tabulação e espaços.
 
 - Renderizar/Mostrar o espaço em branco (_whitespace_)
     Algumas IDEs tem como opção apresentar o espaço vazio do arquivo, e deixar está opção ligada ajuda muito a ver se tem espaços duplos entre as tags, ou se tem espaço sobrando ao final da linha
@@ -722,7 +722,7 @@ Se possivel procure opções como essa no seu editor Favorito:
 
 #### 5.2.1 HTML/TPL/FTL
 
-- Organizar os attributos do HTMl de forma alfabética, por exemplo: 
+- Organizar os attributos do HTML de forma alfabética, por exemplo:
     - `<input type="" class="" id="">` deveria ser `<input class="" id="" type=""> `
 - Organizar os valores dos attributos (como classes) de forma alfabética também, por exemplo:
     - `<div class="box alert custom">` deveria ser `<div class="alert box custom">`
@@ -743,7 +743,7 @@ Se possivel procure opções como essa no seu editor Favorito:
         max-width: 1170px;
         margin: 0 auto;
         padding: 0 15px;
-        width: 100%; 
+        width: 100%;
     }
     ```
 - `@includes` devem ter uma linha de espaçamento entre eles
@@ -761,10 +761,10 @@ Se possivel procure opções como essa no seu editor Favorito:
 - Colocar cada argumento de uma função em uma linha separada
 - Espaçar as funções de seus argumentos
     ```js
-    if (param == true) { ... 
+    if (param == true) { ...
         do something;
     }
-    else { 
+    else {
         do other thing;
     }
     ```
@@ -797,13 +797,13 @@ $ find . -name '*.css' | xargs csf
 E também é possivel integrar com o git, para verificar somente os ultimos arquivos alterados
 
 No seu arquivo .gitconfig, inclua o seguinte alias
-```
+```bash
 sfm = "!f() { git diff --stat --name-only master.. | tr \"\\n\" \"\\0\" | xargs -0 -J{} csf {} $@; }; f"
 ```
 
 Assim você podera rodar diretamente do seu terminal o comando:
 ```bash
-$ smf
+$ sfm
 ```
 
 [(+ Mais informações)](https://github.com/liferay/liferay-frontend-source-formatter)
