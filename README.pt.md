@@ -160,63 +160,63 @@ A plataforma também permite gerenciar contas de usuários e permissões, gerenc
 Para facilitar a criação de módulos, serviços ou qualquer outra estrutura do Liferay 7.0, bem como deploy, gerenciamento de servidor local e outras tarefas relacionadas à plataforma, pode ser utilizado o Blade CLI, que é uma ferramenta de linha de comando baseado em um ambiente Gradle. Ele possui subcomandos que auxiliam na criação e deploy de módulos em uma instância do Liferay. Esta ferramenta está embutida no Workspace da Liferay, e pode ser instalado seguindo as instruções da [Documentação oficial da Liferay - Instalando Blade CLI](https://dev.liferay.com/pt/develop/tutorials/-/knowledge_base/7-0/installing-blade-cli). Para listar os comandos do Blade CLI com as suas respectivas funções, basta executar o comando `blade help`, serão listados os seguintes comandos:
 
 ```
-    create          Creates a new Liferay module project from several available
-    convert         Converts a plugins-sdk plugin project to a gradle WAR project
-    deploy          Builds and deploys bundles to the Liferay module framework.
-    gw              Execute gradle command using the gradle wrapper if detected
-    help            Get help on a specific command
-    init            Initializes a new Liferay workspace
-    install         Installs a bundle into Liferay module framework.
-    open            Opens or imports a file or project in Liferay IDE.
+    create          Cria um novo projeto de módulo Liferay a partir de algum dos vários templates disponíveis
+    convert         Converte um projeto de plugin que feito com o plugins-sdk para um projeto WAR gradle.
+    deploy          Faz build e deploy de pacotes para o framework de módulos Liferay.
+    gw              Executa um comando usando o gradle ou gradle wrapper se detectado.
+    help            Obtém ajuda sobre um comando específico.
+    init            Inicializa um novo workspace Liferay.
+    install         Instala um pacote no framework de módulos Liferay.
+    open            Abre ou importa um arquivo ou projeto na Liferay IDE.
     outputs
-    samples         Generate a sample project
-    server start    Start server defined by your Liferay project
-    server stop     Stop server defined by your Liferay project
-    sh              Connects to Liferay and executes gogo command and returns output.
-    update          Update blade to latest version
-    upgradeProps    Helps to upgrade portal properties from Liferay server
-    version         Show version information about blade
+    samples         Gera um projeto de exemplo.
+    server start    Inicializa o servidor definido pelo projeto Liferay.
+    server stop     Encerra o servidor definido pelo projeto Liferay.
+    sh              Conecta no servidor Liferay, executa comandos gogo e retorna a saída.
+    update          Atualiza o blade para a versão mais atual
+    upgradeProps    Ajuda a atualizar as propriedades do portal a partir do Servidor Liferay.
+    version         Mostra informações sobre a versão do Blade.
 ```
 
 O Blade se baseia em templates para criar os módulos, existem vários templates disponíveis para utilização, o que faz com que o desenvolvedor tenha bastante flexibilidade ao usá-lo. Os templates dispoíveis são mostrados pelo comando `blade create -l` e este é o retorno do comando:
 
 ```
-    activator                          Creates a Liferay module project that customizes the starting and stopping of a Liferay bundle.
-    api                                Creates a Liferay API module project with an empty public interface.
-    content-targeting-report           Creates a Liferay Audience Targeting report as a module project.
-    content-targeting-rule             Creates a Liferay Audience Targeting rule as a module project.
-    content-targeting-tracking-action  Creates a Liferay Audience Targeting metric as a module project.
-    control-menu-entry                 Creates a Liferay module project that customizes Liferay Portal's Control Menu.
-    form-field                         Creates a Liferay form field module project using the Soy templating language.
-    fragment                           Creates a Liferay fragment module project that customizes existing Liferay modules.
-    freemarker-portlet                 Creates a FreeMarker portlet as a module project.
-    layout-template                    Creates a Liferay layout template module project.
-    mvc-portlet                        Creates a Liferay MVC portlet as a module project.
-    npm-angular-portlet                Creates a Liferay MVC portlet with npm and Angular support as a module project.
-    npm-billboardjs-portlet            Creates a Liferay MVC portlet with npm and Billboard.js support as a module project.
-    npm-isomorphic-portlet             Creates a Liferay MVC portlet with npm and isomorphic code support as a module project.
-    npm-jquery-portlet                 Creates a Liferay MVC portlet with npm and jQuery support as a module project.
-    npm-metaljs-portlet                Creates a Liferay MVC portlet with npm and Metal.js support as a module project.
-    npm-portlet                        Creates a Liferay MVC portlet with npm support as a module project.
-    npm-react-portlet                  Creates a Liferay MVC portlet with npm and React support as a module project.
-    npm-vuejs-portlet                  Creates a Liferay MVC portlet with npm and Vue.js support as a module project.
-    panel-app                          Creates a Liferay panel app that customizes a panel category (e.g., Control Panel) by inserting an entry that gives access to an application.
-    portlet                            Creates a Liferay portlet extending the "javax.portlet.GenericPortlet" class as a module project.
-    portlet-configuration-icon         Creates a Liferay module project that customizes a Liferay portlet's configuration icon.
-    portlet-provider                   Creates a Liferay module project that finds appropriate portlets to manage requests.
-    portlet-toolbar-contributor        Creates a Liferay module project that customizes a Liferay portlet's toolbar.
-    rest                               Creates a Liferay JAX-RS module project.
-    service                            Creates a Liferay OSGi service module project implementing a chosen interface.
-    service-builder                    Creates a Liferay Service Builder project by generating an API and implementation module.
-    service-wrapper                    Creates a Liferay service wrapper module project extending a chosen service wrapper class.
-    simulation-panel-entry             Creates a Liferay panel app module project that customizes Liferay Portal's Simulation Menu.
-    soy-portlet                        Creates a Liferay Soy portlet as a module project.
-    spring-mvc-portlet                 Creates a Spring MVC portlet as a WAR project.
-    template-context-contributor       Creates a Liferay module project that injects custom non-JSP template variables into Liferay Portal.
-    theme                              Creates a Liferay WAR-style theme project.
-    theme-contributor                  Creates a Liferay module project that packages UI resources (e.g., CSS and JS) independent of a theme to include on a Liferay Portal page.
-    war-hook                           Creates a Liferay WAR-style Hook project.
-    war-mvc-portlet                    Creates a Liferay WAR-style MVC portlet project.
+    activator                          Cria um projeto de módulo Liferay que customiza a inicialização do bundle
+    api                                Cria um projeto de módulo Liferay API com uma interface pública.
+    content-targeting-report           Cria um relatório do Liferay Audience Targeting como um projeto de módulo.
+    content-targeting-rule             Cria uma regra do Liferay Audience Targeting como um projeto de módulo.
+    content-targeting-tracking-action  Cria uma métrica para o Liferay Audience Targeting como um projeto de módulo.
+    control-menu-entry                 Cria um projeto de módulo Liferay que customiza o menu de controle do Portal da Liferay.
+    form-field                         Cria um projeto de módulo de um campo de formulário Liferay usando linguagem de template Soy.
+    fragment                           Cria um projeto de fragmento de módulo Liferay que customiza módulos existentes do Liferay.
+    freemarker-portlet                 Cria um portlet FreeMarker como um projeto de módulo.
+    layout-template                    Cria um projeto de módulo de layout template Liferay.
+    mvc-portlet                        Cria um portlet MVC Liferay como um projeto de módulo.
+    npm-angular-portlet                Cria um portlet MVC Liferay com suporte à npm e Angular como um projeto de módulo.
+    npm-billboardjs-portlet            Cria um portlet MVC Liferay com suporte à npm e Billboard.js como um projeto de módulo.
+    npm-isomorphic-portlet             Cria um portlet MVC Liferay com suporte à npm e código isomórfico como um projeto de módulo.
+    npm-jquery-portlet                 Cria um portlet MVC Liferay com suporte à npm e jQuery como um projeto de módulo.
+    npm-metaljs-portlet                Cria um portlet MVC Liferay com suporte à npm e Metal.js como um projeto de módulo.
+    npm-portlet                        Cria um portlet MVC Liferay com suporte à npm como um projeto de módulo.
+    npm-react-portlet                  Cria um portlet MVC Liferay com suporte à npm e React como um projeto de módulo.
+    npm-vuejs-portlet                  Cria um portlet MVC Liferay com suporte à npm e Vue.js como um projeto de módulo.
+    panel-app                          Cria um painel de aplicação Liferay que customiza a categoria painel (e.g. Painel de Controle) inserindo uma entrada que dá acesso à aplicação.
+    portlet                            Cria um portlet Liferay extendendo a classe "javax.portlet.GenericPortlet" como um projeto de módulo.
+    portlet-configuration-icon         Cria um projeto de módulo Liferay que customiza o icone de configuração do portlet Liferay.
+    portlet-provider                   Cria um projeto de módulo Liferay que busca portlets apropriados para gerenciar requisições.
+    portlet-toolbar-contributor        Cria um projeto de módulo Liferay que customiza a toolbar de um portlet Liferay.
+    rest                               Cria um projeto de módulo Liferay JAX-RS.
+    service                            Cria um projeto de módulo de serviço OSGi Liferay implementando uma interface escolhida.
+    service-builder                    Cria um projeto do Liferay Service Builder gerando uma API e módulo de implementação.
+    service-wrapper                    Cria um projeto de módulo Liferay service wrapper extendendo uma classe de service wrapper escolhida.
+    simulation-panel-entry             Cria um projeto de módulo de painel de aplicação Liferay que customiza o menu de Simulação do Portal Liferay.
+    soy-portlet                        Cria um portlet Liferay Soy como um projeto de módulo.
+    spring-mvc-portlet                 Cria um portlet Spring MVC como um projeto WAR.
+    template-context-contributor       Cria um projeto de módulo Liferay que injeta variáveis de template não-JSP customizado no Portal Liferay.
+    theme                              Cria um projeto de tema WAR-style Liferay.
+    theme-contributor                  Cria um projeto de módulo Liferay que empacota UI resources (e.g., CSS e JS) independente de um tema para incluir em uma página do Portal Liferay.
+    war-hook                           Cria um projeto de Hook WAR-style Liferay.
+    war-mvc-portlet                    Cria um projeto de portlet MVC WAR-style Liferay.
 ```
 
 É possível criar um ambiente funcional do Liferay utilizando Blade CLI, a partir da sequência de comandos:
@@ -821,49 +821,49 @@ A Liferay possui um [serviço de certificação](https://www.liferay.com/pt/serv
 ### 7.1 Liferay 6.2 Certified Professional Developer
 A certificação de Desenvolvedor Profissional para o Liferay 6.2 compreende os seguintes itens:
 
-+ Liferay Development Best Practices (10%)
-    * Development Environment Setup
-    * Understanding Liferay Plugins
++ Melhores práticas do desenvolvimento Liferay (10%)
+    * Configuração do ambiente de desenvolvimento
+    * Entendendo plugins Liferay
 
 + Liferay Architecture and APIs (25%)
-    * Understanding Liferay Architecture
+    * Entendendo a arquitetura Liferay
     * Service Builder
-    * Liferay Utilities
-    * User Management and Group APIs
+    * Utilidades Liferay
+    * Gerenciamento de Usuários e APIs de Grupo
     * AlloyUI
     * Expando API
     * Application Display Templates
 
-+ Liferay Portlet Plugin Development (20%)
++ Desenvolvimento de portlets Liferay (20%)
     * Portlet API
-    * Configuration
+    * Configuração
     * IPC
-    * Liferay MVCPortlet
-    * JSP and UI Technologies
-    * Permissions
+    * Liferay MVC Portlet
+    * JSP e tecnologias de UI
+    * Permissões
 
-+ Liferay Hook Plugin Development (25%)
-    * Best Practices
-    * Configuration Hook
-    * JSP Hook
-    * Language Hook
-    * Indexer Post Processor Hook
++ Desenvolvimento de Hooks Liferay (25%)
+    * Melhores práticas
+    * Hook de configuração
+    * Hook JSP
+    * Hook de linguagem
+    * Hook de indexador pós-processado
     * Service Wrapper Hook
-    * Struts Action Hook
-    * Servlet Filter Hook
+    * Hook de ação Struts
+    * Hook de filtro de Servlet
 
-+ Liferay Theme Plugin Development (5%)
-    * Understanding Liferay Theme Development
-    * Color Schemes and Theme Settings
-    * Embedded Portlets
++ Desenvolvimento de Temas Liferay (5%)
+    * Entendendo o desenvolvimento de temas Liferay
+    * Esquemas de cor e configurações de tema
+    * Portlets embutidos
 
-+ Liferay Layout Template Plugin Development (5%)
-    * Understanding Liferay Layout Template Development
++ Desenvolvimento de modelos de Layout Liferay (5%)
+    * Entendendo o desenvolvimento de modelos de Layout Liferay
 
-+ Liferay Advanced Customization (10%)
-    * Understanding EXT Plugins
-    * Modifying Portal Configuration
-    * Customizing Core Portlets
++ Customização avançada Liferay (10%)
+    * Entendendo plugins EXT
+    * Modificando configurações do portal
+    * Customizando portlets base
 
 [+ Mais detalhes](https://www.liferay.com/pt/services/certification/professional-developer/6.2)
 
