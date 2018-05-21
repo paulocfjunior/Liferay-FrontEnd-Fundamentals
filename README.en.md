@@ -732,7 +732,6 @@ Regardless of the editor/IDE that is used, it's recommended using some options t
     .class-style {
         margin: 0 auto;
         max-width: 1170px;
-        margin: 0 auto;
         padding: 0 15px;
         width: 100%;
     }

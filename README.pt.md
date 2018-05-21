@@ -742,7 +742,6 @@ Se possivel procure opções como essa no seu editor Favorito:
     .class-style {
         margin: 0 auto;
         max-width: 1170px;
-        margin: 0 auto;
         padding: 0 15px;
         width: 100%;
     }
