@@ -39,7 +39,7 @@
         5. [Gulp extend](#455-gulp-extend)
         6. [Gulp status](#456-gulp-status)
 5. [Front-End Good Practices](#5-front-end-good-practices)
-    1. [Configuration Recommendations](#51-configuration-recommendations)
+    1. [Configuration](#51-configuration)
     2. [Code Formatting](#52-code-formatting)
         1. [HTML/TPL/FTL](#521-htmltplftl)
         2. [CSS/SCSS](#522-cssscss)
@@ -692,7 +692,7 @@ This task only repotrs the _Base Theme_ that has been used, and which _themelets
 
 ## 5. Front End Good Practices
 
-### 5.1 Configuration Recommendations
+### 5.1 Configuration
 
 Regardless of the editor/IDE that is used, it's recommended using some options to help with the little details on the code. If possible look for these options on your favorite editor:
 
@@ -706,7 +706,8 @@ Regardless of the editor/IDE that is used, it's recommended using some options t
 
 - Render/Show whitespace
     Some IDEs has an option to show the file whitespace, and let this option turned on can help with double spaces, and trailing spaces:
-    ![Whitespaces Rendering](./images/5-1-recomendacoes.png).
+
+![Whitespaces Rendering](./images/5-1-recomendacoes.png).
 
 ### 5.2 Code Formatting
 

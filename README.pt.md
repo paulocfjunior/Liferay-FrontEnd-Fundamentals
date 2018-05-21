@@ -39,7 +39,7 @@
         5. [Gulp extend](#455-gulp-extend)
         6. [Gulp status](#456-gulp-status)
 5. [Boas Práticas de Front-End](#5-boas-práticas-de-front-end)
-    1. [Recomendações de Configuração](#51-recomendações-de-configuração)
+    1. [Configuração](#51-configuração)
     2. [Formatação de código](#52-formatação-de-código)
         1. [HTML/TPL/FTL](#521-htmltplftl)
         2. [CSS/SCSS](#522-cssscss)
@@ -703,7 +703,7 @@ Esta tarefa apenas reporta qual o _base theme_ utilizado e quais _themelets_ est
 
 ## 5. Boas Práticas de Front End
 
-### 5.1 Recomendações de Configuração
+### 5.1 Configuração
 Independente do editor/IDE que seja usada, é recomendado se utilizar algumas opções para ajudar com os detalhes e cuidado do código.
 Se possivel procure opções como essa no seu editor Favorito:
 
@@ -715,8 +715,9 @@ Se possivel procure opções como essa no seu editor Favorito:
     A Liferay usa como padrão a tabulação de 4 espaços. Muitos editores conseguem alterar facilmente a indentação de espaços para tabulação, desde que o espaçamento seja do mesmo tamanho. O importante é não misturar tabulação e espaços.
 
 - Renderizar/Mostrar o espaço em branco (_whitespace_)
-    Algumas IDEs tem como opção apresentar o espaço vazio do arquivo, e deixar está opção ligada ajuda muito a ver se tem espaços duplos entre as tags, ou se tem espaço sobrando ao final da linha
-    ![Renderização do Whitespace](./images/5-1-recomendacoes.png)
+    Algumas IDEs tem como opção apresentar o espaço vazio do arquivo, e deixar está opção ligada ajuda muito a ver se tem espaços duplos entre as tags, ou se tem espaço sobrando ao final da linha:
+
+![Renderização do Whitespace](./images/5-1-recomendacoes.png)
 
 ### 5.2 Formatação de código
 
