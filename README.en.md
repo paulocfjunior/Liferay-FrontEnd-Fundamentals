@@ -634,10 +634,10 @@ For example: If you want to create a _User Display_, you need:
 ```FreeMarker
 <@liferay_ui["user-display"]
     markupView="lexicon"
-    showUserDetails=false
-    showUserName=true
     userId=userId
     userName=userName
+    showUserDetails=false
+    showUserName=true
 />
 ```
 
@@ -645,10 +645,10 @@ You can also use other elements, such as Lexicon icons:
 
 ```FreeMarker
 <@liferay_ui["icon"]
+    cssClass="additional-class"
     icon="name-of-the-icon"
     markupView="lexicon"
     message="An message popup"
-    cssClass="additional-class"
 />
 ```
 
@@ -707,6 +707,12 @@ Regardless of the editor/IDE that is used, it's recommended using some options t
 - Render/Show whitespace
     Some IDEs has an option to show the file whitespace, and let this option turned on can help with double spaces, and trailing spaces:
 
+- Remove extra lines
+    There is no need to add blank lines between the code blocks or at the end of the file. Only one line is enough to separate statement variables, code blocks, and so on. There should be no additional line at the end of the file.
+
+- Comments and JSDoc
+    Comments with `/* */` should be reserved only for multi-line comments or for comments that we wish to retain in CSS after compiling. JSDoc-style comments are not required.
+
 ![Whitespaces Rendering](./images/5-1-recomendacoes.png).
 
 ### 5.2 Code Formatting
@@ -717,12 +723,18 @@ Regardless of the editor/IDE that is used, it's recommended using some options t
     `<input type =" "class =" "id =" ">` should be `<input class="" id="" type=""> `
 - Organize attribute values ​​(such as classes) alphabetically as well, for example:
     `<div class =" box alert custom ">` should be `<div class =" alert box custom ">`
-- Block-level elements need a class or an id (`div`,` aside`, `sections`).
+- The HTML parameters should be written on the same line. There is no limit for line size;
+- Block-level elements need a class or an id (`div`,` aside`, `sections`);
+- It is preferable to use only double quotation marks for properties and strings;
+- In FreeMarker for the declaration of multiple variables with `<#assign />`, you must separate each one in your line.
 
 #### 5.2.2 CSS/SCSS
 
 - Hexadecimal colors must be capitalized for ease of viewing:
     - `#2c2c3c` -> `#2C2C3C`
+    - This can be done by using find and replace with regex:
+        - Search: (#[0-9a-fA-F]{3,6})
+        - Replace for: \U\1
 - Comments need a line before and after the text.
 - Rules and properties should be written in a block and not in single lines.
 - Use 0 instead of 0px when applicable.
@@ -742,14 +754,62 @@ Regardless of the editor/IDE that is used, it's recommended using some options t
 
     @include "Another CSS"
     ```
-- Avoid going more than 3 levels deep in the SASS hierarchy to facilitate maintenance.
+- Avoid going more than 3 levels deep in the SASS hierarchy to facilitate maintenance, max 4.
+- To facilitate understanding, it is desirable to adopt a folder structure to separate the SCSS files contextually and within them to modularize files for each purpose, for example, portlet-related scripts should be in the `css/portlets` folder and variable files, animations, or general styles can be inside a `css/partials` folder, each group in a separate file: `css/partials/_variables.scss`, `css/partials/_animations.scss`, `css/portlets/_blogs.scss` and so on.
+- In the nomenclature of the archives one should be as clear and objective as possible, the standard for the format of the name is all lowercase letters and separated by hyphens when they are names composed of more than one word, the underline at the beginning of the name serves for telling SASS that it is a partial file and a CSS file should not be generated for it. Examples: `_blogs.scss`, `_blogs-entry-view.scss`.
+- When using properties that need to be prefixed to ensure compatibility with other browsers, you should prefix or use Bourbon mixins, which is a library that is already available by default in the Liferay environment, and ensures compatibility with known browsers.
 
 #### 5.2.3 JS
 
-- Just like in the CSS, comments should have a separating space before and after the text.
+- Just like in the CSS, comments should have a separating line before and after the text.
 - Place each argument of a function on a separate line.
+- Separate variables declaration and the code by one line.
+- Newlines should be added to create logical groupings of statements.
+
+```js
+    // bad
+
+    door.knock();
+    door.openDoor();
+    person.greet();
+    home.enter();
+    person.sit();
+
+    // good
+    door.knock();
+    door.openDoor();
+
+    person.greet();
+
+    home.enter();
+
+    person.sit();
+```
+
+- Functions as arguments should be on their own line:
+```js
+    // Bad
+    $(window).scroll(function() {
+        // code
+    });
+
+    // Good
+    $(window).scroll(
+        function() {
+            // code
+        }
+    );
+```
+
+- Sort variables declaration alphabetically, if possible.
 - Spacing the functions of your arguments:
     ```js
+    var param1 = someFunc();
+    var param2 = otherFunc();
+    var param = funcThatUsesParams(param1, param2);
+
+    // Comment
+
     if (param == true) {
         do something;
     }

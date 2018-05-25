@@ -645,10 +645,10 @@ Por exemplo: Se voce quiser criar um _User Display_, você só precisa de:
 ```FreeMarker
 <@liferay_ui["user-display"]
     markupView="lexicon"
-    showUserDetails=false
-    showUserName=true
     userId=userId
     userName=userName
+    showUserDetails=false
+    showUserName=true
 />
 ```
 
@@ -656,10 +656,10 @@ Tambem é possivel utilizar outros elementos, como os ícones do Lexicon:
 
 ```FreeMarker
 <@liferay_ui["icon"]
+    cssClass="classe-adicional"
     icon="name-of-the-icon"
     markupView="lexicon"
     message="An message popup"
-    cssClass="classe-adicional"
 />
 ```
 
@@ -717,6 +717,12 @@ Se possivel procure opções como essa no seu editor Favorito:
 - Renderizar/Mostrar o espaço em branco (_whitespace_)
     Algumas IDEs tem como opção apresentar o espaço vazio do arquivo, e deixar está opção ligada ajuda muito a ver se tem espaços duplos entre as tags, ou se tem espaço sobrando ao final da linha:
 
+- Remover linhas em branco extras
+    É preferível que não existam linhas em branco adicionais entre os blocos de código e no final do arquivo. Apenas uma linha é o suficiente para separar declaração de variáveis, blocos de código e etc. Ao final do arquivo não precisa haver nenhuma linha adicional.
+
+- Comentários e JSDoc
+    Comentários com `/* */` devem ser reservados apenas para comentários de multiplas linhas ou para comentários que desejamos manter no CSS depois de compilado. Comentários no estilo JSDoc não são requeridos.
+
 ![Renderização do Whitespace](./images/5-1-recomendacoes.png)
 
 ### 5.2 Formatação de código
@@ -727,17 +733,23 @@ Se possivel procure opções como essa no seu editor Favorito:
     - `<input type="" class="" id="">` deveria ser `<input class="" id="" type=""> `
 - Organizar os valores dos attributos (como classes) de forma alfabética também, por exemplo:
     - `<div class="box alert custom">` deveria ser `<div class="alert box custom">`
+- Não é interessante escrever os parâmetros do HTML em linhas individuais, prefere-se que sejam escritos na mesma linha. Não há limite para o tamanho da linha;
 - Elementos block-level precisam de uma classe ou um id (`div`,`aside`,`sections`);
+- É preferível que se use apenas aspas duplas para as propriedades e strings;
+- Em FreeMarker para a declaração de múltiplas variáveis com `<#assign />`, deve-se separar cada uma em sua linha.
 
 #### 5.2.2 CSS/SCSS
 
 - Cores Hexadecimais devem usar letras maiúsculas para facilitar a visualização
     - `#2c2c3c` -> `#2C2C3C`
-- Comentarios precisam de uma linha antes e depois do texto
-- Regras e propriedades devem ser escritas em bloco e não em linhas unicas
-- Use 0 em vez de 0px quando aplicavel
-- Sempre verificar se todas as propriedades terminam com ponto e virgula
-- Cada proriedade deve ter a sua propria linha, e devem ser organizadas em ordem alfabética
+    - Isso pode ser feito através de uma substituição utilizando expressão regular:
+        - Buscar: (#[0-9a-fA-F]{3,6})
+        - Substituir por: \U\1
+- Comentarios precisam de uma linha antes e depois do texto.
+- Regras e propriedades devem ser escritas em bloco e não em linhas unicas.
+- Use 0 em vez de 0px quando aplicável.
+- Sempre verificar se todas as propriedades terminam com ponto e vírgula.
+- Cada proriedade deve ter a sua própria linha, e devem ser organizadas em ordem alfabética
     ```css
     .class-style {
         margin: 0 auto;
@@ -752,22 +764,67 @@ Se possivel procure opções como essa no seu editor Favorito:
 
         @include "Outro CSS"
     ```
-- Evitar ir além de 3 níveis na hierarquia do SASS para facilitar a manuntenção
-
+- Evitar ir além de 3 níveis na hierarquia do SASS para facilitar a manuntenção, o máximo aceitável é 4.
+- Para facilitar o entendimento, é desejável que se adote uma estrutura de pastas para separar os arquivos de SCSS contextualmente e dentro delas modularizar em arquivos para cada finalidade, por exemplo, os scripts relacionados aos portlets devem ficar na pasta `css/portlets` e os arquivos de variáveis, animações, ou estilos gerais, podem ficar dentro de uma pasta `css/partials`, cada grupo em um arquivo separado: `css/partials/_variables.scss`, `css/partials/_animations.scss`, `css/portlets/_blogs.scss` e assim por diante.
+- Na nomenclatura dos arquivos deve-se ser o mais claro e objetivo possível, o padrão para o formato do nome é todas as letras minúsculas e separados por hífens quando forem nomes compostos por mais de uma palavra, o underline no início do nome serve para indicar ao SASS que se trata de um arquivo parcial e não deve ser gerado um arquivo CSS para ele. Exemplos: `_blogs.scss`, `_blogs-entry-view.scss`.
+- Quando forem utilizadas propriedades que precisam ser prefixadas para garantir a compatibilidade com outros navegadores, deve-se fazer a prefixação ou utilizar Bourbon mixins, que é uma biblioteca que já está disponível por padrão no ambiente Liferay, e garante a compatibilidade com os navegadores conhecidos.
 
 #### 5.2.3 JS
 
-- Assim como no CSS, comentários devem ter um espaço de separação antes e depois do texto
+- Assim como no CSS, comentários devem ter uma linha antes e depois do texto
 - Colocar cada argumento de uma função em uma linha separada
+- Separar a declaração de variáveis do resto do código com uma linha
+- É desejável que se separe o código em blocos lógicos:
+```js
+    // bad
+
+    door.knock();
+    door.openDoor();
+    person.greet();
+    home.enter();
+    person.sit();
+
+    // good
+    door.knock();
+    door.openDoor();
+
+    person.greet();
+
+    home.enter();
+
+    person.sit();
+```
+- Se uma função for usada como argumento, ela deve ser escrita em sua própria linha:
+```js
+    // Bad
+    $(window).scroll(function() {
+        // code
+    });
+
+    // Good
+    $(window).scroll(
+        function() {
+            // code
+        }
+    );
+```
+
+- Ordenar a declaração de variáveis em ordem alfabética, sempre que possível
 - Espaçar as funções de seus argumentos
-    ```js
-    if (param == true) { ...
+```js
+    var param1 = someFunc();
+    var param2 = otherFunc();
+    var param = funcThatUsesParams(param1, param2);
+
+    // Comment
+
+    if (param == true) {
         do something;
     }
     else {
         do other thing;
     }
-    ```
+```
 - Remover todos os console.logs do código;
 
 ### 5.3 Liferay Front End Source Formatter
