@@ -556,7 +556,7 @@ div .text {
 }
 ```
 
-Compilado:
+Built:
 
 ```CSS
 div .text {
